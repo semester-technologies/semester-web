@@ -1950,6 +1950,12 @@ img {
     color: #ffffff;
     padding: 10px 19px;
 }
+@media (min-width: 992px) {
+  .services-list > .col {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
 
 .service2-area {
     background: var(--dark1);
