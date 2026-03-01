@@ -21,307 +21,20 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <!-- Modern UI Override -->
+    <link rel="stylesheet" href=".\assets\css\modern.css" />
 
     <style>
-      /* ── Preserve original template classes ── */
-      .case-studio-cat {
-        display: inline-block;
-        border-radius: 10px;
-        color: var(--primary_color);
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 18px;
-        background: var(--primary_light2);
-        padding: 8px 21px;
-        position: absolute;
-        left: 24px;
-        top: 24px;
-      }
-      .case-studio-tab-content .service-card {
-        margin: 0;
-      }
-
-      /* ── Authority Bar ── */
-      .authority-bar {
-        background: var(--dark_color, #0f0f0f);
-        padding: 20px 0;
-        overflow: hidden;
-      }
-      .authority-metrics .metric h3 {
-        font-size: clamp(22px, 4vw, 30px);
-        font-weight: 700;
-        color: var(--primary_color, #6c63ff);
-        margin: 0;
-      }
-      .authority-metrics .metric p {
-        font-size: 13px;
-        color: rgba(255, 255, 255, 0.6);
-        margin: 0;
-      }
-      .ticker-wrap {
-        white-space: nowrap;
-        overflow: hidden;
-      }
-      .ticker-text {
-        display: inline-block;
-        animation: ticker 18s linear infinite;
-        color: rgba(255, 255, 255, 0.45);
-        font-size: 12px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-      }
-      @keyframes ticker {
-        0% {
-          transform: translateX(100vw);
-        }
-        100% {
-          transform: translateX(-100%);
-        }
-      }
-
-      /* ── Tri-Split CTA Cards ── */
-      .tri-cta-card {
-        background: rgba(255, 255, 255, 0.07);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 12px;
-        padding: 20px 24px;
-        text-align: center;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        color: #fff;
-        display: block;
-      }
-      .tri-cta-card:hover {
-        background: var(--primary_color, #6c63ff);
-        border-color: var(--primary_color, #6c63ff);
-        color: #fff;
-        transform: translateY(-3px);
-      }
-      .tri-cta-card .cta-label {
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        color: rgba(255, 255, 255, 0.5);
-        margin-bottom: 6px;
-      }
-      .tri-cta-card:hover .cta-label,
-      .tri-cta-card:hover .cta-sub {
-        color: rgba(255, 255, 255, 0.85);
-      }
-      .tri-cta-card h4 {
-        font-size: 16px;
-        font-weight: 700;
-        margin: 0 0 4px;
-      }
-      .tri-cta-card .cta-sub {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.5);
-      }
-
-      /* ── Workflow Steps ── */
-      .step-box {
-        background: var(--primary_color, #6c63ff);
-        color: #fff;
-        border-radius: 8px;
-        padding: 10px 16px;
-        font-size: 13px;
-        font-weight: 600;
-        text-align: center;
-        white-space: nowrap;
-      }
-      .step-arrow {
-        font-size: 18px;
-        color: var(--primary_color, #6c63ff);
-      }
-
-      /* ── Segment Bullets ── */
-      .segment-bullets {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      .segment-bullets li {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        margin-bottom: 14px;
-        font-size: 15px;
-        color: var(--text_color, #555);
-      }
-      .segment-bullets li::before {
-        content: "✦";
-        color: var(--primary_color, #6c63ff);
-        flex-shrink: 0;
-        margin-top: 2px;
-      }
-      .segment-bullets li strong {
-        color: var(--heading_color, #1a1a2e);
-      }
-
-      /* ── Featured Projects ── */
-      .featured-projects-area {
-        background: var(--dark_color, #0f0f0f);
-      }
-      .featured-projects-area .section-subtitle,
-      .featured-projects-area .section-title {
-        color: #fff;
-      }
-      .project-card {
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        padding: 28px;
-        height: 100%;
-        transition: all 0.3s ease;
-      }
-      .project-card:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: var(--primary_color, #6c63ff);
-        transform: translateY(-4px);
-      }
-      .project-tag {
-        display: inline-block;
-        background: var(--primary_color, #6c63ff);
-        color: #fff;
-        font-size: 12px;
-        padding: 4px 14px;
-        border-radius: 20px;
-        margin-bottom: 14px;
-      }
-      .project-card h3 {
-        color: #fff;
-        font-size: 17px;
-        margin-bottom: 10px;
-      }
-      .project-card p {
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 14px;
-        margin-bottom: 18px;
-      }
-      .project-card a {
-        color: var(--primary_color, #6c63ff);
-        font-size: 14px;
-        font-weight: 600;
-        text-decoration: none;
-      }
-      .project-card a:hover {
-        text-decoration: underline;
-      }
-
-      /* ── Semester Standard icons ── */
-      .icon-circle {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        background: var(--primary_light2, #ede9ff);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        font-size: 20px;
-        color: var(--primary_color, #6c63ff);
-      }
-
-      /* ── Partners dark section ── */
-      .partners-section {
-        background: var(--dark_color, #0f0f0f);
-      }
-      .partners-section .section-title {
-        color: #fff;
-      }
-
-      /* ── Quiz ── */
-      .quiz-box {
-        background: #fff;
-        border-radius: 20px;
-        padding: 40px;
-        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
-        max-width: 720px;
-        margin: 0 auto;
-      }
-      .quiz-question {
-        font-size: 19px;
-        font-weight: 700;
-        margin-bottom: 16px;
-      }
-      .quiz-option {
-        padding: 11px 20px;
-        border: 2px solid #e0e0e0;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: 500;
-        transition: all 0.2s ease;
-        background: #fff;
-        color: var(--heading_color, #1a1a2e);
-      }
-      .quiz-option:hover,
-      .quiz-option.active {
-        border-color: var(--primary_color, #6c63ff);
-        background: var(--primary_color, #6c63ff);
-        color: #fff;
-      }
-      .quiz-result {
-        display: none;
-        background: var(--primary_light2, #ede9ff);
-        border-radius: 12px;
-        padding: 20px 24px;
-        margin-top: 16px;
-      }
-      .quiz-result p {
-        margin: 0 0 12px;
-        font-size: 15px;
-        color: var(--heading_color, #1a1a2e);
-      }
-
-      /* ── FAQ ── */
-      .faq-item {
-        border-bottom: 1px solid #e5e5e5;
-        padding: 22px 0;
-      }
-      .faq-question {
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: var(--heading_color, #1a1a2e);
-        gap: 12px;
-      }
-      .faq-question span {
-        font-size: 22px;
-        color: var(--primary_color, #6c63ff);
-        transition: transform 0.3s;
-        flex-shrink: 0;
-      }
-      .faq-answer {
-        font-size: 15px;
-        color: var(--text_color, #555);
-        margin-top: 10px;
-        display: none;
-        line-height: 1.7;
-      }
-      .faq-item.open .faq-answer {
-        display: block;
-      }
-      .faq-item.open .faq-question span {
-        transform: rotate(45deg);
-      }
-
-      /* ── Misc ── */
-      .bg-light-soft {
-        background: #f8f9fe;
-      }
-
-      @media (max-width: 576px) {
-        .quiz-box {
-          padding: 24px 16px;
-        }
-        .quiz-option {
-          width: 100%;
-        }
-      }
+      /* Minimal page-specific overrides — main styles in modern.css */
+      .case-studio-cat { display:inline-block;border-radius:10px;color:var(--primary_color);font-size:13px;font-weight:600;line-height:18px;background:var(--primary_light);padding:6px 16px;position:absolute;left:20px;top:20px;border:1px solid rgba(88,62,138,0.1); }
+      .case-studio-tab-content .service-card { margin:0; }
+      .ticker-wrap { white-space:nowrap;overflow:hidden; }
+      .ticker-text { display:inline-block;animation:ticker 18s linear infinite; }
+      @keyframes ticker { 0%{transform:translateX(100vw)} 100%{transform:translateX(-100%)} }
+      .segment-bullets { list-style:none;padding:0;margin:0; }
+      .quiz-result { display:none;margin-top:16px; }
+      .faq-answer { display:none; }
+      .faq-item.open .faq-answer { display:block; }
     </style>
   </head>
 
@@ -371,7 +84,7 @@
 
       <!-- HERO -->
       <section class="hero-section-wrap hero-home2 py-0">
-        <div class="hero-section-content-wrap py-5">
+        <div class="hero-section-content-wrap">
           <img
             class="bg-shape slide-left"
             src=".\assets\imgs\bg-shape-6.svg"
@@ -494,9 +207,9 @@
       </section>
 
       <!-- SEGMENT A – FOR CLIENTS -->
-      <section class="py-5">
+      <section style="padding:80px 0">
         <div class="custom-container">
-          <div class="row align-items-end mb-4 g-4">
+          <div class="row align-items-end mb-5 g-4">
             <div class="col-12 col-md-6">
               <h5 class="section-subtitle">FOR CLIENTS</h5>
               <h1 class="section-title">
@@ -504,7 +217,7 @@
               </h1>
             </div>
             <div class="col-12 col-md-6">
-              <p class="mb-0">
+              <p class="mb-0" style="color:var(--text_secondary);font-size:17px;line-height:1.7">
                 You have the vision; we have the engineering. Semester Tech
                 offers over 200 specialized services designed to take you from
                 Company Registration to Global Monetization.
@@ -795,9 +508,9 @@
       </section>
 
       <!-- SEGMENT B – FOR STUDENTS -->
-      <section class="py-5 bg-light-soft">
+      <section class="bg-light-soft" style="padding:100px 0">
         <div class="custom-container">
-          <div class="row align-items-end mb-4 g-4">
+          <div class="row align-items-end mb-5 g-4">
             <div class="col-12 col-md-6">
               <h5 class="section-subtitle">FOR STUDENTS</h5>
               <h1 class="section-title">
@@ -805,7 +518,7 @@
               </h1>
             </div>
             <div class="col-12 col-md-6">
-              <p class="mb-0">
+              <p class="mb-0" style="color:var(--text_secondary);font-size:17px;line-height:1.7">
                 At Semester Tech, you don't just watch videos — you work on live
                 projects. Join a community of over 120 graduates who are now
                 leading the industry.
@@ -851,10 +564,7 @@
               </div>
             </div>
           </div>
-          <p
-            class="fw-semibold mb-3"
-            style="color: var(--heading_color, #1a1a2e)"
-          >
+          <p class="fw-semibold mb-3" style="color:var(--text_primary);font-size:15px">
             Key Courses: Frontend Engineering &nbsp;•&nbsp; Product Design
             (UI/UX) &nbsp;•&nbsp; Data Analysis &nbsp;•&nbsp; Digital Marketing
           </p>
@@ -1308,17 +1018,17 @@
       <!-- this -->
 
       <!-- SEGMENT C – FOR PARTNERS -->
-      <section class="partners-section py-5">
+      <section class="partners-section" style="padding:100px 0">
         <div class="custom-container">
-          <div class="row align-items-end g-4 mb-4">
+          <div class="row align-items-end g-4 mb-5">
             <div class="col-12 col-md-6">
               <h5 class="section-subtitle">FOR PARTNERS</h5>
-              <h1 class="section-title" style="color: #fff">
+              <h1 class="section-title" style="color:#fff">
                 A Strategic Alliance<br />for Impact.
               </h1>
             </div>
             <div class="col-12 col-md-6">
-              <p style="color: rgba(255, 255, 255, 0.65)" class="mb-0">
+              <p style="color:rgba(255,255,255,0.55);font-size:17px;line-height:1.7" class="mb-0">
                 We partner with visionaries, NGOs, and enterprises to drive
                 digital transformation. Whether you need corporate training for
                 your workforce or a technical partner for your NGO's global
@@ -1333,14 +1043,14 @@
       </section>
 
       <!-- FEATURED PROJECTS -->
-      <section class="featured-projects-area py-5">
+      <section class="featured-projects-area">
         <div class="custom-container">
-          <div class="text-center mb-4">
-            <h5 class="section-subtitle">FEATURED WORK</h5>
-            <h1 class="section-title" style="color: #fff">
+          <div class="text-center mb-5">
+            <h5 class="section-subtitle" style="color:rgba(255,255,255,0.5)">FEATURED WORK</h5>
+            <h1 class="section-title" style="color:#fff">
               We Don't Just Claim Excellence. We Build It.
             </h1>
-            <p style="color: rgba(255, 255, 255, 0.6)">
+            <p style="color:rgba(255,255,255,0.5);font-size:17px;margin-top:12px">
               Explore a few of the 200+ projects deployed this year.
             </p>
           </div>
@@ -1387,13 +1097,13 @@
       </section>
 
       <!-- SEMESTER STANDARD -->
-      <section class="py-5">
+      <section style="padding:100px 0">
         <div class="custom-container">
-          <div class="row mb-4">
+          <div class="row mb-5">
             <div class="col-12 col-md-8">
               <h5 class="section-subtitle">THE SEMESTER STANDARD</h5>
               <h1 class="section-title">The "120+ Expert" Advantage.</h1>
-              <p class="mt-2">
+              <p style="color:var(--text_secondary);font-size:17px;line-height:1.7;margin-top:16px">
                 Most agencies outsource your work to random freelancers. We
                 don't. Every project at Semester Tech is built by a team of
                 experts we trained ourselves. Because we control the education
@@ -1404,13 +1114,10 @@
           <div class="row g-4">
             <div class="col-12 col-sm-6 col-md-4">
               <div class="d-flex align-items-start gap-3">
-                <div class="icon-circle">✓</div>
+                <div class="icon-circle">&#10003;</div>
                 <div>
-                  <h5 class="fw-bold mb-1">Internal Quality Control</h5>
-                  <p
-                    class="mb-0"
-                    style="font-size: 14px; color: var(--text_color, #555)"
-                  >
+                  <h5 class="fw-bold mb-1" style="font-size:16px">Internal Quality Control</h5>
+                  <p class="mb-0" style="font-size:14px;color:var(--text_secondary)">
                     No outsourcing. Every deliverable is built in-house by our
                     trained experts.
                   </p>
@@ -1419,13 +1126,10 @@
             </div>
             <div class="col-12 col-sm-6 col-md-4">
               <div class="d-flex align-items-start gap-3">
-                <div class="icon-circle">⌥</div>
+                <div class="icon-circle">&#9881;</div>
                 <div>
-                  <h5 class="fw-bold mb-1">Standardized Code</h5>
-                  <p
-                    class="mb-0"
-                    style="font-size: 14px; color: var(--text_color, #555)"
-                  >
+                  <h5 class="fw-bold mb-1" style="font-size:16px">Standardized Code</h5>
+                  <p class="mb-0" style="font-size:14px;color:var(--text_secondary)">
                     Clean, maintainable software architecture every time.
                   </p>
                 </div>
@@ -1433,13 +1137,10 @@
             </div>
             <div class="col-12 col-sm-6 col-md-4">
               <div class="d-flex align-items-start gap-3">
-                <div class="icon-circle">⚡</div>
+                <div class="icon-circle">&#9889;</div>
                 <div>
-                  <h5 class="fw-bold mb-1">Speed</h5>
-                  <p
-                    class="mb-0"
-                    style="font-size: 14px; color: var(--text_color, #555)"
-                  >
+                  <h5 class="fw-bold mb-1" style="font-size:16px">Speed</h5>
+                  <p class="mb-0" style="font-size:14px;color:var(--text_secondary)">
                     A workforce of 120+ means no bottlenecks. Your deadlines are
                     our priority.
                   </p>
@@ -1568,11 +1269,11 @@
       <section class="testimonial-area">
         <div class="custom-container">
           <div class="section-header text-center mb-5">
-            <h5 class="section-subtitle mb-2">TESTIMONIAL</h5>
-            <h1 class="section-title mb-2">Trusted by Visionaries.</h1>
-            <p style="margin: auto">
+            <h5 class="section-subtitle mb-2">TESTIMONIALS</h5>
+            <h1 class="section-title mb-3">Trusted by Visionaries.</h1>
+            <p style="margin:auto;color:var(--text_secondary);font-size:17px">
               Their professionalism and commitment to our success were evident
-              <br />throughout the entire process.
+              throughout the entire process.
             </p>
           </div>
         </div>
@@ -1713,11 +1414,11 @@
       </section>
 
       <!-- ABOUT TEASER -->
-      <section class="py-5 bg-light-soft">
+      <section class="bg-light-soft" style="padding:100px 0">
         <div class="custom-container text-center">
           <h5 class="section-subtitle">OUR STORY</h5>
           <h1 class="section-title">We Are the Architects.</h1>
-          <p class="mx-auto mt-3 mb-4" style="max-width: 640px">
+          <p class="mx-auto mb-4" style="max-width:600px;color:var(--text_secondary);font-size:17px;line-height:1.7;margin-top:16px">
             Semester Tech started with a simple mission: to bridge the gap
             between learning technology and using it to solve real-world
             problems. Today, we are a dual-engine firm — a Talent Factory that
@@ -1731,12 +1432,12 @@
       </section>
 
       <!-- PRE-FLIGHT QUIZ -->
-      <section class="py-5" style="background: #f8f9fe">
+      <section style="padding:100px 0;background:var(--surface_alt)">
         <div class="custom-container">
           <div class="text-center mb-5">
             <h5 class="section-subtitle">START YOUR JOURNEY</h5>
             <h1 class="section-title">Not Sure Where to Start?</h1>
-            <p class="mt-2">
+            <p style="color:var(--text_secondary);font-size:17px;margin-top:12px">
               Tell us your goal, and we'll guide you to the right service.
             </p>
           </div>
@@ -2037,13 +1738,13 @@
       </section>
 
       <!-- FAQ -->
-      <section class="py-5">
+      <section style="padding:100px 0">
         <div class="custom-container">
           <div class="text-center mb-5">
             <h5 class="section-subtitle">FAQ</h5>
-            <h1 class="section-title">Frequently Asked Questions.</h1>
+            <h1 class="section-title">Frequently Asked Questions</h1>
           </div>
-          <div class="mx-auto" style="max-width: 800px">
+          <div class="mx-auto" style="max-width:720px">
             <div class="faq-item">
               <div class="faq-question" onclick="toggleFaq(this)">
                 Do you offer installment payments for large projects?
