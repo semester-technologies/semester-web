@@ -11,9 +11,7 @@
   function getPreferred() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) return saved;
-    return window.matchMedia("(prefers-color-scheme: light)").matches
-      ? "light"
-      : "dark";
+    return "dark"; // Dark mode is the default
   }
 
   function applyTheme(theme) {

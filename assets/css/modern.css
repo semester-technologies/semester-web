@@ -1610,3 +1610,254 @@ html { scroll-behavior: smooth; }
     }
 }
 
+
+
+/* ═══════════════════════════════════════════
+   CRITICAL FIXES — Contrast, Light Mode, Sticky Scroll
+   ═══════════════════════════════════════════ */
+
+/* ── Fix: How-We-Do cards — override base template's white BG + dark text ── */
+.how-we-do-card {
+    background: var(--bg-card) !important;
+    opacity: 1 !important;
+    filter: none !important;
+    animation: none !important;
+    transform: none !important;
+}
+
+.how-we-do-card .how-we-do-content h4 {
+    color: var(--sem-green) !important;
+    font-size: 17px;
+    font-weight: 700;
+    transition: none !important;
+    animation: none !important;
+}
+
+.how-we-do-card .how-we-do-content p {
+    color: var(--text-secondary) !important;
+    margin: 0;
+}
+
+.how-we-do-card .how-we-do-icon {
+    background: rgba(133,199,82,0.08) !important;
+    border: 1px solid rgba(133,199,82,0.12) !important;
+}
+
+.how-we-do-card .how-we-do-icon img {
+    filter: brightness(0) saturate(100%) invert(70%) sepia(30%) saturate(600%) hue-rotate(60deg) !important;
+}
+
+.how-we-do-card:hover {
+    animation: none !important;
+    transform: none !important;
+    border-color: rgba(133,199,82,0.25) !important;
+}
+
+/* Remove lightSwitch animation completely */
+.how-we-do-items .how-we-do-card {
+    animation: none !important;
+}
+
+/* ── Fix: Hero-service-about text (services page) ── */
+.hero-service-about p,
+.hero-service-about .hero-service-about-body p {
+    color: var(--text-secondary) !important;
+}
+
+.hero-service-about .hero-service-about-body ul li {
+    color: var(--text-body) !important;
+    font-size: 16px;
+}
+
+.hero-service-about .hero-service-about-body ul li i {
+    color: #fff !important;
+}
+
+/* ── Fix: Service card base template overrides ── */
+.service-card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-default) !important;
+    opacity: 1 !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+.service-card:hover {
+    animation: none !important;
+}
+
+/* Override the base template's color-shift animation on service cards */
+.service-card::before,
+.service-card::after {
+    display: none !important;
+}
+
+/* ── Fix: Section subtitle visibility ── */
+.section-subtitle,
+.hero-section-content h5.section-subtitle {
+    color: var(--sem-green) !important;
+    font-family: var(--font_mono) !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
+    display: block !important;
+    margin-bottom: 14px !important;
+}
+
+/* ── Light Mode — Refined (less shiny, more muted) ── */
+[data-theme="light"] {
+    --bg-body: #F5F6FA;
+    --bg-surface: #EFF0F5;
+    --bg-surface-2: #E8E9EF;
+    --bg-surface-3: #DDDEE5;
+    --bg-elevated: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-card-hover: #F5F6FA;
+    --bg-input: #F5F6FA;
+    --bg-header: rgba(245,246,250,0.95);
+    --bg-footer: #1B1C1E;
+
+    --text-heading: #1B1C1E;
+    --text-body: #3E3E46;
+    --text-secondary: #62626E;
+    --text-muted: #8E8E9A;
+    --text-on-green: #1B1C1E;
+    --text-on-purple: #FFFFFF;
+    --text-link: #583E8A;
+
+    --border-default: rgba(0,0,0,0.07);
+    --border-light: rgba(0,0,0,0.05);
+    --border-strong: rgba(0,0,0,0.1);
+
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+    --shadow-xl: 0 16px 50px rgba(0,0,0,0.1);
+    --shadow-green: 0 4px 20px rgba(133,199,82,0.1);
+    --shadow-purple: 0 4px 20px rgba(88,62,138,0.08);
+
+    --dot-color: rgba(0,0,0,0.025);
+
+    --heading_color: #1B1C1E;
+    --text_color: #3E3E46;
+    --light_white: #F5F6FA;
+    --dark1: #1B1C1E;
+    --dark2: #E8E9EF;
+    --gray: #DDDEE5;
+}
+
+/* Light mode specific overrides for cleaner look */
+[data-theme="light"] .header-area {
+    border-bottom-color: rgba(0,0,0,0.06) !important;
+}
+
+[data-theme="light"] .hero-section-wrap .hero-section-content-wrap {
+    background: radial-gradient(ellipse at 50% 0%, rgba(88,62,138,0.06) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 80%, rgba(133,199,82,0.03) 0%, transparent 45%),
+                var(--bg-body) !important;
+}
+
+[data-theme="light"] .service-card img {
+    filter: brightness(0) saturate(100%) invert(25%) sepia(40%) saturate(500%) hue-rotate(230deg) !important;
+}
+
+[data-theme="light"] .how-we-do-card .how-we-do-icon img {
+    filter: brightness(0) saturate(100%) invert(55%) sepia(30%) saturate(500%) hue-rotate(60deg) !important;
+}
+
+[data-theme="light"] .how-we-do-area .custom-container > .custom-row {
+    background: #1B1C1E !important;
+}
+
+[data-theme="light"] .how-we-do-area .how-we-do-left-content .top .section-title,
+[data-theme="light"] .how-we-do-area .how-we-do-left-content .top p {
+    color: #fff !important;
+}
+
+[data-theme="light"] .how-we-do-card {
+    background: #232428 !important;
+}
+
+[data-theme="light"] .how-we-do-card .how-we-do-content h4 {
+    color: var(--sem-green) !important;
+}
+
+[data-theme="light"] .how-we-do-card .how-we-do-content p {
+    color: #999 !important;
+}
+
+[data-theme="light"] .featured-projects-area {
+    background: #1B1C1E !important;
+}
+
+[data-theme="light"] .project-card {
+    background: #232428 !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="light"] .project-card h3 { color: #fff !important; }
+[data-theme="light"] .project-card p { color: #999 !important; }
+
+[data-theme="light"] .partners-section { background: var(--sem-purple) !important; }
+
+[data-theme="light"] .footer-area { background: #141416 !important; }
+[data-theme="light"] .footer-links h3 { color: #fff !important; }
+[data-theme="light"] .footer-links ul li a { color: #888 !important; }
+[data-theme="light"] .copyright-area p { color: #666 !important; }
+
+/* Light mode — keep dark sections dark */
+[data-theme="light"] .svc-category-dark { background: #1B1C1E !important; }
+[data-theme="light"] .svc-category-dark .section-title { color: #fff !important; }
+[data-theme="light"] .svc-category-dark .svc-item h5 { color: #fff !important; }
+[data-theme="light"] .svc-category-dark .svc-item p { color: #999 !important; }
+[data-theme="light"] .svc-category-dark .expert-badge-dark { color: #999 !important; }
+
+[data-theme="light"] .tech-stack-area { background: #1B1C1E !important; }
+[data-theme="light"] .tech-stack-area .section-title { color: #fff !important; }
+[data-theme="light"] .tech-card { background: #232428 !important; border-color: rgba(255,255,255,0.08) !important; }
+[data-theme="light"] .tech-card h4 { color: #fff !important; }
+[data-theme="light"] .tech-card p, [data-theme="light"] .tech-card li { color: #999 !important; }
+
+[data-theme="light"] .manifesto-area { background: #1B1C1E !important; }
+[data-theme="light"] .manifesto-area .section-title { color: #fff !important; }
+[data-theme="light"] .manifesto-area p { color: #aaa !important; }
+
+[data-theme="light"] .architecture-area { background: #1B1C1E !important; }
+[data-theme="light"] .architecture-area .section-title { color: #fff !important; }
+[data-theme="light"] .arch-card { background: #232428 !important; border-color: rgba(255,255,255,0.08) !important; }
+[data-theme="light"] .arch-card h3 { color: #fff !important; }
+[data-theme="light"] .arch-card p { color: #999 !important; }
+
+[data-theme="light"] .numbers-area { background: #1B1C1E !important; }
+[data-theme="light"] .numbers-area .section-title { color: #fff !important; }
+[data-theme="light"] .stat-card { background: #232428 !important; border-color: rgba(255,255,255,0.08) !important; }
+[data-theme="light"] .stat-card p { color: #999 !important; }
+
+[data-theme="light"] .contact-experience { background: #1B1C1E !important; }
+[data-theme="light"] .contact-experience ul li h1 { color: #fff !important; }
+[data-theme="light"] .contact-experience ul li p { color: #888 !important; }
+
+/* Light mode scrollbar */
+[data-theme="light"] ::-webkit-scrollbar-track { background: var(--bg-body); }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: #C5C6CC; }
+
+/* ── 6-Step Sticky Scroll ── */
+.workflow-area .row {
+    position: relative;
+}
+
+.workflow-sticky-left {
+    position: sticky;
+    top: 100px;
+    align-self: flex-start;
+}
+
+@media (min-width: 768px) {
+    .workflow-area .col-12.col-md-5 {
+        position: sticky;
+        top: 100px;
+        align-self: flex-start;
+    }
+}
+
