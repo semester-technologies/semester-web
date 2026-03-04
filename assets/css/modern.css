@@ -1916,7 +1916,9 @@ html { scroll-behavior: smooth; }
 .pillars-area p,
 .story-area p,
 .bundles-area p,
-.workflow-area p {
+.workflow-area p,
+.our-team-2-area p,
+.architecture-area p {
     color: var(--text-secondary) !important;
 }
 
@@ -1932,7 +1934,10 @@ html { scroll-behavior: smooth; }
 .contact-area h1, .contact-area h2, .contact-area h3,
 .pillars-area h1, .pillars-area h2, .pillars-area h3,
 .bundles-area h1, .bundles-area h2, .bundles-area h3,
-.testimonial-area h1, .testimonial-area h2, .testimonial-area h3 {
+.testimonial-area h1, .testimonial-area h2, .testimonial-area h3,
+.our-team-2-area h1, .our-team-2-area h2, .our-team-2-area h3,
+.story-area h1, .story-area h2, .story-area h3,
+.architecture-area h1, .architecture-area h2, .architecture-area h3 {
     color: var(--text-heading) !important;
 }
 
@@ -2456,5 +2461,227 @@ html { scroll-behavior: smooth; }
 /* Light mode — final CTA */
 [data-theme="light"] .final-cta {
     background: var(--sem-purple) !important;
+}
+
+/* ═══════════════════════════════════════════
+   ABOUT PAGE — Team, Story, Pillars, Contact overrides
+   ═══════════════════════════════════════════ */
+
+/* ── Our Team 2 Header ── */
+.our-team-2-header {
+    background: var(--bg-surface-2) !important;
+    border: 1px solid var(--border-default) !important;
+}
+
+.our-team-2-header .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+.our-team-2-header .section-title {
+    color: var(--text-heading) !important;
+}
+
+.our-team-2-header p {
+    color: var(--text-secondary) !important;
+}
+
+/* ── Our Team 2 Cards ── */
+.our-team-2-card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-default) !important;
+}
+
+.our-team-2-card h2 {
+    color: var(--text-heading) !important;
+    font-family: var(--font_heading) !important;
+}
+
+.our-team-2-card .designation {
+    color: var(--sem-purple) !important;
+}
+
+.our-team-2-card .social-links {
+    background: var(--bg-surface-2) !important;
+    border: 1px solid var(--border-default) !important;
+}
+
+.our-team-2-card .social-links li a {
+    color: var(--sem-purple) !important;
+}
+
+.our-team-2-card .social-links li a:hover {
+    color: var(--sem-green) !important;
+}
+
+/* ── Story Area ── */
+.story-area .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+.story-area .section-title {
+    color: var(--text-heading) !important;
+}
+
+.story-area .story-text p {
+    color: var(--text-secondary) !important;
+}
+
+.story-area .story-loop {
+    background: var(--bg-surface-2) !important;
+    border: 1px solid var(--border-default) !important;
+    border-radius: var(--radius_lg);
+    padding: 24px 28px;
+}
+
+.story-area .story-loop p {
+    color: var(--text-body) !important;
+}
+
+.story-area .story-loop strong {
+    color: var(--sem-green) !important;
+}
+
+/* ── Pillars Area ── */
+.pillars-area .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+.pillars-area .section-title {
+    color: var(--text-heading) !important;
+}
+
+.pillar-card .pillar-num {
+    color: var(--sem-green) !important;
+}
+
+.pillar-card h3 {
+    color: var(--text-heading) !important;
+}
+
+.pillar-card p {
+    color: var(--text-secondary) !important;
+}
+
+/* ── Architecture Area ── */
+.architecture-area .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+.architecture-area .section-title {
+    color: var(--text-heading) !important;
+}
+
+.arch-card h3 {
+    color: var(--text-heading) !important;
+}
+
+.arch-card p {
+    color: var(--text-secondary) !important;
+}
+
+/* ── Company Service About Section ── */
+.company-service-area .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+.company-service-area .section-title {
+    color: var(--text-heading) !important;
+}
+
+/* ── Contact Area (about page) ── */
+.contact-area.bg-dark {
+    background: var(--bg-body) !important;
+}
+
+.contact-form-wrap {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-default) !important;
+}
+
+.contact-area .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+.contact-area .section-title {
+    color: var(--text-heading) !important;
+}
+
+/* ── Light mode — team section refinements ── */
+[data-theme="light"] .our-team-2-header {
+    background: #fff !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+[data-theme="light"] .our-team-2-card {
+    background: #fff !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+[data-theme="light"] .our-team-2-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+    border-color: rgba(88,62,138,0.15) !important;
+}
+
+[data-theme="light"] .our-team-2-card .social-links {
+    background: #F5F6FA !important;
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+/* Light mode — story loop */
+[data-theme="light"] .story-area .story-loop {
+    background: #fff !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+/* Light mode — contact area stays dark */
+[data-theme="light"] .contact-area.bg-dark {
+    background: #1B1C1E !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .section-title {
+    color: #fff !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark p {
+    color: #aaa !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .contact-form-wrap {
+    background: #232428 !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group label {
+    color: #ccc !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group input,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group textarea,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group select {
+    background: #1B1C1E !important;
+    border-color: rgba(255,255,255,0.1) !important;
+    color: #fff !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group .choice-a-company .radio-box label,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group .feedback-checkboxes .feedback-item label {
+    background: #1B1C1E !important;
+    border-color: rgba(255,255,255,0.1) !important;
+    color: #ccc !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group .choice-a-company .radio-box input:checked + label,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group .feedback-checkboxes .feedback-item input:checked + label {
+    background: var(--sem-green) !important;
+    border-color: var(--sem-green) !important;
+    color: #fff !important;
+}
+
+/* Light mode — about-service3 stays dark */
+[data-theme="light"] .about-service3-area ul li i {
+    color: #fff !important;
+    background: var(--sem-green) !important;
 }
 
