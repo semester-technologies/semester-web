@@ -195,7 +195,6 @@ a:hover { color: var(--sem-green); }
 .feature2-card,
 .testimonial-item-body,
 .hero-contact-form-wrap,
-.footer-links,
 .subscribe-form,
 .about-service3-area,
 .about-service4-area {
@@ -1907,8 +1906,24 @@ html { scroll-behavior: smooth; }
 [data-theme="light"] .partners-section { background: var(--sem-purple) !important; }
 
 [data-theme="light"] .footer-area { background: #141416 !important; }
+[data-theme="light"] .footer-area .footer-links,
+[data-theme="light"] .footer-area .footer-links div,
+[data-theme="light"] .footer-area .subscribe-form,
+[data-theme="light"] .footer-area .subscribe-box { background: transparent !important; }
+[data-theme="light"] .footer-area .subscribe-box input {
+    background: transparent !important;
+    border-color: rgba(255,255,255,0.2) !important;
+    color: #fff !important;
+}
+[data-theme="light"] .footer-area .subscribe-box input::placeholder { color: rgba(255,255,255,0.4) !important; }
 [data-theme="light"] .footer-links h3 { color: #fff !important; }
 [data-theme="light"] .footer-links ul li a { color: #888 !important; }
+[data-theme="light"] .footer-area p { color: rgba(255,255,255,0.7) !important; }
+[data-theme="light"] .footer-area h2, [data-theme="light"] .footer-area h3 { color: #fff !important; }
+[data-theme="light"] .footer-area a:not(.theme-btn) { color: rgba(255,255,255,0.7) !important; }
+[data-theme="light"] .footer-area a:not(.theme-btn):hover { color: var(--sem-green) !important; }
+[data-theme="light"] .footer-area .social-links li a i { color: rgba(255,255,255,0.7) !important; }
+[data-theme="light"] .footer-area .social-links li a:hover i { color: var(--sem-green) !important; }
 [data-theme="light"] .copyright-area p { color: #666 !important; }
 
 /* Light mode — keep dark sections dark */
@@ -3203,7 +3218,6 @@ html { scroll-behavior: smooth; }
 [data-theme="light"] .service-card,
 [data-theme="light"] .testimonial-item-body,
 [data-theme="light"] .pillar-card,
-[data-theme="light"] .arch-card,
 [data-theme="light"] .faq-item,
 [data-theme="light"] .partner-box,
 [data-theme="light"] .news-item,
@@ -3467,6 +3481,10 @@ html { scroll-behavior: smooth; }
 [data-theme="light"] .our-team-3-area .our-team-2-header {
     background: transparent !important;
     border: none !important;
+}
+
+[data-theme="light"] .our-team-3-area .our-team-2-header .section-subtitle {
+    color: var(--sem-green) !important;
 }
 
 [data-theme="light"] .our-team-3-area .our-team-2-header .section-title {
