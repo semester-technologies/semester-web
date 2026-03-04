@@ -1861,3 +1861,242 @@ html { scroll-behavior: smooth; }
     }
 }
 
+
+
+/* ═══════════════════════════════════════════
+   NUCLEAR OVERRIDE — Kill ALL hardcoded dark text from base template
+   These override the 80+ instances of rgb(28 28 28 / XX%) in style.css
+   ═══════════════════════════════════════════ */
+
+/* Force all elements that could contain dark text to use theme colors */
+.hero-service-about,
+.hero-service-about *,
+.hero-service-about-body,
+.hero-service-about-body p,
+.hero-service-about-body ul,
+.hero-service-about-body ul li {
+    color: var(--text-body) !important;
+}
+
+.hero-service-about-body ul li i {
+    color: #fff !important;
+    background: var(--sem-green) !important;
+}
+
+/* Override ALL base template paragraphs inside known containers */
+.custom-container p,
+.custom-row p {
+    color: var(--text-body);
+}
+
+/* Force backgrounds on all known white containers */
+.hero-service-about {
+    background: var(--bg-surface-2) !important;
+    border: 1px solid var(--border-default) !important;
+}
+
+/* All content inside service/feature/card areas */
+.company-service-area *:not(img):not(i):not(.theme-btn):not(.theme-btn *):not(.service-badge):not(.step-num):not(.svc-dot):not(.case-tag):not(.bundle-badge):not(.project-tag):not(.expert-badge):not(.expert-badge *) {
+    border-color: var(--border-default);
+}
+
+/* Nuclear paragraph color override for deeply nested dark text */
+.hero-section-content-wrap p,
+.company-service-area p,
+.service-area p:not(.service-badge),
+.case-studio-area p,
+.how-we-do-area p,
+.feature2-area p,
+.testimonial-area p,
+.career-area p,
+.about-service3-area p,
+.about-service4-area p,
+.contact-area p,
+.cta-area .cta-body p,
+.pillars-area p,
+.story-area p,
+.bundles-area p,
+.workflow-area p {
+    color: var(--text-secondary) !important;
+}
+
+/* Nuclear heading override */
+.company-service-area h1, .company-service-area h2, .company-service-area h3,
+.company-service-area h4, .company-service-area h5,
+.service-area h1, .service-area h2, .service-area h3, .service-area h4,
+.feature2-area h1, .feature2-area h2, .feature2-area h3, .feature2-area h4,
+.case-studio-area h1, .case-studio-area h2, .case-studio-area h3,
+.career-area h1, .career-area h2, .career-area h3,
+.about-service3-area h1, .about-service3-area h2, .about-service3-area h3,
+.about-service4-area h1, .about-service4-area h2, .about-service4-area h3,
+.contact-area h1, .contact-area h2, .contact-area h3,
+.pillars-area h1, .pillars-area h2, .pillars-area h3,
+.bundles-area h1, .bundles-area h2, .bundles-area h3,
+.testimonial-area h1, .testimonial-area h2, .testimonial-area h3 {
+    color: var(--text-heading) !important;
+}
+
+/* Force ALL list items in service areas */
+.hero-service-about ul li,
+.company-service-area ul li,
+.service-area ul li,
+.feature2-area ul li,
+.case-studio-area ul li {
+    color: var(--text-body) !important;
+}
+
+/* Force ALL description text */
+.service-card > *:not(img):not(.service-badge),
+.feature2-card > *:not(.icon),
+.career-box > *:not(.location),
+.contact-info-box > *:not(.icon) {
+    color: var(--text-body);
+}
+
+/* ═══════════════════════════════════════════
+   LIGHT MODE ELEGANCE — Polish
+   ═══════════════════════════════════════════ */
+
+/* Light mode cards — soft shadow instead of flat */
+[data-theme="light"] .service-card,
+[data-theme="light"] .feature2-card,
+[data-theme="light"] .bundle-card,
+[data-theme="light"] .career-box,
+[data-theme="light"] .contact-info-box,
+[data-theme="light"] .pillar-card,
+[data-theme="light"] .quiz-box,
+[data-theme="light"] .case-card,
+[data-theme="light"] .hero-company-box,
+[data-theme="light"] .testimonial-item-body,
+[data-theme="light"] .contact-form-wrap,
+[data-theme="light"] .logo-tile {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+[data-theme="light"] .service-card:hover,
+[data-theme="light"] .feature2-card:hover,
+[data-theme="light"] .bundle-card:hover,
+[data-theme="light"] .career-box:hover,
+[data-theme="light"] .case-card:hover,
+[data-theme="light"] .hero-company-box:hover,
+[data-theme="light"] .pillar-card:hover,
+[data-theme="light"] .logo-tile:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+    border-color: rgba(88,62,138,0.15) !important;
+}
+
+/* Light mode hero — softer gradient */
+[data-theme="light"] .hero-section-content h1 em {
+    background: linear-gradient(90deg, var(--sem-purple), var(--sem-purple-light), var(--sem-purple));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Light mode — cleaner form inputs */
+[data-theme="light"] .hero-contact-form .contact-form .input-row .input-group input,
+[data-theme="light"] .hero-contact-form .contact-form .input-row .input-group textarea,
+[data-theme="light"] .hero-contact-form .contact-form .input-row .input-group select {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.1) !important;
+}
+
+[data-theme="light"] .hero-contact-form .contact-form .input-row .input-group input:focus,
+[data-theme="light"] .hero-contact-form .contact-form .input-row .input-group textarea:focus {
+    border-color: var(--sem-purple) !important;
+    box-shadow: 0 0 0 3px rgba(88,62,138,0.08);
+}
+
+/* Light mode — subtle purple accent on buttons */
+[data-theme="light"] .theme-btn {
+    box-shadow: 0 2px 8px rgba(133,199,82,0.15);
+}
+
+[data-theme="light"] .theme-btn:hover {
+    box-shadow: 0 4px 16px rgba(88,62,138,0.15);
+}
+
+/* Light mode — contact experience section with softer treatment */
+[data-theme="light"] .hero-service-about {
+    background: #fff !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+/* Light mode — FAQ section refinement */
+[data-theme="light"] .faq-item {
+    border-bottom-color: rgba(0,0,0,0.06);
+}
+
+[data-theme="light"] .faq-question span {
+    background: rgba(88,62,138,0.06) !important;
+    border-color: rgba(88,62,138,0.1) !important;
+    color: var(--sem-purple) !important;
+}
+
+[data-theme="light"] .faq-item.open .faq-question span {
+    background: var(--sem-purple) !important;
+    color: #fff !important;
+}
+
+/* Light mode — footer subscribe */
+[data-theme="light"] .subscribe-form .subscribe-box input {
+    background: #232428 !important;
+    border-color: rgba(255,255,255,0.08) !important;
+    color: #fff !important;
+}
+
+/* Light mode — theme toggle */
+[data-theme="light"] .theme-toggle {
+    background: #fff;
+    border-color: rgba(0,0,0,0.08);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* Light mode — comparison table */
+[data-theme="light"] .compare-table td {
+    background: #fff !important;
+    border-bottom-color: rgba(0,0,0,0.06);
+}
+
+[data-theme="light"] .compare-table tr:nth-child(even) td {
+    background: #F8F9FC !important;
+}
+
+/* Light mode — CTA section */
+[data-theme="light"] .cta-area .cta-body {
+    box-shadow: 0 8px 40px rgba(88,62,138,0.12);
+}
+
+/* Light mode — search box */
+[data-theme="light"] .search-box {
+    border-color: var(--sem-purple);
+}
+
+[data-theme="light"] .search-box input {
+    background: #fff !important;
+}
+
+[data-theme="light"] .search-box button {
+    background: var(--sem-purple) !important;
+    color: #fff !important;
+}
+
+/* Light mode — rate results */
+[data-theme="light"] .rate-result-item {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.06) !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+[data-theme="light"] .rate-result-item span:last-child {
+    color: var(--sem-purple) !important;
+}
+
+/* Light mode — bundle card featured */
+[data-theme="light"] .bundle-card.featured {
+    border-color: var(--sem-purple) !important;
+    background: rgba(88,62,138,0.02) !important;
+}
+
