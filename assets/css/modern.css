@@ -1834,10 +1834,6 @@ html { scroll-behavior: smooth; }
 [data-theme="light"] .stat-card { background: #232428 !important; border-color: rgba(255,255,255,0.08) !important; }
 [data-theme="light"] .stat-card p { color: #999 !important; }
 
-[data-theme="light"] .contact-experience { background: #1B1C1E !important; }
-[data-theme="light"] .contact-experience ul li h1 { color: #fff !important; }
-[data-theme="light"] .contact-experience ul li p { color: #888 !important; }
-
 /* Light mode scrollbar */
 [data-theme="light"] ::-webkit-scrollbar-track { background: var(--bg-body); }
 [data-theme="light"] ::-webkit-scrollbar-thumb { background: #C5C6CC; }
@@ -1918,7 +1914,14 @@ html { scroll-behavior: smooth; }
 .bundles-area p,
 .workflow-area p,
 .our-team-2-area p,
-.architecture-area p {
+.architecture-area p,
+.portfolio-area p,
+.case-studies-area p,
+.gallery-area p,
+.video-testimonials-area p,
+.contact-location-area p,
+.cta-style-3 .cta-body p,
+.numbers-area p {
     color: var(--text-secondary) !important;
 }
 
@@ -1937,7 +1940,14 @@ html { scroll-behavior: smooth; }
 .testimonial-area h1, .testimonial-area h2, .testimonial-area h3,
 .our-team-2-area h1, .our-team-2-area h2, .our-team-2-area h3,
 .story-area h1, .story-area h2, .story-area h3,
-.architecture-area h1, .architecture-area h2, .architecture-area h3 {
+.architecture-area h1, .architecture-area h2, .architecture-area h3,
+.portfolio-area h1, .portfolio-area h2, .portfolio-area h3,
+.case-studies-area h1, .case-studies-area h2, .case-studies-area h3,
+.gallery-area h1, .gallery-area h2, .gallery-area h3,
+.video-testimonials-area h1, .video-testimonials-area h2, .video-testimonials-area h3,
+.contact-location-area h1, .contact-location-area h2, .contact-location-area h3, .contact-location-area h4,
+.numbers-area h1, .numbers-area h2, .numbers-area h3,
+.cta-area h1, .cta-area h2, .cta-area h3 {
     color: var(--text-heading) !important;
 }
 
@@ -2588,24 +2598,6 @@ html { scroll-behavior: smooth; }
     color: var(--text-heading) !important;
 }
 
-/* ── Contact Area (about page) ── */
-.contact-area.bg-dark {
-    background: var(--bg-body) !important;
-}
-
-.contact-form-wrap {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border-default) !important;
-}
-
-.contact-area .section-subtitle {
-    color: var(--sem-green) !important;
-}
-
-.contact-area .section-title {
-    color: var(--text-heading) !important;
-}
-
 /* ── Light mode — team section refinements ── */
 [data-theme="light"] .our-team-2-header {
     background: #fff !important;
@@ -2635,22 +2627,517 @@ html { scroll-behavior: smooth; }
     border-color: rgba(0,0,0,0.06) !important;
 }
 
-/* Light mode — contact area stays dark */
+/* Light mode — about-service3 stays dark */
+[data-theme="light"] .about-service3-area ul li i {
+    color: #fff !important;
+    background: var(--sem-green) !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   CENTRALIZED THEME CONTROL — Universal overrides for ALL pages
+   Every element must derive colors from CSS custom properties.
+   This section replaces ALL hardcoded colors from base template.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── UNIVERSAL SECTION BACKGROUNDS ── */
+.hero-service-wrap,
+.hero-section-wrap,
+.hero-about-wrap,
+.hero-portfolio-wrap,
+.hero-career-wrap {
+    background: var(--bg-body) !important;
+}
+
+.portfolio-area,
+.case-studio-area,
+.gallery-area,
+.video-testimonials-area,
+.contact-location-area,
+.our-team-2-area,
+.our-team-3-area,
+.pillars-area,
+.story-area,
+.company-service-area {
+    background: var(--bg-body) !important;
+}
+
+/* ── UNIVERSAL TEXT — catch ALL headings site-wide ── */
+.section-title {
+    color: var(--text-heading) !important;
+}
+
+.section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+.custom-container h1,
+.custom-container h2,
+.custom-container h3,
+.custom-container h4 {
+    color: var(--text-heading);
+}
+
+.custom-container p,
+.custom-container li {
+    color: var(--text-secondary);
+}
+
+.custom-container a:not(.theme-btn):not(.logo):not(.filter-tag):not(.nav-link) {
+    color: var(--text-link);
+}
+
+/* ── PORTFOLIO PAGE ── */
+.portfolio-area {
+    border-color: var(--border-default) !important;
+}
+
+.portfolio-items {
+    border-bottom-color: var(--border-default) !important;
+}
+
+.portfolio-sample-details {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-default) !important;
+}
+
+.portfolio-sample-details h3 a {
+    color: var(--text-heading) !important;
+}
+
+.portfolio-sample-details p {
+    color: var(--text-secondary) !important;
+}
+
+/* Portfolio colored boxes — keep their distinctive backgrounds */
+.portfolio-items .portfolio-black-box .portfolio-sample-details {
+    background: var(--bg-surface) !important;
+}
+
+.portfolio-items .portfolio-black-box .portfolio-sample-details h3 a,
+.portfolio-items .portfolio-indigo-box .portfolio-sample-details h3 a,
+.portfolio-items .portfolio-bluebase .portfolio-sample-details h3 a {
+    color: #fff !important;
+}
+
+.portfolio-items .portfolio-black-box .portfolio-sample-details p,
+.portfolio-items .portfolio-indigo-box .portfolio-sample-details p,
+.portfolio-items .portfolio-bluebase .portfolio-sample-details p {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+.portfolio-items .portfolio-gray-box .portfolio-sample-details {
+    background: var(--bg-surface-2) !important;
+}
+
+.portfolio-items .portfolio-yellow-box .portfolio-sample-details {
+    background: var(--bg-surface-2) !important;
+}
+
+.portfolio-items .portfolio-darkgray-box .portfolio-sample-details {
+    background: var(--bg-surface-3) !important;
+}
+
+.portfolio-items .portfolio-indigo-box .portfolio-sample-details {
+    background: var(--sem-purple-dark) !important;
+}
+
+.portfolio-items .portfolio-bluebase .portfolio-sample-details {
+    background: var(--sem-purple) !important;
+}
+
+.project-item h2 a {
+    color: var(--text-heading) !important;
+}
+
+.project-item h2.white a,
+.portfolio-items .portfolio-black-box .project-item h2 a,
+.portfolio-items .portfolio-indigo-box .project-item h2 a {
+    color: #fff !important;
+}
+
+/* Filter tags */
+.filter-tag {
+    background: var(--bg-surface-2) !important;
+    color: var(--text-body) !important;
+    border: 1px solid var(--border-default) !important;
+    border-radius: var(--radius_full);
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.filter-tag:hover,
+.filter-tag.active {
+    background: var(--sem-green) !important;
+    color: var(--text-on-green) !important;
+    border-color: var(--sem-green) !important;
+}
+
+/* ── CASE STUDIO (Career page tab content) ── */
+.case-studio-area {
+    background: var(--bg-body) !important;
+}
+
+.case-studio-area.bg-dark {
+    background: var(--bg-body) !important;
+}
+
+.case-studio-tabs .nav-item .nav-link {
+    color: var(--text-body) !important;
+    border-color: var(--border-default) !important;
+    background: transparent !important;
+}
+
+.case-studio-tabs .nav-item .nav-link.active {
+    color: #fff !important;
+    border-color: var(--sem-purple) !important;
+}
+
+.case-studio-tabs .nav-item .nav-link.active::before {
+    background: var(--sem-purple) !important;
+}
+
+.case-studio-tabs .nav-item .nav-link:hover:not(.active) {
+    border-color: var(--sem-purple) !important;
+    color: var(--text-heading) !important;
+}
+
+.case-studio-contents.service-card {
+    background: var(--bg-card) !important;
+    border-color: var(--border-default) !important;
+}
+
+.case-studio-contents.service-card h3,
+.case-studio-contents.service-card h3 a {
+    color: var(--text-heading) !important;
+}
+
+.case-studio-contents.service-card p {
+    color: var(--text-secondary) !important;
+}
+
+.case-studio-body .service-card:hover {
+    background: var(--bg-card-hover) !important;
+    border-left-color: var(--sem-purple) !important;
+}
+
+/* ── CTA STYLE 3 (Career page) ── */
+.cta-style-3 .cta-body {
+    background: var(--bg-surface-2) !important;
+    border: 1px solid var(--border-default) !important;
+    border-radius: var(--radius_xl);
+}
+
+.cta-style-3 .cta-body h2 {
+    color: var(--text-heading) !important;
+}
+
+.cta-style-3 .cta-body p {
+    color: var(--text-secondary) !important;
+}
+
+/* ── CONTACT LOCATION PAGE ── */
+.contact-location-area {
+    background: var(--bg-body) !important;
+}
+
+.contact-info-box {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-default) !important;
+    border-radius: var(--radius_lg);
+}
+
+.contact-info-box .icon {
+    background: var(--bg-surface-2) !important;
+}
+
+.contact-info-box h4 {
+    color: var(--text-heading) !important;
+    font-family: var(--font_brand) !important;
+}
+
+.contact-info-box p {
+    color: var(--text-secondary) !important;
+}
+
+.contact-info-box h6 {
+    color: var(--sem-green) !important;
+}
+
+.contact-info-box h6 a {
+    color: var(--sem-green) !important;
+}
+
+/* ── LOGIN & REGISTER PAGES ── */
+.contact-area.bg-dark {
+    background: var(--bg-body) !important;
+}
+
+.contact-area.bg-dark .contact-form-wrap {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-default) !important;
+}
+
+.contact-area.bg-dark .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+.contact-area.bg-dark .section-title {
+    color: var(--text-heading) !important;
+}
+
+.contact-area.bg-dark p {
+    color: var(--text-secondary) !important;
+}
+
+.contact-area.bg-dark p a {
+    color: var(--sem-green) !important;
+}
+
+/* ── CONTACT EXPERIENCE SIDEBAR ── */
+.contact-experience {
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--border-default) !important;
+}
+
+.contact-experience ul li h1 {
+    color: var(--text-heading) !important;
+}
+
+.contact-experience ul li h1 span {
+    color: var(--sem-green) !important;
+}
+
+.contact-experience ul li p {
+    color: var(--text-muted) !important;
+}
+
+/* ── VIDEO TESTIMONIALS ── */
+.video-testimonials-area {
+    background: var(--bg-body) !important;
+}
+
+.video-testimonials-area .section-title {
+    color: var(--text-heading) !important;
+}
+
+.video-testimonials-area .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+.video-thumb {
+    border: 1px solid var(--border-default) !important;
+    border-radius: var(--radius_lg);
+}
+
+/* ── GALLERY / COMPLETION AREA ── */
+.gallery-area .section-title {
+    color: var(--text-heading) !important;
+}
+
+.gallery-area .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+.logo-tile {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-default) !important;
+}
+
+.logo-tile span {
+    color: var(--text-secondary) !important;
+}
+
+/* ── CASE STUDIES (Portfolio page) ── */
+.case-studies-area {
+    background: var(--bg-body) !important;
+}
+
+.case-studies-area .section-title {
+    color: var(--text-heading) !important;
+}
+
+.case-studies-area .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+.case-card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-default) !important;
+}
+
+.case-card-header {
+    border-bottom-color: var(--border-default) !important;
+}
+
+.case-card-header h3 {
+    color: var(--text-heading) !important;
+}
+
+.case-card-body p {
+    color: var(--text-secondary) !important;
+}
+
+.case-tag {
+    background: var(--bg-surface-2) !important;
+    color: var(--text-muted) !important;
+    border: 1px solid var(--border-default) !important;
+}
+
+/* ── NUMBERS / STATS ── */
+.numbers-area .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+.stat-card .stat-num {
+    color: var(--text-heading) !important;
+}
+
+.stat-card h3 {
+    color: var(--text-heading) !important;
+}
+
+.stat-card p {
+    color: var(--text-secondary) !important;
+}
+
+/* ═══════════════════════════════════════════
+   LIGHT MODE — Page-specific polish
+   ═══════════════════════════════════════════ */
+
+/* Light mode — portfolio */
+[data-theme="light"] .portfolio-area {
+    background: #F5F6FA !important;
+}
+
+[data-theme="light"] .portfolio-sample-details {
+    background: #fff !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+[data-theme="light"] .portfolio-items .portfolio-gray-box .portfolio-sample-details {
+    background: #ECEDF2 !important;
+}
+
+[data-theme="light"] .portfolio-items .portfolio-yellow-box .portfolio-sample-details {
+    background: #ECEDF2 !important;
+}
+
+[data-theme="light"] .portfolio-items .portfolio-darkgray-box .portfolio-sample-details {
+    background: #DDDEE3 !important;
+}
+
+[data-theme="light"] .portfolio-items {
+    border-bottom-color: rgba(0,0,0,0.08) !important;
+}
+
+/* Light mode — case studio area stays dark */
+[data-theme="light"] .case-studio-area.bg-dark {
+    background: #1B1C1E !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .section-title {
+    color: #fff !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark p {
+    color: #aaa !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .case-studio-tabs .nav-item .nav-link {
+    color: #ccc !important;
+    border-color: rgba(255,255,255,0.1) !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .case-studio-tabs .nav-item .nav-link.active {
+    color: #fff !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .case-studio-contents.service-card {
+    background: #232428 !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .case-studio-contents.service-card h3,
+[data-theme="light"] .case-studio-area.bg-dark .case-studio-contents.service-card h3 a {
+    color: #fff !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .case-studio-contents.service-card p {
+    color: #999 !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .case-studio-body .service-card {
+    background: #232428 !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .case-studio-body .service-card h3,
+[data-theme="light"] .case-studio-area.bg-dark .case-studio-body .service-card h3 a {
+    color: #fff !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .case-studio-body .service-card p {
+    color: #999 !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .case-studio-body .service-card:hover {
+    background: #2A2B30 !important;
+}
+
+/* Light mode — CTA style 3 */
+[data-theme="light"] .cta-style-3 .cta-body {
+    background: #fff !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+/* Light mode — contact location */
+[data-theme="light"] .contact-location-area {
+    background: #F5F6FA !important;
+}
+
+[data-theme="light"] .contact-info-box {
+    background: #fff !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+[data-theme="light"] .contact-info-box .icon {
+    background: #F3F4F8 !important;
+}
+
+/* Light mode — login/register form */
 [data-theme="light"] .contact-area.bg-dark {
     background: #1B1C1E !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .contact-form-wrap {
+    background: #232428 !important;
+    border-color: rgba(255,255,255,0.08) !important;
 }
 
 [data-theme="light"] .contact-area.bg-dark .section-title {
     color: #fff !important;
 }
 
+[data-theme="light"] .contact-area.bg-dark .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
 [data-theme="light"] .contact-area.bg-dark p {
     color: #aaa !important;
 }
 
-[data-theme="light"] .contact-area.bg-dark .contact-form-wrap {
-    background: #232428 !important;
-    border-color: rgba(255,255,255,0.08) !important;
+[data-theme="light"] .contact-area.bg-dark p a {
+    color: var(--sem-green) !important;
 }
 
 [data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group label {
@@ -2663,6 +3150,11 @@ html { scroll-behavior: smooth; }
     background: #1B1C1E !important;
     border-color: rgba(255,255,255,0.1) !important;
     color: #fff !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group input::placeholder,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group textarea::placeholder {
+    color: #666 !important;
 }
 
 [data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group .choice-a-company .radio-box label,
@@ -2679,9 +3171,92 @@ html { scroll-behavior: smooth; }
     color: #fff !important;
 }
 
-/* Light mode — about-service3 stays dark */
-[data-theme="light"] .about-service3-area ul li i {
+/* Light mode — contact experience stays dark */
+[data-theme="light"] .contact-experience {
+    background: #1B1C1E !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="light"] .contact-experience ul li h1 {
     color: #fff !important;
-    background: var(--sem-green) !important;
+}
+
+[data-theme="light"] .contact-experience ul li p {
+    color: #888 !important;
+}
+
+/* Light mode — video testimonials */
+[data-theme="light"] .video-testimonials-area {
+    background: #F5F6FA !important;
+}
+
+[data-theme="light"] .video-thumb {
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+/* Light mode — gallery */
+[data-theme="light"] .gallery-area {
+    background: #F5F6FA !important;
+}
+
+[data-theme="light"] .logo-tile {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+/* Light mode — case studies */
+[data-theme="light"] .case-studies-area {
+    background: #F5F6FA !important;
+}
+
+[data-theme="light"] .case-card {
+    background: #fff !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+[data-theme="light"] .case-tag {
+    background: #F3F4F8 !important;
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+/* Light mode — our team 3 (career page variant) */
+[data-theme="light"] .our-team-3-area .our-team-inner {
+    background: #1B1C1E !important;
+}
+
+[data-theme="light"] .our-team-3-area .our-team-2-header {
+    background: transparent !important;
+    border: none !important;
+}
+
+[data-theme="light"] .our-team-3-area .our-team-2-header .section-title {
+    color: #fff !important;
+}
+
+[data-theme="light"] .our-team-3-area .our-team-2-header p {
+    color: #aaa !important;
+}
+
+[data-theme="light"] .our-team-3-area .our-team-2-card {
+    background: #232428 !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="light"] .our-team-3-area .our-team-2-card h2 {
+    color: #fff !important;
+}
+
+[data-theme="light"] .our-team-3-area .our-team-2-card .designation {
+    color: var(--sem-green) !important;
+}
+
+[data-theme="light"] .our-team-3-area .our-team-2-card .social-links {
+    background: #1B1C1E !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="light"] .our-team-3-area .our-team-2-card .social-links li a {
+    color: var(--sem-green) !important;
 }
 
