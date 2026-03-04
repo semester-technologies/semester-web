@@ -2100,3 +2100,361 @@ html { scroll-behavior: smooth; }
     background: rgba(88,62,138,0.02) !important;
 }
 
+
+
+/* ═══════════════════════════════════════════
+   SERVICES PAGE — Complete Contrast Fix
+   ═══════════════════════════════════════════ */
+
+/* ── Feature3 Style 2 (Features section) — light BG in base template ── */
+.feature3-style-2 .feature3-body {
+    background: var(--bg-surface-2) !important;
+    border: 1px solid var(--border-default);
+}
+
+.feature3-style-2 .feature3-body .section-header {
+    border-bottom-color: var(--border-default) !important;
+}
+
+.feature3-style-2 .feature3-body .section-header .section-title {
+    color: var(--text-heading) !important;
+}
+
+.feature3-style-2 .feature3-body .section-header .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+.feature3-style-2 .feature-box h3 {
+    color: var(--text-heading) !important;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.feature3-style-2 .feature-box p {
+    color: var(--text-secondary) !important;
+}
+
+.feature3-style-2 .feature-box i.icon-box {
+    background: var(--sem-green) !important;
+    color: var(--text-on-green) !important;
+}
+
+.feature3-style-2 .feature3-lists {
+    column-gap: 40px;
+}
+
+/* ── About-Service3 area — "Why are we so unique?" ── */
+.about-service3-area {
+    background: var(--bg-surface) !important;
+}
+
+.about-service3-area h1 {
+    color: var(--text-heading) !important;
+    font-size: clamp(32px, 5vw, 48px);
+}
+
+.about-service3-area p {
+    color: var(--text-secondary) !important;
+}
+
+.about-service3-area ul li {
+    color: var(--text-body) !important;
+}
+
+.about-service3-area ul li i {
+    background: var(--sem-green) !important;
+    color: var(--text-on-green) !important;
+}
+
+.about-service3-area .custom-row {
+    gap: 60px !important;
+}
+
+/* ── svc-category-light — Engineering & Growth sections in dark mode ── */
+.svc-category-light {
+    background: var(--bg-body) !important;
+}
+
+.svc-category-light .section-title {
+    color: var(--text-heading) !important;
+}
+
+.svc-category-light .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
+.svc-category-light p {
+    color: var(--text-secondary) !important;
+}
+
+.svc-item-light {
+    border-color: var(--border-default) !important;
+}
+
+.svc-item-light h5 {
+    color: var(--text-heading) !important;
+}
+
+.svc-item-light p {
+    color: var(--text-secondary) !important;
+}
+
+/* ── svc-category-dark — Business & Design sections ── */
+.svc-category-dark {
+    background: var(--bg-surface) !important;
+}
+
+.svc-category-dark .section-title {
+    color: var(--text-heading) !important;
+}
+
+.svc-item-dark {
+    border-color: var(--border-default) !important;
+}
+
+.svc-item-dark h5 {
+    color: var(--text-heading) !important;
+}
+
+.svc-item-dark p {
+    color: var(--text-secondary) !important;
+}
+
+.svc-category-dark .expert-badge-dark {
+    color: var(--text-secondary) !important;
+}
+
+.svc-category-dark .modular-note {
+    color: var(--text-muted) !important;
+}
+
+/* ── Service Black Area (10 service cards) ── */
+.service-black-area {
+    background: var(--bg-surface) !important;
+}
+
+.service-black-area .section-title {
+    color: var(--text-heading) !important;
+}
+
+.service-black-area .section-header p {
+    color: var(--text-secondary) !important;
+}
+
+.service-black-area .service-card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-default) !important;
+}
+
+.service-black-area .service-card h3,
+.service-black-area .service-card h3 a {
+    color: var(--text-heading) !important;
+}
+
+.service-black-area .service-card p {
+    color: var(--text-secondary) !important;
+}
+
+/* ── Case Studio / Course tabs ── */
+.case-studio-area .case-studio-contents p {
+    color: var(--text-secondary) !important;
+}
+
+.case-studio-area .case-studio-contents h3 {
+    color: var(--sem-green) !important;
+}
+
+/* ── Bundles Area ── */
+.bundles-area {
+    background: var(--bg-surface-2) !important;
+}
+
+.bundles-area .section-title {
+    color: var(--text-heading) !important;
+}
+
+.bundles-area > .custom-container > .text-center > p {
+    color: var(--text-secondary) !important;
+}
+
+/* ── Comparison Table ── */
+.comparison-area {
+    background: var(--bg-body) !important;
+}
+
+.comparison-area .section-title {
+    color: var(--text-heading) !important;
+}
+
+/* ── Workflow area ── */
+.workflow-area {
+    background: var(--bg-body) !important;
+}
+
+.workflow-area .section-title {
+    color: var(--text-heading) !important;
+}
+
+.workflow-step h5 {
+    color: var(--text-heading) !important;
+}
+
+.workflow-step p {
+    color: var(--text-secondary) !important;
+}
+
+/* ── Rate Search Area ── */
+.rate-search-area {
+    background: var(--bg-surface-2) !important;
+}
+
+.rate-search-area .section-title {
+    color: var(--text-heading) !important;
+}
+
+.rate-search-area > .custom-container > .text-center > p {
+    color: var(--text-secondary) !important;
+}
+
+/* ── FAQ on services page ── */
+.faq-area {
+    background: var(--bg-surface-2) !important;
+}
+
+.faq-area .section-title {
+    color: var(--text-heading) !important;
+}
+
+/* ── Final CTA ── */
+.final-cta {
+    background: var(--sem-purple) !important;
+}
+
+.final-cta h1 {
+    color: #fff !important;
+}
+
+.final-cta p {
+    color: rgba(255,255,255,0.8) !important;
+}
+
+/* ── Testimonial on services page ── */
+.testimonial-area .section-header p {
+    color: var(--text-secondary) !important;
+}
+
+/* ═══════════════════════════════════════════
+   LIGHT MODE — Services page specific
+   ═══════════════════════════════════════════ */
+
+/* Keep dark sections dark in light mode too */
+[data-theme="light"] .svc-category-dark {
+    background: #1B1C1E !important;
+}
+
+[data-theme="light"] .svc-category-dark .section-title {
+    color: #fff !important;
+}
+
+[data-theme="light"] .svc-category-dark .svc-item-dark h5 {
+    color: #fff !important;
+}
+
+[data-theme="light"] .svc-category-dark .svc-item-dark p {
+    color: #999 !important;
+}
+
+[data-theme="light"] .svc-category-dark .svc-item-dark {
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="light"] .svc-category-dark p {
+    color: #aaa !important;
+}
+
+[data-theme="light"] .svc-category-dark .expert-badge-dark {
+    color: #888 !important;
+    background: rgba(255,255,255,0.04) !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="light"] .svc-category-dark .modular-note {
+    color: #777 !important;
+}
+
+/* Light mode — service black area stays dark */
+[data-theme="light"] .service-black-area {
+    background: #1B1C1E !important;
+}
+
+[data-theme="light"] .service-black-area .section-title {
+    color: #fff !important;
+}
+
+[data-theme="light"] .service-black-area .section-header p {
+    color: #aaa !important;
+}
+
+[data-theme="light"] .service-black-area .service-card {
+    background: #232428 !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="light"] .service-black-area .service-card h3,
+[data-theme="light"] .service-black-area .service-card h3 a {
+    color: #fff !important;
+}
+
+[data-theme="light"] .service-black-area .service-card p {
+    color: #999 !important;
+}
+
+/* Light mode — feature3-style-2 */
+[data-theme="light"] .feature3-style-2 .feature3-body {
+    background: #fff !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+/* Light mode — about-service3 keeps dark */
+[data-theme="light"] .about-service3-area {
+    background: #1B1C1E !important;
+}
+
+[data-theme="light"] .about-service3-area h1 {
+    color: #fff !important;
+}
+
+[data-theme="light"] .about-service3-area p {
+    color: rgba(255,255,255,0.75) !important;
+}
+
+[data-theme="light"] .about-service3-area ul li {
+    color: rgba(255,255,255,0.85) !important;
+}
+
+/* Light mode — bundles */
+[data-theme="light"] .bundles-area {
+    background: #F5F6FA !important;
+}
+
+[data-theme="light"] .bundle-card {
+    background: #fff !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+/* Light mode — FAQ area */
+[data-theme="light"] .faq-area {
+    background: #F5F6FA !important;
+}
+
+/* Light mode — rate search */
+[data-theme="light"] .rate-search-area {
+    background: #F5F6FA !important;
+}
+
+/* Light mode — final CTA */
+[data-theme="light"] .final-cta {
+    background: var(--sem-purple) !important;
+}
+
