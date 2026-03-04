@@ -1012,8 +1012,58 @@ a:hover { color: var(--sem-green); }
 }
 
 .footer-links ul li { margin-bottom: 10px; }
-.footer-links ul li a { font-size: 14px; transition: color 0.25s ease; }
+.footer-links ul li a { font-size: 14px; transition: color 0.25s ease; color: rgba(255,255,255,0.7) !important; }
 .footer-links ul li a:hover { color: var(--sem-green) !important; }
+
+/* Footer — all headings and text always white/light (footer is always dark) */
+.footer-area h1, .footer-area h2, .footer-area h3, .footer-area h4 {
+    color: #fff !important;
+}
+
+.footer-area p {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+.footer-area p a {
+    color: var(--sem-green) !important;
+}
+
+.footer-area .right-content-inner h2 {
+    color: #fff !important;
+    font-family: var(--font_brand) !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+}
+
+.footer-area .right-content-inner p {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+.footer-area .subscribe-box input {
+    background: transparent !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    color: #fff !important;
+}
+
+.footer-area .subscribe-box input::placeholder {
+    color: rgba(255,255,255,0.4) !important;
+}
+
+.footer-area .border-bottom {
+    border-color: rgba(255,255,255,0.12) !important;
+}
+
+.footer-area .contact-social-links li a {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+.footer-area .contact-social-links li a:hover {
+    color: var(--sem-green) !important;
+}
+
+.footer-area .contact-social-links li a i {
+    color: rgba(255,255,255,0.7) !important;
+}
 
 .copyright-area { padding: 24px 0; border-top: 1px solid var(--border-default); }
 .copyright-area p { font-size: 13px; font-family: var(--font_mono); }
@@ -1224,6 +1274,22 @@ a:hover { color: var(--sem-green); }
     background: rgba(133,199,82,0.06) !important; color: var(--sem-green) !important;
     font-size: 13px; font-weight: 700; padding: 6px 16px;
     font-family: var(--font_mono); border: 1px solid rgba(133,199,82,0.12);
+}
+
+.career-box h2 span {
+    color: var(--sem-purple) !important;
+}
+
+.career-box .career-time {
+    gap: 20px;
+}
+
+.career-box .career-time span {
+    color: var(--text-secondary) !important;
+}
+
+.career-box .career-time span i {
+    color: var(--sem-green) !important;
 }
 
 /* Portfolio */
@@ -2248,6 +2314,11 @@ html { scroll-behavior: smooth; }
     background: var(--bg-surface) !important;
 }
 
+.service-black-area .section-subtitle,
+.service-black-area .service-section-header .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
 .service-black-area .section-title {
     color: var(--text-heading) !important;
 }
@@ -2402,6 +2473,11 @@ html { scroll-behavior: smooth; }
     background: #1B1C1E !important;
 }
 
+[data-theme="light"] .service-black-area .section-subtitle,
+[data-theme="light"] .service-black-area .service-section-header .section-subtitle {
+    color: var(--sem-green) !important;
+}
+
 [data-theme="light"] .service-black-area .section-title {
     color: #fff !important;
 }
@@ -2422,6 +2498,45 @@ html { scroll-behavior: smooth; }
 
 [data-theme="light"] .service-black-area .service-card p {
     color: #999 !important;
+}
+
+/* Light mode — career tabs inside service-black-area */
+[data-theme="light"] .service-black-area .case-studio-tabs .nav-item .nav-link {
+    color: #ccc !important;
+    border-color: rgba(255,255,255,0.1) !important;
+}
+
+[data-theme="light"] .service-black-area .case-studio-tabs .nav-item .nav-link.active {
+    color: #fff !important;
+}
+
+[data-theme="light"] .service-black-area .career-box {
+    background: #232428 !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="light"] .service-black-area .career-box h2 {
+    color: #fff !important;
+}
+
+[data-theme="light"] .service-black-area .career-box h2 span {
+    color: var(--sem-green) !important;
+}
+
+[data-theme="light"] .service-black-area .career-box p {
+    color: #999 !important;
+}
+
+[data-theme="light"] .service-black-area .career-box .career-time span {
+    color: #888 !important;
+}
+
+[data-theme="light"] .service-black-area .career-box .career-time span i {
+    color: var(--sem-green) !important;
+}
+
+[data-theme="light"] .service-black-area .career-box:hover {
+    border-color: rgba(133,199,82,0.25) !important;
 }
 
 /* Light mode — feature3-style-2 */
