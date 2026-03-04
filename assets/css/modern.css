@@ -934,8 +934,47 @@ a:hover { color: var(--sem-green); }
    CONTACT + FORMS
    ═══════════════════════════════════════════ */
 .contact-form-wrap {
+    background: var(--bg-card) !important;
     border-radius: var(--radius_xl); padding: 48px;
     border: 1px solid var(--border-default) !important;
+}
+
+/* Contact form — universal (non-hero variant too) */
+.contact-form .input-row .input-group label {
+    color: var(--text-heading) !important;
+}
+
+.contact-form .input-row .input-group input,
+.contact-form .input-row .input-group textarea,
+.contact-form .input-row .input-group select {
+    background: var(--bg-input) !important;
+    border: 1px solid var(--border-light) !important;
+    color: var(--text-body) !important;
+}
+
+.contact-form .input-row .input-group input::placeholder,
+.contact-form .input-row .input-group textarea::placeholder {
+    color: var(--text-muted) !important;
+}
+
+.contact-form .input-row .input-group .choice-a-company .radio-box label {
+    color: var(--text-secondary) !important;
+    border-color: var(--border-light) !important;
+    background: transparent !important;
+}
+
+.contact-form .input-row .input-group .choice-a-company .radio-box input:checked ~ label {
+    background: var(--sem-green) !important;
+    color: #fff !important;
+    border-color: var(--sem-green) !important;
+}
+
+.contact-form .input-row .input-group .feedback-checkboxes .feedback-item label {
+    color: var(--text-secondary) !important;
+}
+
+.contact-form .input-row .input-group .feedback-checkboxes .feedback-item input {
+    border-color: var(--border-light) !important;
 }
 
 .hero-contact-form .contact-form .input-row .input-group label {
@@ -1262,9 +1301,9 @@ a:hover { color: var(--sem-green); }
 
 .career-box {
     border-radius: var(--radius_lg); padding: 28px;
-    border: 1px solid var(--border-default) !important;
+    border: 1px solid var(--border-light) !important;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    background: var(--bg-card) !important;
+    background: var(--bg-surface-2) !important;
 }
 
 .career-box:hover { border-color: rgba(133,199,82,0.25); box-shadow: 0 0 16px rgba(133,199,82,0.05); }
@@ -2793,6 +2832,43 @@ html { scroll-behavior: smooth; }
     color: var(--text-heading);
 }
 
+/* ── NUCLEAR: Kill ALL remaining hardcoded white backgrounds from base template ── */
+.hero-company-box,
+.service-card,
+.career-box,
+.testimonial-item-body,
+.our-team-2-card,
+.our-team-2-header,
+.contact-info-box,
+.pillar-card,
+.arch-card,
+.case-card,
+.stat-card,
+.logo-tile,
+.video-thumb,
+.news-item,
+.project-item,
+.blog-details-header-area,
+.partner-box,
+.faq-item,
+.client-logo {
+    background: var(--bg-card) !important;
+}
+
+/* ── NUCLEAR: Kill ALL hardcoded dark text from base template ── */
+.hero-company-box h3,
+.hero-company-box p,
+.contact-form-body p,
+.contact-form-wrap p,
+.contact-form-wrap p a {
+    color: var(--text-secondary) !important;
+}
+
+.contact-form-body p a,
+.contact-form-wrap p a {
+    color: var(--sem-green) !important;
+}
+
 .custom-container p,
 .custom-container li {
     color: var(--text-secondary);
@@ -3121,6 +3197,54 @@ html { scroll-behavior: smooth; }
 /* ═══════════════════════════════════════════
    LIGHT MODE — Page-specific polish
    ═══════════════════════════════════════════ */
+
+/* Light mode — universal card backgrounds */
+[data-theme="light"] .hero-company-box,
+[data-theme="light"] .service-card,
+[data-theme="light"] .testimonial-item-body,
+[data-theme="light"] .pillar-card,
+[data-theme="light"] .arch-card,
+[data-theme="light"] .faq-item,
+[data-theme="light"] .partner-box,
+[data-theme="light"] .news-item,
+[data-theme="light"] .client-logo {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.06) !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+/* Light mode — contact form wrap */
+[data-theme="light"] .contact-form-wrap {
+    background: #fff !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+[data-theme="light"] .contact-form .input-row .input-group label {
+    color: #1B1C1E !important;
+}
+
+[data-theme="light"] .contact-form .input-row .input-group input,
+[data-theme="light"] .contact-form .input-row .input-group textarea,
+[data-theme="light"] .contact-form .input-row .input-group select {
+    background: #F5F6FA !important;
+    border-color: rgba(0,0,0,0.1) !important;
+    color: #1B1C1E !important;
+}
+
+[data-theme="light"] .contact-form .input-row .input-group .choice-a-company .radio-box label {
+    color: #555 !important;
+    border-color: rgba(0,0,0,0.15) !important;
+}
+
+/* Light mode — hero company box text */
+[data-theme="light"] .hero-company-box h3 {
+    color: #1B1C1E !important;
+}
+
+[data-theme="light"] .hero-company-box p {
+    color: #555 !important;
+}
 
 /* Light mode — portfolio */
 [data-theme="light"] .portfolio-area {
