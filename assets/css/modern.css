@@ -1402,15 +1402,32 @@ a:hover { color: var(--sem-green); }
 }
 
 .career-box {
-    border-radius: var(--radius_lg); padding: 32px;
+    border-radius: var(--radius_lg); padding: 28px 24px;
     border: 1px solid var(--border-light) !important;
     transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    background: var(--bg-surface-2) !important;
+    background: #232428 !important;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 16px;
+    margin-bottom: 0;
+}
+
+.career-box h2 {
+    color: #fff !important;
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.career-box p {
+    color: #999 !important;
+    margin-bottom: 0;
+}
+
+.career-box .career-time span {
+    color: #888 !important;
+    font-size: 15px;
 }
 
 .career-box:hover {
@@ -2807,34 +2824,35 @@ html { scroll-behavior: smooth; }
     color: #fff !important;
 }
 
-[data-theme="light"] .service-black-area .career-box {
-    background: #232428 !important;
-    border-color: rgba(255,255,255,0.08) !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+[data-theme="light"] .career-box {
+    background: #ffffff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 
-[data-theme="light"] .service-black-area .career-box h2 {
-    color: #fff !important;
+[data-theme="light"] .career-box h2 {
+    color: var(--dark1) !important;
 }
 
-[data-theme="light"] .service-black-area .career-box h2 span {
+[data-theme="light"] .career-box h2 span {
     color: var(--sem-green) !important;
 }
 
-[data-theme="light"] .service-black-area .career-box p {
-    color: #999 !important;
+[data-theme="light"] .career-box p {
+    color: #666 !important;
 }
 
-[data-theme="light"] .service-black-area .career-box .career-time span {
-    color: #888 !important;
+[data-theme="light"] .career-box .career-time span {
+    color: #555 !important;
 }
 
-[data-theme="light"] .service-black-area .career-box .career-time span i {
+[data-theme="light"] .career-box .career-time span i {
     color: var(--sem-green) !important;
 }
 
-[data-theme="light"] .service-black-area .career-box:hover {
+[data-theme="light"] .career-box:hover {
     border-color: rgba(133,199,82,0.25) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 /* Light mode — feature3-style-2 */

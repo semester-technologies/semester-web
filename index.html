@@ -1998,13 +1998,12 @@
         var old = container.querySelector('.process-connectors-svg');
         if (old) old.remove();
 
-        // Get all cards in order: row1(3), row2(2), row3(1)
+        // Cards order: 0=Brainstorming, 1=Product, 2=Front-End, 3=SEO, 4=Back-End, 5=Digital Marketing
         var cards = container.querySelectorAll('.how-we-do-card');
         if (cards.length < 2) return;
 
         var containerRect = container.getBoundingClientRect();
 
-        // Get center points of each card relative to container
         var points = [];
         cards.forEach(function(card) {
           var r = card.getBoundingClientRect();
@@ -2030,41 +2029,69 @@
         svg.style.zIndex = '2';
         svg.style.overflow = 'visible';
 
-        // Connect cards in sequence: 0->1->2->3->4->5
-        for (var i = 0; i < points.length - 1; i++) {
-          var from = points[i];
-          var to = points[i + 1];
+        var strokeStyle = 'rgba(133,199,82,0.35)';
+        var dotFill = 'rgba(133,199,82,0.5)';
 
-          var line = document.createElementNS(svgNS, 'line');
+        function makeLine(x1, y1, x2, y2) {
+          var l = document.createElementNS(svgNS, 'line');
+          l.setAttribute('x1', x1); l.setAttribute('y1', y1);
+          l.setAttribute('x2', x2); l.setAttribute('y2', y2);
+          l.setAttribute('stroke', strokeStyle);
+          l.setAttribute('stroke-width', '1.5');
+          l.setAttribute('stroke-dasharray', '6 4');
+          svg.appendChild(l);
+        }
 
-          // Horizontal connections (same row)
-          if (Math.abs(from.y - to.y) < 40) {
-            line.setAttribute('x1', from.right);
-            line.setAttribute('y1', from.y);
-            line.setAttribute('x2', to.left);
-            line.setAttribute('y2', to.y);
-          } else {
-            // Vertical/diagonal connections (between rows)
-            line.setAttribute('x1', from.x);
-            line.setAttribute('y1', from.bottom);
-            line.setAttribute('x2', to.x);
-            line.setAttribute('y2', to.top);
-          }
+        function makeDot(cx, cy, r) {
+          var d = document.createElementNS(svgNS, 'circle');
+          d.setAttribute('cx', cx); d.setAttribute('cy', cy);
+          d.setAttribute('r', r || 3); d.setAttribute('fill', dotFill);
+          svg.appendChild(d);
+        }
 
-          line.setAttribute('stroke', 'rgba(133,199,82,0.35)');
-          line.setAttribute('stroke-width', '1.5');
-          line.setAttribute('stroke-dasharray', '6 4');
-          svg.appendChild(line);
+        // 0→1: Brainstorming → Product (horizontal)
+        if (points.length > 1) {
+          makeLine(points[0].right, points[0].y, points[1].left, points[1].y);
+          var mx = (points[0].right + points[1].left) / 2;
+          makeDot(mx, points[0].y);
+        }
 
-          // Small dot at connection midpoint
-          var cx = (parseFloat(line.getAttribute('x1')) + parseFloat(line.getAttribute('x2'))) / 2;
-          var cy = (parseFloat(line.getAttribute('y1')) + parseFloat(line.getAttribute('y2'))) / 2;
-          var dot = document.createElementNS(svgNS, 'circle');
-          dot.setAttribute('cx', cx);
-          dot.setAttribute('cy', cy);
-          dot.setAttribute('r', '3');
-          dot.setAttribute('fill', 'rgba(133,199,82,0.5)');
-          svg.appendChild(dot);
+        // 1→2: Product → Front-End (horizontal)
+        if (points.length > 2) {
+          makeLine(points[1].right, points[1].y, points[2].left, points[2].y);
+          var mx2 = (points[1].right + points[2].left) / 2;
+          makeDot(mx2, points[1].y);
+        }
+
+        // 2→4: Front-End → Back-End (backward L: down from Front-End, then left to Back-End)
+        if (points.length > 4) {
+          var fe = points[2]; // Front-End
+          var be = points[4]; // Back-End
+          // Vertical leg: from Front-End bottom down to Back-End's Y level
+          makeLine(fe.x, fe.bottom, fe.x, be.y);
+          // Horizontal leg: from that corner left to Back-End right edge
+          makeLine(fe.x, be.y, be.right, be.y);
+          // Dot at the corner
+          makeDot(fe.x, be.y, 4);
+        }
+
+        // 3→4: SEO → Back-End (horizontal)
+        if (points.length > 4) {
+          makeLine(points[3].right, points[3].y, points[4].left, points[4].y);
+          var mx3 = (points[3].right + points[4].left) / 2;
+          makeDot(mx3, points[3].y);
+        }
+
+        // 3→5: SEO → Digital Marketing (L-shape: down from SEO, then right to Digital Marketing)
+        if (points.length > 5) {
+          var seo = points[3]; // SEO
+          var dm = points[5];  // Digital Marketing
+          // Vertical leg: from SEO bottom down to Digital Marketing's Y level
+          makeLine(seo.x, seo.bottom, seo.x, dm.y);
+          // Horizontal leg: from that corner right to Digital Marketing left edge
+          makeLine(seo.x, dm.y, dm.left, dm.y);
+          // Dot at the corner
+          makeDot(seo.x, dm.y, 4);
         }
 
         container.appendChild(svg);
