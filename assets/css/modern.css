@@ -773,7 +773,167 @@ a:hover { color: var(--sem-green); }
     border: 1px solid rgba(133,199,82,0.12);
 }
 
-.how-we-do-area .how-we-do-right-content { gap: 16px; }
+.how-we-do-area .how-we-do-right-content {
+    gap: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Override base template row spacing */
+.how-we-do-area .how-we-do-right-content .how-we-do-items + .how-we-do-items {
+    margin-top: 60px !important;
+}
+
+/* Override base template card gap */
+.how-we-do-area .how-we-do-right-content .how-we-do-items {
+    gap: 60px !important;
+}
+
+/* ── Process flow: dotted connecting lines ── */
+.how-we-do-right-content {
+    position: relative;
+}
+
+/* Kill base template image-based lines */
+.how-we-do-card .line-shape {
+    background-image: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important;
+}
+
+/* Circle dots at card edges — override base template */
+.how-we-do-card .circle-shape {
+    display: block !important;
+    position: absolute;
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+    background: var(--bg-surface) !important;
+    border: 2px solid var(--sem-green) !important;
+    z-index: 3;
+    top: 50%;
+    margin-top: -6px !important;
+    left: -6px;
+}
+
+.how-we-do-card .circle-shape::before {
+    content: '' !important;
+    width: 4px !important;
+    height: 4px !important;
+    border-radius: 50% !important;
+    background: var(--sem-green) !important;
+    position: absolute;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+/* Hide first card's left dot (no incoming line) */
+.how-we-do-items:first-child .how-we-do-card:first-child .circle-shape {
+    display: none !important;
+}
+
+/* Horizontal dotted lines between cards in the same row */
+.how-we-do-card {
+    position: relative;
+}
+
+.how-we-do-card + .how-we-do-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    width: 100px;
+    height: 0;
+    border-top: 2px dotted rgba(133,199,82,0.4);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.how-we-do-items {
+    position: relative;
+}
+
+/* Vertical dotted lines connecting rows — row 1 last card down to row 2 first card */
+.how-we-do-items:first-child::after {
+    content: '';
+    position: absolute;
+    right: 33%;
+    bottom: 0;
+    width: 0;
+    height: 60px;
+    border-left: 2px dotted rgba(133,199,82,0.4);
+    z-index: 1;
+    pointer-events: none;
+    transform: translateY(100%);
+}
+
+/* Row 2 to row 3 vertical connector */
+.how-we-do-items:nth-child(2)::after {
+    content: '';
+    position: absolute;
+    left: 33%;
+    bottom: 0;
+    width: 0;
+    height: 60px;
+    border-left: 2px dotted rgba(133,199,82,0.4);
+    z-index: 1;
+    pointer-events: none;
+    transform: translateY(100%);
+}
+
+/* Last row — no connector down */
+.how-we-do-items:last-child::after {
+    display: none;
+}
+
+/* Small animated pulse on circle dots */
+@keyframes dotPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(133,199,82,0.3); }
+    50% { box-shadow: 0 0 0 6px rgba(133,199,82,0); }
+}
+
+.how-we-do-card:hover .circle-shape {
+    animation: dotPulse 1.5s ease-in-out infinite;
+}
+
+/* Step number badges */
+.how-we-do-right-content {
+    counter-reset: process-step;
+}
+
+.how-we-do-card::after {
+    counter-increment: process-step;
+    content: counter(process-step);
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--sem-green);
+    color: var(--text-on-green);
+    font-size: 11px;
+    font-weight: 800;
+    font-family: var(--font_mono);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    box-shadow: 0 2px 6px rgba(133,199,82,0.3);
+}
+
+/* Hide connectors on mobile */
+@media (max-width: 991px) {
+    .how-we-do-card + .how-we-do-card::before,
+    .how-we-do-items::after {
+        display: none;
+    }
+    .how-we-do-card .circle-shape {
+        display: none !important;
+    }
+}
 
 /* Segment bullets */
 .segment-bullets li {
@@ -1960,6 +2120,19 @@ html { scroll-behavior: smooth; }
 
 [data-theme="light"] .how-we-do-card .how-we-do-content p {
     color: #999 !important;
+}
+
+/* Light mode — process flow connectors on dark bg */
+[data-theme="light"] .how-we-do-card .circle-shape {
+    background: #1B1C1E !important;
+}
+
+[data-theme="light"] .how-we-do-card + .how-we-do-card::before {
+    border-top-color: rgba(133,199,82,0.3) !important;
+}
+
+[data-theme="light"] .how-we-do-items::after {
+    border-left-color: rgba(133,199,82,0.3) !important;
 }
 
 [data-theme="light"] .featured-projects-area {
