@@ -1986,5 +1986,104 @@
       }
     </script>
     <script src=".\assets\js\theme.js"></script>
+
+    <!-- Process flow connector lines -->
+    <script>
+    (function() {
+      function drawConnectors() {
+        var container = document.querySelector('.how-we-do-right-content');
+        if (!container) return;
+
+        // Remove old SVG if exists
+        var old = container.querySelector('.process-connectors-svg');
+        if (old) old.remove();
+
+        // Get all cards in order: row1(3), row2(2), row3(1)
+        var cards = container.querySelectorAll('.how-we-do-card');
+        if (cards.length < 2) return;
+
+        var containerRect = container.getBoundingClientRect();
+
+        // Get center points of each card relative to container
+        var points = [];
+        cards.forEach(function(card) {
+          var r = card.getBoundingClientRect();
+          points.push({
+            x: r.left + r.width / 2 - containerRect.left,
+            y: r.top + r.height / 2 - containerRect.top,
+            right: r.right - containerRect.left,
+            left: r.left - containerRect.left,
+            top: r.top - containerRect.top,
+            bottom: r.bottom - containerRect.top
+          });
+        });
+
+        var svgNS = 'http://www.w3.org/2000/svg';
+        var svg = document.createElementNS(svgNS, 'svg');
+        svg.setAttribute('class', 'process-connectors-svg');
+        svg.setAttribute('width', '100%');
+        svg.setAttribute('height', '100%');
+        svg.style.position = 'absolute';
+        svg.style.top = '0';
+        svg.style.left = '0';
+        svg.style.pointerEvents = 'none';
+        svg.style.zIndex = '2';
+        svg.style.overflow = 'visible';
+
+        // Connect cards in sequence: 0->1->2->3->4->5
+        for (var i = 0; i < points.length - 1; i++) {
+          var from = points[i];
+          var to = points[i + 1];
+
+          var line = document.createElementNS(svgNS, 'line');
+
+          // Horizontal connections (same row)
+          if (Math.abs(from.y - to.y) < 40) {
+            line.setAttribute('x1', from.right);
+            line.setAttribute('y1', from.y);
+            line.setAttribute('x2', to.left);
+            line.setAttribute('y2', to.y);
+          } else {
+            // Vertical/diagonal connections (between rows)
+            line.setAttribute('x1', from.x);
+            line.setAttribute('y1', from.bottom);
+            line.setAttribute('x2', to.x);
+            line.setAttribute('y2', to.top);
+          }
+
+          line.setAttribute('stroke', 'rgba(133,199,82,0.35)');
+          line.setAttribute('stroke-width', '1.5');
+          line.setAttribute('stroke-dasharray', '6 4');
+          svg.appendChild(line);
+
+          // Small dot at connection midpoint
+          var cx = (parseFloat(line.getAttribute('x1')) + parseFloat(line.getAttribute('x2'))) / 2;
+          var cy = (parseFloat(line.getAttribute('y1')) + parseFloat(line.getAttribute('y2'))) / 2;
+          var dot = document.createElementNS(svgNS, 'circle');
+          dot.setAttribute('cx', cx);
+          dot.setAttribute('cy', cy);
+          dot.setAttribute('r', '3');
+          dot.setAttribute('fill', 'rgba(133,199,82,0.5)');
+          svg.appendChild(dot);
+        }
+
+        container.appendChild(svg);
+      }
+
+      // Run after DOM ready and after a short delay for layout
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() { setTimeout(drawConnectors, 300); });
+      } else {
+        setTimeout(drawConnectors, 300);
+      }
+
+      // Redraw on resize
+      var resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(drawConnectors, 200);
+      });
+    })();
+    </script>
   </body>
 </html>
