@@ -2481,9 +2481,12 @@ html { scroll-behavior: smooth; }
 
 [data-theme="light"] .architecture-area { background: #1B1C1E !important; }
 [data-theme="light"] .architecture-area .section-title { color: #fff !important; }
+[data-theme="light"] .architecture-area > .custom-container > .text-center > p { color: #B0B0B0 !important; }
 [data-theme="light"] .arch-card { background: #232428 !important; border-color: rgba(255,255,255,0.08) !important; }
+[data-theme="light"] .arch-card h4 { color: var(--accent) !important; }
 [data-theme="light"] .arch-card h3 { color: #fff !important; }
 [data-theme="light"] .arch-card p { color: #B0B0B0 !important; }
+[data-theme="light"] .arch-card .arch-icon { color: #fff !important; }
 
 [data-theme="light"] .numbers-area { background: #1B1C1E !important; }
 [data-theme="light"] .numbers-area .section-title { color: #fff !important; }
@@ -4738,10 +4741,19 @@ html { scroll-behavior: smooth; }
     color: var(--sem-purple) !important;
 }
 
-/* Stronger text in about/story sections */
-[data-theme="light"] .story-area p,
+/* Manifesto area stays dark in light mode */
 [data-theme="light"] .manifesto-area p {
-    color: #ddd !important; /* these areas are always dark bg */
+    color: #ddd !important;
+}
+/* Story area is LIGHT bg in light mode — use dark text */
+[data-theme="light"] .story-area .story-text p {
+    color: #3E3E4D !important;
+}
+[data-theme="light"] .story-area .story-loop {
+    background: #fff !important;
+}
+[data-theme="light"] .story-area .story-loop p {
+    color: #242430 !important;
 }
 
 /* Light mode input borders */

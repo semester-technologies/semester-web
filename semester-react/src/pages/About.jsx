@@ -165,7 +165,7 @@ export default function About() {
           <div className="text-center mb-5">
             <h5 className="section-subtitle">HOW WE OPERATE</h5>
             <h1 className="section-title">The Architecture.</h1>
-            <p style={{ color: 'var(--text-secondary)', maxWidth: 560, margin: '12px auto 0' }}>Three audiences. One ecosystem. Infinite impact.</p>
+            <p style={{ maxWidth: 560, margin: '12px auto 0' }}>Three audiences. One ecosystem. Infinite impact.</p>
           </div>
           <div className="row g-4">
             {[
