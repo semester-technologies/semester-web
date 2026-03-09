@@ -849,6 +849,24 @@ a:hover { color: var(--accent); }
     position: relative;
 }
 
+/* ── Re-enable connector lines killed by template style.css ── */
+.how-we-do-area .how-we-do-right-content .how-we-do-items .how-we-do-card .circle-shape {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: var(--bg-surface) !important;
+}
+
+.how-we-do-area .how-we-do-right-content .how-we-do-items .how-we-do-card .circle-shape:before {
+    background: var(--accent) !important;
+}
+
+.how-we-do-area .how-we-do-right-content .how-we-do-items .how-we-do-card .line-shape {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
 /* SVG connector overlay for process flow */
 .process-connectors-svg {
     position: absolute;
@@ -2080,7 +2098,7 @@ html { scroll-behavior: smooth; }
 }
 
 [data-theme="light"] .how-we-do-card .how-we-do-icon img {
-    filter: brightness(0) saturate(100%) invert(55%) sepia(30%) saturate(500%) hue-rotate(60deg) !important;
+    filter: brightness(0) saturate(100%) invert(25%) sepia(60%) saturate(800%) hue-rotate(240deg) brightness(90%) !important;
 }
 
 [data-theme="light"] .how-we-do-area .custom-container > .custom-row {
@@ -2105,8 +2123,17 @@ html { scroll-behavior: smooth; }
 }
 
 /* Light mode — process flow connectors on dark bg */
-[data-theme="light"] .how-we-do-card .circle-shape {
+[data-theme="light"] .how-we-do-area .how-we-do-right-content .how-we-do-items .how-we-do-card .circle-shape {
     background: #1B1C1E !important;
+}
+
+[data-theme="light"] .how-we-do-area .how-we-do-right-content .how-we-do-items .how-we-do-card .circle-shape:before {
+    background: var(--accent) !important;
+}
+
+[data-theme="light"] .how-we-do-card .how-we-do-icon {
+    background: rgba(var(--accent-rgb),0.12) !important;
+    border-color: rgba(var(--accent-rgb),0.2) !important;
 }
 
 [data-theme="light"] .how-we-do-card + .how-we-do-card::before {
