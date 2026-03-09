@@ -720,8 +720,22 @@ a:hover { color: var(--accent); }
 .service-area { padding: 100px 0; background: var(--bg-body) !important; }
 .service-area .service-section-header { margin-bottom: 56px; }
 
-/* Override template flex: 1 — let Bootstrap grid handle sizing */
-.services-list .service-card { flex: unset !important; width: 100% !important; }
+/* Service cards grid — responsive auto-fit */
+.services-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 1199px) {
+    .services-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 767px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .services-grid { grid-template-columns: 1fr; }
+}
 
 .service-card {
     padding: 28px 24px;

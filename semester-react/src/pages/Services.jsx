@@ -296,9 +296,9 @@ export default function Services() {
             </div>
             <p>One fundamental aspect of IT services is infrastructure management. This involves the design, implementation, and maintenance of the hardware, software, networks, and servers.</p>
           </div>
-          <div className="services-list mb-3 row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4">
+          <div className="services-grid mb-3">
             {serviceCards.map((s, i) => (
-              <div className="service-card simple-shadow col" key={i}>
+              <div className="service-card simple-shadow" key={i}>
                 <img src={s.icon} alt="Service Icon" className="service-icon" />
                 <h3><Link to="/services">{s.title}</Link></h3>
                 <p>{s.desc}</p>
