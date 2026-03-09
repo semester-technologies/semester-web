@@ -494,9 +494,9 @@ export default function Home() {
       <section className="featured-projects-area">
         <div className="custom-container">
           <div className="text-center mb-5">
-            <h5 className="section-subtitle" style={{ color: 'var(--text-secondary)' }}>FEATURED WORK</h5>
+            <h5 className="section-subtitle">FEATURED WORK</h5>
             <h1 className="section-title">We Don't Just Claim Excellence. We Build It.</h1>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '17px', marginTop: '12px' }}>Explore a few of the 200+ projects deployed this year.</p>
+            <p style={{ fontSize: '17px', marginTop: '12px' }}>Explore a few of the 200+ projects deployed this year.</p>
           </div>
           <div className="row g-4">
             <div className="col-12 col-md-6 col-lg-4">

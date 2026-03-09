@@ -2407,6 +2407,10 @@ html { scroll-behavior: smooth; }
     background: #1B1C1E !important;
 }
 
+[data-theme="light"] .featured-projects-area .section-title { color: #fff !important; }
+[data-theme="light"] .featured-projects-area .section-subtitle { color: rgba(255,255,255,0.7) !important; }
+[data-theme="light"] .featured-projects-area > .custom-container > .text-center > p { color: #B0B0B0 !important; }
+
 [data-theme="light"] .project-card {
     background: #232428 !important;
     border-color: rgba(255,255,255,0.08) !important;
