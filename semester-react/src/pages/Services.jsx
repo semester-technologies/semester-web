@@ -619,13 +619,14 @@ export default function Services() {
             </button>
             <div className="testimonial-carousel-track">
               {visibleTestimonials.map((t, i) => (
-                <div className="testimonial-item" key={testimonialIdx * testimonialsPerPage + i}>
-                  <div className="testimonial-item-body">
-                    <img className="animation-slide-right bg-shape" src={bgShape3} alt="Shape" />
-                    <p>{t.text}</p>
-                    <div className="author-box d-flex align-items-center">
-                      <img src={testimonial1} alt="Testimonial" />
-                      <div className="author-box-content"><h4>{t.name}</h4><p>{t.role}</p></div>
+                <div className="testimonial-card-v2" key={testimonialIdx * testimonialsPerPage + i}>
+                  <div className="testimonial-quote-icon"><i className="las la-quote-left"></i></div>
+                  <p className="testimonial-text">{t.text}</p>
+                  <div className="testimonial-author">
+                    <img src={testimonial1} alt={t.name} />
+                    <div>
+                      <h4>{t.name}</h4>
+                      <span>{t.role}</span>
                     </div>
                   </div>
                 </div>
