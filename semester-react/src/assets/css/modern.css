@@ -2488,6 +2488,8 @@ html { scroll-behavior: smooth; }
 [data-theme="light"] .numbers-area { background: #1B1C1E !important; }
 [data-theme="light"] .numbers-area .section-title { color: #fff !important; }
 [data-theme="light"] .stat-card { background: #232428 !important; border-color: rgba(255,255,255,0.08) !important; }
+[data-theme="light"] .stat-card .stat-num { color: #fff !important; }
+[data-theme="light"] .stat-card h3 { color: #fff !important; }
 [data-theme="light"] .stat-card p { color: #B0B0B0 !important; }
 
 /* Light mode scrollbar */
