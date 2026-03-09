@@ -648,7 +648,7 @@ export default function Home() {
       </section>
 
       {/* Start Your Journey Quiz */}
-      <section style={{ padding: '100px 0', background: 'var(--surface_alt)' }}>
+      <section style={{ padding: '100px 0', background: 'var(--bg-surface-2)' }}>
         <div className="custom-container">
           <div className="text-center mb-5">
             <h5 className="section-subtitle">START YOUR JOURNEY</h5>
