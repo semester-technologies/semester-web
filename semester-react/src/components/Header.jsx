@@ -1,10 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import logo from '../assets/imgs/semester.png'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
+
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [location.pathname])
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
 
   const isActive = (path) => {
     if (path === '/') return location.pathname === '/'
@@ -22,53 +33,68 @@ export default function Header() {
   ]
 
   return (
-    <header className="header-area">
+    <header className="header-area sem-header">
       <div className="custom-container">
-        <div className="custom-row align-items-center justify-content-between">
-          <div className="header-left d-flex align-items-center">
-            <Link to="/" className="logo">
-              <img src={logo} alt="Logo" />
-            </Link>
-            <div className="header-left-right">
-              <Link to="/contact" className="theme-btn">Contact Us</Link>
-              <span className="menu-bar" onClick={() => setMenuOpen(true)}>
-                <i className="las la-bars"></i>
-              </span>
-            </div>
-          </div>
+        <div className="sem-header-inner">
+          <Link to="/" className="sem-logo">
+            <img src={logo} alt="Logo" />
+          </Link>
 
-          <div className="d-flex justify-content-center flex-grow-1">
-            <nav className={`navbar-wrapper${menuOpen ? ' active' : ''}`}>
-              <span className="close-menu-bar" onClick={() => setMenuOpen(false)}>
-                <i className="las la-times"></i>
-              </span>
-              <ul className="d-flex gap-4 align-items-center">
-                {navLinks.map(link => (
-                  <li key={link.to}>
-                    <Link
-                      to={link.to}
-                      className={isActive(link.to) ? 'active' : ''}
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
+          {/* Desktop nav */}
+          <nav className="sem-nav-desktop">
+            <ul>
+              {navLinks.map(link => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className={isActive(link.to) ? 'active' : ''}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-          <div className="header-right">
-            <div className="header-contact-info d-flex align-items-center">
-              <div className="phone-number">
-                <a href="tel:+2347060928686">Call Us <i className="iconoir-arrow-up-right"></i></a>
-                +2347060928686
-              </div>
-              <Link to="/contact" className="theme-btn">Contact Us</Link>
-            </div>
+          <div className="sem-header-actions">
+            <Link to="/contact" className="theme-btn sem-contact-btn">Contact Us</Link>
+            <button
+              className="sem-hamburger"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile nav — full dropdown below header */}
+      <div className={`sem-mobile-nav${menuOpen ? ' open' : ''}`}>
+        <nav>
+          <ul>
+            {navLinks.map(link => (
+              <li key={link.to}>
+                <Link
+                  to={link.to}
+                  className={isActive(link.to) ? 'active' : ''}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link to="/contact" className="theme-btn sem-mobile-cta" onClick={() => setMenuOpen(false)}>
+            Contact Us <i className="iconoir-arrow-up-right"></i>
+          </Link>
+        </nav>
+      </div>
+
+      {/* Overlay */}
+      {menuOpen && <div className="sem-overlay" onClick={() => setMenuOpen(false)} />}
     </header>
   )
 }

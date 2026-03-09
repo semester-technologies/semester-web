@@ -491,60 +491,269 @@ a:hover { color: var(--accent); }
 }
 
 /* ═══════════════════════════════════════════
-   HEADER
+   HEADER — Complete Redesign (Semester Custom)
    ═══════════════════════════════════════════ */
-.header-area {
+
+/* Kill all old header styles — we override everything */
+.header-area.sem-header {
     background: var(--bg-header) !important;
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--border-default) !important;
     padding: 0;
-    position: sticky;
-    top: 0;
+    position: relative;  /* NOT sticky on mobile */
     z-index: 1024;
     transition: background 0.4s ease;
 }
 
-.header-area .custom-container { padding-top: 0; padding-bottom: 0; }
-.header-area .logo img { max-width: 140px; display: block; }
-.header-area .header-left { gap: 48px; }
-.header-area .navbar-wrapper > ul { gap: 32px; }
-.header-area .navbar-wrapper > ul > li { line-height: 72px; }
+/* Sticky only on desktop */
+@media (min-width: 993px) {
+    .header-area.sem-header {
+        position: sticky;
+        top: 0;
+    }
+}
 
-.header-area .navbar-wrapper ul li a {
+.sem-header .custom-container { padding-top: 0; padding-bottom: 0; }
+
+.sem-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    gap: 24px;
+}
+
+/* Logo */
+.sem-logo img {
+    max-width: 130px;
+    display: block;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .sem-logo img {
+        max-width: 100px;
+    }
+}
+
+/* Desktop nav */
+.sem-nav-desktop ul {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sem-nav-desktop ul li a {
     color: var(--text-secondary) !important;
     font-size: 14px;
     font-weight: 600;
     font-family: var(--font_brand);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.25s ease;
+    white-space: nowrap;
 }
 
-.header-area .navbar-wrapper ul li a::after { display: none; }
+.sem-nav-desktop ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 50%;
+    width: 0; height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease, left 0.3s ease;
+    border-radius: 2px;
+}
 
-.header-area .navbar-wrapper ul li a:hover,
-.header-area .navbar-wrapper ul li a.active-nav {
+.sem-nav-desktop ul li a:hover,
+.sem-nav-desktop ul li a.active {
     color: var(--accent) !important;
 }
 
-.header-area .header-contact-info { gap: 24px; }
-.header-area .header-contact-info .phone-number { display: none; }
-.header-area .header-contact-info .theme-btn { padding: 10px 24px; font-size: 13px; }
-.header-area .navbar-wrapper.active { background: var(--bg-surface) !important; }
-.header-area .navbar-wrapper .close-menu-bar i,
-.header-area .menu-bar i { color: var(--text-heading) !important; }
-
-/* Light mode — mobile nav sidebar */
-[data-theme="light"] .header-area .navbar-wrapper.active {
-    background: #fff !important;
-    box-shadow: -4px 0 24px rgba(0,0,0,0.1);
+.sem-nav-desktop ul li a:hover::before,
+.sem-nav-desktop ul li a.active::before {
+    width: 100%; left: 0;
 }
 
-[data-theme="light"] .header-area .navbar-wrapper.active ul li a {
+/* Hide desktop nav on mobile */
+@media (max-width: 992px) {
+    .sem-nav-desktop {
+        display: none;
+    }
+}
+
+/* Header actions (contact btn + hamburger) */
+.sem-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sem-contact-btn {
+    padding: 9px 20px !important;
+    font-size: 13px !important;
+}
+
+@media (max-width: 768px) {
+    .sem-contact-btn {
+        padding: 7px 14px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* Hide contact btn on very small screens */
+@media (max-width: 480px) {
+    .sem-contact-btn {
+        display: none !important;
+    }
+}
+
+/* Hamburger — only on mobile */
+.sem-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius_md);
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.25s ease;
+}
+
+.sem-hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--text-heading);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.sem-hamburger:hover {
+    border-color: var(--accent);
+}
+
+.sem-hamburger:hover span {
+    background: var(--accent);
+}
+
+@media (max-width: 992px) {
+    .sem-hamburger {
+        display: flex;
+    }
+}
+
+/* ── Mobile Nav — Dropdown below header ── */
+.sem-mobile-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1023;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-default);
+    box-shadow: var(--shadow-lg);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease;
+    opacity: 0;
+}
+
+@media (max-width: 992px) {
+    .sem-mobile-nav {
+        display: block;
+    }
+}
+
+.sem-mobile-nav.open {
+    max-height: 500px;
+    opacity: 1;
+}
+
+[data-theme="light"] .sem-mobile-nav {
+    background: #fff;
+    border-bottom-color: rgba(0,0,0,0.06);
+}
+
+.sem-mobile-nav nav {
+    padding: 16px 24px 24px;
+}
+
+.sem-mobile-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.sem-mobile-nav ul li a {
+    display: block;
+    padding: 12px 0;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font_brand);
+    color: var(--text-body) !important;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-default);
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.sem-mobile-nav ul li:last-child a {
+    border-bottom: none;
+}
+
+.sem-mobile-nav ul li a:hover,
+.sem-mobile-nav ul li a.active {
+    color: var(--accent) !important;
+    padding-left: 8px;
+}
+
+[data-theme="light"] .sem-mobile-nav ul li a {
     color: #1B1C1E !important;
+    border-bottom-color: rgba(0,0,0,0.06);
 }
 
-[data-theme="light"] .header-area .navbar-wrapper.active ul li a:hover,
-[data-theme="light"] .header-area .navbar-wrapper.active ul li a.active-nav {
+[data-theme="light"] .sem-mobile-nav ul li a:hover,
+[data-theme="light"] .sem-mobile-nav ul li a.active {
     color: var(--accent) !important;
+}
+
+.sem-mobile-cta {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    width: 100%;
+}
+
+/* Overlay */
+.sem-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 1022;
+}
+
+/* ── Kill ALL old template header stuff we don't need ── */
+.sem-header .header-left,
+.sem-header .header-left-right,
+.sem-header .header-right,
+.sem-header .navbar-wrapper,
+.sem-header .header-contact-info,
+.sem-header .menu-bar,
+.sem-header .close-menu-bar {
+    display: none !important;
 }
 
 /* ═══════════════════════════════════════════
@@ -2056,46 +2265,46 @@ html { scroll-behavior: smooth; }
     margin-bottom: 14px !important;
 }
 
-/* ── Light Mode — Refined (less shiny, more muted) ── */
+/* ── Light Mode — Strong Contrast ── */
 [data-theme="light"] {
-    --bg-body: #F5F6FA;
-    --bg-surface: #EFF0F5;
-    --bg-surface-2: #E8E9EF;
-    --bg-surface-3: #DDDEE5;
+    --bg-body: #F2F3F7;
+    --bg-surface: #EAEBF0;
+    --bg-surface-2: #E2E3E9;
+    --bg-surface-3: #D5D6DD;
     --bg-elevated: #FFFFFF;
     --bg-card: #FFFFFF;
-    --bg-card-hover: #F5F6FA;
-    --bg-input: #F5F6FA;
-    --bg-header: rgba(245,246,250,0.95);
+    --bg-card-hover: #F2F3F7;
+    --bg-input: #FFFFFF;
+    --bg-header: rgba(242,243,247,0.96);
     --bg-footer: #1B1C1E;
 
-    --text-heading: #1B1C1E;
-    --text-body: #3E3E46;
-    --text-secondary: #62626E;
-    --text-muted: #8E8E9A;
+    --text-heading: #111113;
+    --text-body: #2D2D35;
+    --text-secondary: #4A4A55;
+    --text-muted: #75758A;
     --text-on-green: #1B1C1E;
     --text-on-purple: #FFFFFF;
-    --text-link: #583E8A;
+    --text-link: #4A3280;
 
-    --border-default: rgba(0,0,0,0.07);
-    --border-light: rgba(0,0,0,0.05);
-    --border-strong: rgba(0,0,0,0.1);
+    --border-default: rgba(0,0,0,0.10);
+    --border-light: rgba(0,0,0,0.07);
+    --border-strong: rgba(0,0,0,0.15);
 
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
-    --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
-    --shadow-xl: 0 16px 50px rgba(0,0,0,0.1);
-    --shadow-green: 0 4px 20px rgba(133,199,82,0.1);
-    --shadow-purple: 0 4px 20px rgba(88,62,138,0.08);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 14px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+    --shadow-xl: 0 16px 50px rgba(0,0,0,0.12);
+    --shadow-green: 0 4px 20px rgba(133,199,82,0.12);
+    --shadow-purple: 0 4px 20px rgba(88,62,138,0.10);
 
-    --dot-color: rgba(0,0,0,0.025);
+    --dot-color: rgba(0,0,0,0.03);
 
-    --heading_color: #1B1C1E;
-    --text_color: #3E3E46;
-    --light_white: #F5F6FA;
+    --heading_color: #111113;
+    --text_color: #2D2D35;
+    --light_white: #F2F3F7;
     --dark1: #1B1C1E;
-    --dark2: #E8E9EF;
-    --gray: #DDDEE5;
+    --dark2: #E2E3E9;
+    --gray: #D5D6DD;
 }
 
 /* Light mode specific overrides for cleaner look */
@@ -3938,52 +4147,7 @@ html { scroll-behavior: smooth; }
    COMPREHENSIVE DARK/LIGHT + RESPONSIVE FIXES
    ═══════════════════════════════════════════ */
 
-/* ── Fix: Mobile navbar sidebar — theme-aware colors ── */
-@media (max-width: 1250px) {
-    /* Override hardcoded dark overlay bg */
-    .header-area .navbar-wrapper {
-        background: rgba(0,0,0,0.5) !important;
-    }
-
-    /* Override hardcoded white sidebar bg */
-    .header-area .navbar-wrapper::before {
-        background: var(--bg-surface) !important;
-    }
-
-    [data-theme="light"] .header-area .navbar-wrapper::before {
-        background: #fff !important;
-    }
-
-    [data-theme="dark"] .header-area .navbar-wrapper::before {
-        background: #1B1C1E !important;
-    }
-
-    /* Nav links in mobile sidebar */
-    .header-area .navbar-wrapper > ul > li > a {
-        color: var(--text-heading) !important;
-    }
-
-    .header-area .navbar-wrapper > ul > li > a:hover {
-        color: var(--accent) !important;
-    }
-
-    /* Close button */
-    .header-area .navbar-wrapper .close-menu-bar {
-        background: var(--bg-card) !important;
-        border-color: var(--border-default) !important;
-        color: var(--text-heading) !important;
-    }
-
-    /* Mobile header left-right (contact + hamburger) */
-    .header-area .header-left .header-left-right {
-        gap: 12px;
-    }
-
-    /* Hide desktop-only header right */
-    .header-area .header-right {
-        display: none !important;
-    }
-}
+/* Old mobile navbar sidebar overrides removed — using new sem-header system */
 
 /* ── Fix: Contact page — info box stacking on mobile ── */
 .contact-inner-info-box {
@@ -4440,13 +4604,164 @@ html { scroll-behavior: smooth; }
     border-color: rgba(0,0,0,0.06) !important;
 }
 
-/* ── Fix: Navbar active link detection ── */
-.header-area .navbar-wrapper ul li a.active {
+/* ═══════════════════════════════════════════
+   CONTACT FORM — Layout Fix
+   ═══════════════════════════════════════════ */
+
+/* Reduce the massive 84px gap between form columns */
+.hero-contact-form .contact-form {
+    gap: 40px !important;
+}
+
+/* Reduce input group margins */
+.hero-contact-form .contact-form .input-row .input-group {
+    margin-bottom: 20px !important;
+}
+
+/* Make form wrap on smaller screens */
+@media (max-width: 992px) {
+    .hero-contact-form .contact-form {
+        flex-direction: column !important;
+        gap: 0 !important;
+    }
+}
+
+/* Contact form wrap — consistent padding */
+.contact-form-wrap {
+    padding: 40px !important;
+}
+
+@media (max-width: 768px) {
+    .contact-form-wrap {
+        padding: 28px 20px !important;
+    }
+}
+
+/* Fix input fields in both modes */
+.hero-contact-form .contact-form .input-row .input-group input,
+.hero-contact-form .contact-form .input-row .input-group textarea,
+.hero-contact-form .contact-form .input-row .input-group select {
+    padding: 10px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Consistent form spacing for contact area */
+.contact-area .custom-row {
+    gap: 32px;
+}
+
+/* Light mode — contact form in dark section should stay dark */
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group input,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group textarea,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group select {
+    background: #1B1C1E !important;
+    border-color: rgba(255,255,255,0.1) !important;
+    color: #fff !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group input::placeholder,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group textarea::placeholder {
+    color: rgba(255,255,255,0.35) !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group label {
+    color: #fff !important;
+}
+
+/* Light mode — radio/checkbox labels in dark section */
+[data-theme="light"] .contact-area.bg-dark .choice-a-company .radio-box label {
+    color: #aaa !important;
+    border-color: rgba(255,255,255,0.1) !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .choice-a-company .radio-box input:checked ~ label {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-color: var(--accent) !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .feedback-checkboxes .feedback-item label {
+    color: #aaa !important;
+}
+
+/* Light mode — section title inside dark sections */
+[data-theme="light"] .contact-area.bg-dark .section-title,
+[data-theme="light"] .contact-area.bg-dark h1 {
+    color: #fff !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .section-subtitle {
     color: var(--accent) !important;
 }
 
-.header-area .navbar-wrapper ul li a.active::before {
-    width: 100%;
-    left: 0;
+[data-theme="light"] .contact-area.bg-dark p {
+    color: #aaa !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark p a {
+    color: var(--accent) !important;
+}
+
+/* ═══════════════════════════════════════════
+   LIGHT MODE — Stronger Contrast Polish
+   ═══════════════════════════════════════════ */
+
+/* Card borders more visible */
+[data-theme="light"] .service-card,
+[data-theme="light"] .feature2-card,
+[data-theme="light"] .bundle-card,
+[data-theme="light"] .pillar-card,
+[data-theme="light"] .case-card,
+[data-theme="light"] .contact-info-box,
+[data-theme="light"] .simple-shadow {
+    border-color: rgba(0,0,0,0.10) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* How-we-do area label text more visible in light mode */
+[data-theme="light"] .how-we-do-card .how-we-do-content h4 {
+    color: var(--sem-green) !important;
+}
+
+/* Light mode hero subtitle pill cleaner */
+[data-theme="light"] .section-subtitle {
+    background: rgba(88,62,138,0.08) !important;
+    border: 1px solid rgba(88,62,138,0.12) !important;
+    color: var(--sem-purple) !important;
+}
+
+/* Stronger text in about/story sections */
+[data-theme="light"] .story-area p,
+[data-theme="light"] .manifesto-area p {
+    color: #ddd !important; /* these areas are always dark bg */
+}
+
+/* Light mode input borders */
+[data-theme="light"] .hero-contact-form .contact-form .input-row .input-group input,
+[data-theme="light"] .hero-contact-form .contact-form .input-row .input-group textarea,
+[data-theme="light"] .hero-contact-form .contact-form .input-row .input-group select {
+    border-color: rgba(0,0,0,0.12) !important;
+}
+
+/* Light mode — How-we-do section (stays dark) text enhancement */
+[data-theme="light"] .how-we-do-area .how-we-do-left-content .top p {
+    color: #ccc !important;
+}
+
+/* Light mode — about-service3 always readable */
+[data-theme="light"] .about-service3-area {
+    background: #fff !important;
+}
+
+[data-theme="light"] .about-service3-area h1 {
+    color: #111 !important;
+}
+
+[data-theme="light"] .about-service3-area p {
+    color: #444 !important;
+}
+
+[data-theme="light"] .about-service3-area ul li {
+    color: #333 !important;
 }
 
