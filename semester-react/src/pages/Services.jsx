@@ -111,6 +111,19 @@ export default function Services() {
   const [activeTab, setActiveTab] = useState('development')
   const [rateQuery, setRateQuery] = useState('')
   const [openFaqs, setOpenFaqs] = useState({})
+  const [testimonialIdx, setTestimonialIdx] = useState(0)
+
+  const testimonials = [
+    { text: 'Semester Technologies has been an invaluable partner in our digital transformation journey. Their tailored solutions, expertise, and dedication have helped us achieve remarkable results.', name: 'Glory', role: 'Data Analyst' },
+    { text: 'SemesterTech delivered an outstanding web application that transformed our business operations. Their expertise, attention to detail, and support were exceptional.', name: 'Endurance', role: 'Project Manager' },
+    { text: 'Their ability to simplify complex challenges and provide strategic solutions is unmatched. Highly recommended.', name: 'Godwill', role: 'Software developer' },
+    { text: 'The team at Semester Tech brought our vision to life with precision and creativity. Their technical depth is truly impressive.', name: 'Hassan', role: 'Cybersecurity Analyst' },
+    { text: 'From concept to deployment, the process was seamless. Semester Tech understands both the business and technical side of things.', name: 'Shalom', role: 'Data Analyst' },
+    { text: 'Working with Semester Tech felt like having an in-house team. They were responsive, thorough, and delivered beyond expectations.', name: 'Amadi', role: 'Software Engineer' },
+  ]
+  const testimonialsPerPage = 2
+  const maxIdx = Math.ceil(testimonials.length / testimonialsPerPage) - 1
+  const visibleTestimonials = testimonials.slice(testimonialIdx * testimonialsPerPage, testimonialIdx * testimonialsPerPage + testimonialsPerPage)
 
   const rateResults = rateQuery.trim()
     ? rateData.filter(r => r.name.toLowerCase().includes(rateQuery.toLowerCase().trim()))
@@ -600,24 +613,31 @@ export default function Services() {
             <h1 className="section-title mb-2">What people think about us</h1>
             <p style={{ margin: 'auto' }}>Their professionalism and commitment to our success were evident <br />throughout the entire process.</p>
           </div>
-        </div>
-        <div className="testimonial-slider-wrap">
-          <div className="d-flex gap-4 flex-wrap justify-content-center">
-            {[
-              { text: 'Semester Technologies has been an invaluable partner in our digital transformation journey. Their tailored solutions, expertise, and dedication have helped us achieve remarkable results.', name: 'Glory', role: 'Data Analyst' },
-              { text: 'SemesterTech delivered an outstanding web application that transformed our business operations. Their expertise, attention to detail, and support were exceptional.', name: 'Endurance', role: 'Project Manager' },
-              { text: 'Their ability to simplify complex challenges and provide strategic solutions is unmatched. Highly recommended.', name: 'Godwill', role: 'Software developer' },
-            ].map((t, i) => (
-              <div className="testimonial-item p-2 p-lg-3" key={i} style={{ maxWidth: 550 }}>
-                <div className="testimonial-item-body">
-                  <img className="animation-slide-right bg-shape" src={bgShape3} alt="Shape" />
-                  <p>{t.text}</p>
-                  <div className="author-box d-flex align-items-center">
-                    <img src={testimonial1} alt="Testimonial" />
-                    <div className="author-box-content"><h4>{t.name}</h4><p>{t.role}</p></div>
+          <div className="testimonial-carousel">
+            <button className="testimonial-arrow testimonial-arrow-left" onClick={() => setTestimonialIdx(prev => Math.max(0, prev - 1))} disabled={testimonialIdx === 0} aria-label="Previous testimonials">
+              <i className="las la-angle-left"></i>
+            </button>
+            <div className="testimonial-carousel-track">
+              {visibleTestimonials.map((t, i) => (
+                <div className="testimonial-item" key={testimonialIdx * testimonialsPerPage + i}>
+                  <div className="testimonial-item-body">
+                    <img className="animation-slide-right bg-shape" src={bgShape3} alt="Shape" />
+                    <p>{t.text}</p>
+                    <div className="author-box d-flex align-items-center">
+                      <img src={testimonial1} alt="Testimonial" />
+                      <div className="author-box-content"><h4>{t.name}</h4><p>{t.role}</p></div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
+            </div>
+            <button className="testimonial-arrow testimonial-arrow-right" onClick={() => setTestimonialIdx(prev => Math.min(maxIdx, prev + 1))} disabled={testimonialIdx === maxIdx} aria-label="Next testimonials">
+              <i className="las la-angle-right"></i>
+            </button>
+          </div>
+          <div className="testimonial-dots">
+            {Array.from({ length: maxIdx + 1 }, (_, i) => (
+              <button key={i} className={`testimonial-dot${i === testimonialIdx ? ' active' : ''}`} onClick={() => setTestimonialIdx(i)} aria-label={`Go to testimonials ${i + 1}`} />
             ))}
           </div>
         </div>

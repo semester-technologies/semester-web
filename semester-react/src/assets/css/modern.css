@@ -1285,7 +1285,100 @@ a:hover { color: var(--accent); }
     }
 }
 
-/* Testimonial nav arrows — centered below cards */
+/* Testimonial carousel — 2 cards with side arrows */
+.testimonial-carousel {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.testimonial-carousel-track {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    flex: 1;
+    min-width: 0;
+}
+
+.testimonial-carousel-track .testimonial-item {
+    max-width: none;
+}
+
+.testimonial-arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-default);
+    color: var(--text-body) !important;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.testimonial-arrow:hover:not(:disabled) {
+    background: var(--accent) !important;
+    border-color: var(--accent);
+    color: #fff !important;
+}
+
+.testimonial-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+[data-theme="light"] .testimonial-arrow {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.12);
+    color: #1B1C1E !important;
+}
+
+[data-theme="light"] .testimonial-arrow:hover:not(:disabled) {
+    background: var(--accent) !important;
+    border-color: var(--accent);
+    color: #fff !important;
+}
+
+.testimonial-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 28px;
+}
+
+.testimonial-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: var(--border-default);
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.testimonial-dot.active {
+    background: var(--accent);
+    transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    .testimonial-carousel-track {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
+
+/* Testimonial nav arrows — centered below cards (legacy) */
 .testimonial-nav {
     display: flex;
     justify-content: center;
