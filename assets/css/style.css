@@ -92,22 +92,20 @@ Input, textarea:  10px 'Syne', sans-serif
     38. Footer
 */
 
-/* Varialbes */
+/* Variables — Semester Technologies Brand */
 :root {
-    --dark1: #1C1C1C;
-    --dark2: #454545;
-    --light_white: #F9F9F9;
-    /* --primary_color: #1351D8; */
+    --dark1: #1B1C1E;
+    --dark2: #232428;
+    --light_white: #FAFAFA;
     --primary_color: #583E8A;
-    --primary_color2: #4F8DFF;
-    /* --primary_light: #F3F6FD; */
-    --primary_light: #e6f7e6;
-    --primary_light2: rgb(19 81 216 / 10%);
-    --gray: #D9D9D9;
-    --font_syne: 'Syne', sans-serif;
-    --font_yantramanv: 'Yantramanav', sans-serif;
-    --font_dm: 'DM Sans', sans-serif;
-    --yellow_color: #FFD600;
+    --primary_color2: #85C752;
+    --primary_light: rgba(88, 62, 138, 0.06);
+    --primary_light2: rgba(88, 62, 138, 0.08);
+    --gray: #2C2D32;
+    --font_syne: 'Bricolage Grotesque', sans-serif;
+    --font_yantramanv: 'Bricolage Grotesque', sans-serif;
+    --font_dm: 'Bricolage Grotesque', sans-serif;
+    --yellow_color: #85C752;
 }
 
 /* ============================================================== 
