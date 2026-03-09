@@ -1,0 +1,32 @@
+/* Page-specific overrides — shared across pages */
+.case-studio-cat {
+  display: inline-block;
+  border-radius: 10px;
+  color: var(--primary_color);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  background: var(--primary_light2);
+  padding: 8px 21px;
+  position: absolute;
+  left: 24px;
+  top: 24px;
+}
+.case-studio-tab-content .service-card {
+  margin: 0px;
+}
+.news2-lists,
+.contact2-infos,
+.feature2-area .feature2-content-body,
+.service2-items {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 52px;
+}
+@media (max-width: 699px) {
+  .news2-lists,
+  .contact2-infos,
+  .feature2-area .feature2-content-body,
+  .service2-items {
+    grid-template-columns: 1fr;
+  }
+}
