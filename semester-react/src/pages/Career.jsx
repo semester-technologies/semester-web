@@ -252,7 +252,7 @@ export default function Career() {
                 {tabData && tabData.type === 'career-grid' && (
                   <div className="tab-pane fade show active">
                     <div className="case-studio-body d-flex flex-row flex-lg-column">
-                      <div className="row row-cols-md-4 g-3">
+                      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
                         {tabData.courses.map((c, i) => (
                           <div className="col" key={i}>
                             <div className="career-box">
@@ -301,7 +301,7 @@ export default function Career() {
               </div>
             </div>
 
-            <div className="row row-cols-4 g-2">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2">
               {standaloneCourses.map((c, i) => (
                 <div className="col" key={i}>
                   <div className="career-box">
@@ -340,7 +340,7 @@ export default function Career() {
               {pathTabData && pathTabData.type === 'career-grid' && (
                 <div className="tab-pane fade show active">
                   <div className="case-studio-body d-flex">
-                    <div className="row row-cols-1 row-cols-lg-3 g-2">
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
                       {pathTabData.courses.map((c, i) => (
                         <div className="col" key={i}>
                           <div className="career-box">

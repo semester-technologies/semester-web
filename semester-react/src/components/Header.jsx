@@ -1,9 +1,25 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import logo from '../assets/imgs/semester.png'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
+
+  const isActive = (path) => {
+    if (path === '/') return location.pathname === '/'
+    return location.pathname.startsWith(path)
+  }
+
+  const navLinks = [
+    { to: '/', label: 'Home' },
+    { to: '/services', label: 'Services' },
+    { to: '/portfolio', label: 'Portfolio' },
+    { to: '/about', label: 'About Us' },
+    { to: '/career', label: 'Career' },
+    { to: '/register', label: 'Register' },
+    { to: '/login', label: 'Login' },
+  ]
 
   return (
     <header className="header-area">
@@ -27,13 +43,17 @@ export default function Header() {
                 <i className="las la-times"></i>
               </span>
               <ul className="d-flex gap-4 align-items-center">
-                <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-                <li><Link to="/services" onClick={() => setMenuOpen(false)}>Services</Link></li>
-                <li><Link to="/portfolio" onClick={() => setMenuOpen(false)}>Portfolio</Link></li>
-                <li><Link to="/about" onClick={() => setMenuOpen(false)}>About Us</Link></li>
-                <li><Link to="/career" onClick={() => setMenuOpen(false)}>Career</Link></li>
-                <li><Link to="/register" onClick={() => setMenuOpen(false)}>Register</Link></li>
-                <li><Link to="/login" onClick={() => setMenuOpen(false)}>Login</Link></li>
+                {navLinks.map(link => (
+                  <li key={link.to}>
+                    <Link
+                      to={link.to}
+                      className={isActive(link.to) ? 'active' : ''}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
           </div>

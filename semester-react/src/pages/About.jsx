@@ -196,7 +196,7 @@ export default function About() {
             </div>
             <p>One fundamental aspect of IT services is infrastructure management.</p>
           </div>
-          <div className="services-list mb-3 d-flex">
+          <div className="services-list mb-3">
             {services.slice(0, 5).map((s, i) => (
               <div className="service-card simple-shadow" key={i}>
                 <img src={s.icon} alt="Service Icon" className="service-icon" />
@@ -205,7 +205,7 @@ export default function About() {
               </div>
             ))}
           </div>
-          <div className="services-list d-flex">
+          <div className="services-list">
             {services.slice(5).map((s, i) => (
               <div className="service-card simple-shadow" key={i}>
                 <img src={s.icon} alt="Service Icon" className="service-icon" />

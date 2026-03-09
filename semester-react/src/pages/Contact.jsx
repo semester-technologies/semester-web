@@ -24,7 +24,7 @@ export default function Contact() {
         <img className="animation-slide-left bg-shape" src={bgShape7} alt="Shape" />
         <div className="custom-container">
           <div className="contact-inner">
-            <div className="contact-inner-info-box d-flex align-items-center">
+            <div className="contact-inner-info-box d-flex flex-column flex-md-row align-items-stretch gap-4">
               <div className="contact-info-box simple-shadow">
                 <div className="icon"><i className="las la-phone"></i></div>
                 <h4>Phone</h4>
@@ -39,7 +39,7 @@ export default function Contact() {
             </div>
           </div>
           <div className="contact-inner">
-            <div className="contact-inner-info-box d-flex align-items-center">
+            <div className="contact-inner-info-box d-flex flex-column flex-md-row align-items-stretch gap-4">
               <div className="contact-info-box simple-shadow">
                 <div className="icon"><i className="las la-headset"></i></div>
                 <h4>Support</h4>
@@ -48,20 +48,20 @@ export default function Contact() {
               </div>
               <div className="contact-info-box simple-shadow">
                 <h4>Social Media</h4>
-                <p className="d-flex flex-column align-items-center">
-                  <a href="#" className="fs-5 text-start p-1" style={{ color: 'var(--sem-purple)' }}>
+                <div className="d-flex flex-column align-items-start">
+                  <a href="#" className="fs-5 p-1" style={{ color: 'var(--accent)' }}>
                     <i className="iconoir-dribbble"></i> Dribbble
                   </a>
-                  <a href="#" className="fs-5 text-start p-1" style={{ color: 'var(--sem-purple)' }}>
+                  <a href="#" className="fs-5 p-1" style={{ color: 'var(--accent)' }}>
                     <i className="iconoir-twitter"></i> Twitter
                   </a>
-                  <a href="#" className="fs-5 p-1" style={{ color: 'var(--sem-purple)' }}>
+                  <a href="#" className="fs-5 p-1" style={{ color: 'var(--accent)' }}>
                     <i className="iconoir-instagram"></i> Instagram
                   </a>
-                  <a href="#" className="fs-5 p-1" style={{ color: 'var(--sem-purple)' }}>
+                  <a href="#" className="fs-5 p-1" style={{ color: 'var(--accent)' }}>
                     <i className="iconoir-linkedin"></i> LinkedIn
                   </a>
-                </p>
+                </div>
               </div>
             </div>
           </div>
