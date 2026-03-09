@@ -2464,14 +2464,15 @@ html { scroll-behavior: smooth; }
 [data-theme="light"] .svc-category-dark .section-title { color: #fff !important; }
 
 [data-theme="light"] .svc-category-dark { background: #1B1C1E !important; }
+[data-theme="light"] .svc-category-dark p { color: #B0B0B0 !important; }
 [data-theme="light"] .svc-category-dark .svc-item h5 { color: #fff !important; }
-[data-theme="light"] .svc-category-dark .svc-item p { color: #B0B0B0 !important; }
 [data-theme="light"] .svc-category-dark .expert-badge-dark { color: #B0B0B0 !important; }
 
 [data-theme="light"] .tech-stack-area { background: #1B1C1E !important; }
 [data-theme="light"] .tech-stack-area .section-title { color: #fff !important; }
+[data-theme="light"] .tech-stack-area > .custom-container > .text-center > p { color: #B0B0B0 !important; }
 [data-theme="light"] .tech-card { background: #232428 !important; border-color: rgba(255,255,255,0.08) !important; }
-[data-theme="light"] .tech-card h4 { color: #fff !important; }
+[data-theme="light"] .tech-card h4, [data-theme="light"] .tech-card h5 { color: #fff !important; }
 [data-theme="light"] .tech-card p, [data-theme="light"] .tech-card li { color: #B0B0B0 !important; }
 
 [data-theme="light"] .manifesto-area { background: #1B1C1E !important; }
@@ -3180,7 +3181,7 @@ html { scroll-behavior: smooth; }
 }
 
 [data-theme="light"] .service-black-area .section-header p {
-    color: #aaa !important;
+    color: #B0B0B0 !important;
 }
 
 [data-theme="light"] .service-black-area .service-card {
@@ -3194,7 +3195,7 @@ html { scroll-behavior: smooth; }
 }
 
 [data-theme="light"] .service-black-area .service-card p {
-    color: #999 !important;
+    color: #B0B0B0 !important;
 }
 
 /* Light mode — career tabs inside service-black-area */
@@ -3285,6 +3286,13 @@ html { scroll-behavior: smooth; }
 /* Light mode — final CTA */
 [data-theme="light"] .final-cta {
     background: var(--sem-purple) !important;
+}
+[data-theme="light"] .final-cta .theme-btn {
+    background: var(--sem-green) !important;
+    color: #1B1C1E !important;
+}
+[data-theme="light"] .final-cta .theme-btn:hover {
+    background: var(--sem-green-dark) !important;
 }
 
 /* ═══════════════════════════════════════════
@@ -4343,32 +4351,7 @@ html { scroll-behavior: smooth; }
     color: var(--accent) !important;
 }
 
-/* ── Fix: Light mode — service-black-area always dark ── */
-[data-theme="light"] .service-black-area {
-    background: #1B1C1E !important;
-}
-
-[data-theme="light"] .service-black-area .section-title {
-    color: #fff !important;
-}
-
-[data-theme="light"] .service-black-area .section-header p {
-    color: #999 !important;
-}
-
-[data-theme="light"] .service-black-area .service-card {
-    background: #232428 !important;
-    border-color: rgba(255,255,255,0.08) !important;
-}
-
-[data-theme="light"] .service-black-area .service-card h3,
-[data-theme="light"] .service-black-area .service-card h3 a {
-    color: #fff !important;
-}
-
-[data-theme="light"] .service-black-area .service-card p {
-    color: #999 !important;
-}
+/* ── Fix: Light mode — service-black-area always dark (duplicate consolidated) ── */
 
 /* ── Fix: Portfolio page — responsive grid ── */
 @media (max-width: 576px) {

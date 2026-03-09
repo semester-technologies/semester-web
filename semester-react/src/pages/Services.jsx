@@ -181,7 +181,7 @@ export default function Services() {
               <span className="expert-badge expert-badge-dark"><i className="las la-check-circle"></i> Executed by Semester Tech Certified Experts</span>
               <h5 className="section-subtitle">CATEGORY 1</h5>
               <h1 className="section-title">Build on Solid Ground.</h1>
-              <p style={{ color: 'var(--text-secondary)' }}>You can't scale what isn't legally sound. We handle the paperwork so you can focus on the vision.</p>
+              <p>You can't scale what isn't legally sound. We handle the paperwork so you can focus on the vision.</p>
               <Link to="/contact" className="theme-btn mt-3 d-inline-block">Get My Business Registered <i className="iconoir-arrow-up-right"></i></Link>
             </div>
             <div className="col-12 col-md-7">
@@ -238,7 +238,7 @@ export default function Services() {
               <span className="expert-badge expert-badge-dark"><i className="las la-check-circle"></i> Executed by Semester Tech Certified Experts</span>
               <h5 className="section-subtitle">CATEGORY 3</h5>
               <h1 className="section-title">Identity That Commands Respect.</h1>
-              <p style={{ color: 'var(--text-secondary)' }}>Your brand is the first conversation you have with your customer. We make sure it's a powerful one.</p>
+              <p>Your brand is the first conversation you have with your customer. We make sure it's a powerful one.</p>
               <Link to="/contact" className="theme-btn mt-3 d-inline-block">View Design Packages <i className="iconoir-arrow-up-right"></i></Link>
             </div>
             <div className="col-12 col-md-7">
@@ -361,7 +361,7 @@ export default function Services() {
           <div className="text-center mb-5">
             <h5 className="section-subtitle">OUR TECH STACK</h5>
             <h1 className="section-title">Powered by Industry-Leading Tech.</h1>
-            <p style={{ color: 'var(--text-secondary)', maxWidth: 560, margin: '12px auto 0' }}>We don't just use tools; we master them. Our experts work with a modern, scalable stack to ensure your product never goes obsolete.</p>
+            <p style={{ maxWidth: 560, margin: '12px auto 0' }}>We don't just use tools; we master them. Our experts work with a modern, scalable stack to ensure your product never goes obsolete.</p>
           </div>
           <div className="row g-4">
             {[
