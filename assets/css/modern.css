@@ -647,7 +647,7 @@ a:hover { color: var(--accent); }
     font-family: var(--font_mono);
     font-size: 11px;
     letter-spacing: 4px;
-    color: rgba(var(--accent-rgb),0.12) !important;
+    color: rgba(var(--accent-rgb),0.45) !important;
     text-transform: uppercase;
 }
 
@@ -669,7 +669,8 @@ a:hover { color: var(--accent); }
 }
 
 .tri-cta-card:hover h4,
-.tri-cta-card:hover .cta-sub { color: #fff !important; }
+.tri-cta-card:hover .cta-sub,
+.tri-cta-card:hover .cta-label { color: #fff !important; }
 
 .tri-cta-card .cta-label {
     font-family: var(--font_mono); font-size: 10px; text-transform: uppercase;
@@ -925,7 +926,7 @@ a:hover { color: var(--accent); }
     font-size: 13px; font-weight: 700; font-family: var(--font_mono);
 }
 
-.step-arrow { color: var(--accent) !important; font-size: 18px; opacity: 0.6; }
+.step-arrow { color: var(--accent) !important; font-size: 18px; opacity: 0.8; font-weight: 700; }
 
 
 
@@ -1038,11 +1039,14 @@ a:hover { color: var(--accent); }
 .swiper-button-prev, .swiper-button-next {
     width: 44px; height: 44px; border-radius: 50%;
     background: var(--bg-card) !important; border: 1px solid var(--border-default);
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-body) !important;
 }
 
 .swiper-button-prev:hover, .swiper-button-next:hover {
     background: var(--accent) !important; border-color: var(--accent);
+    color: #fff !important;
 }
 
 /* ═══════════════════════════════════════════
@@ -1072,6 +1076,23 @@ a:hover { color: var(--accent); }
     background: rgba(var(--accent-rgb),0.06) !important;
     border-radius: var(--radius_md); padding: 20px 24px;
     border: 1px solid rgba(var(--accent-rgb),0.12);
+}
+
+[data-theme="light"] .quiz-option {
+    border-color: rgba(0,0,0,0.15) !important;
+    background: #fff !important;
+    color: #1B1C1E !important;
+}
+
+[data-theme="light"] .quiz-option:hover,
+[data-theme="light"] .quiz-option.active {
+    border-color: var(--accent) !important;
+    background: var(--accent) !important;
+    color: #fff !important;
+}
+
+[data-theme="light"] .quiz-question {
+    color: #1B1C1E !important;
 }
 
 .faq-item {
@@ -2520,18 +2541,19 @@ html { scroll-behavior: smooth; }
 /* Light mode — FAQ section refinement */
 [data-theme="light"] .faq-item {
     background: #fff !important;
-    border-color: rgba(0,0,0,0.06) !important;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    border-color: rgba(0,0,0,0.1) !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    border-radius: var(--radius_md);
 }
 
 [data-theme="light"] .faq-item:hover {
-    border-color: rgba(var(--accent-rgb),0.12) !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-color: rgba(var(--accent-rgb),0.2) !important;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
 }
 
 [data-theme="light"] .faq-item.open {
-    border-color: rgba(var(--accent-rgb),0.18) !important;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-color: rgba(var(--accent-rgb),0.3) !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
 
 [data-theme="light"] .faq-question span {
