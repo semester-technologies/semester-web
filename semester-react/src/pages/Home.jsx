@@ -159,8 +159,8 @@ export default function Home() {
     setQuizResult(messages[type])
   }
 
-  const prevTestimonial = () => setTestimonialIndex((i) => (i === 0 ? testimonials.length - 1 : i - 1))
-  const nextTestimonial = () => setTestimonialIndex((i) => (i === testimonials.length - 1 ? 0 : i + 1))
+  const prevTestimonial = () => setTestimonialIndex((i) => (i === 0 ? testimonials.length - 2 : i - 2))
+  const nextTestimonial = () => setTestimonialIndex((i) => (i + 2 >= testimonials.length ? 0 : i + 2))
 
   const activePath = courseCareerPaths[activeTab]
 
@@ -607,26 +607,30 @@ export default function Home() {
           </div>
         </div>
         <div className="testimonial-slider-wrap">
-          <div className="testimonial-slider">
-            <div className="testimonial-item p-2 p-lg-3">
-              <div className="testimonial-item-body">
-                <img className="animation-slide-right bg-shape" src={bgShape3} alt="Shape" />
-                <p>{testimonials[testimonialIndex].text}</p>
-                <div className="author-box d-flex align-items-center">
-                  <img src={testimonial1} alt="Testimonial" />
-                  <div className="author-box-content">
-                    <h4>{testimonials[testimonialIndex].author}</h4>
-                    <p>{testimonials[testimonialIndex].role}</p>
+          <div className="testimonial-slider testimonial-grid">
+            {[testimonialIndex, (testimonialIndex + 1) % testimonials.length].map((idx, i) => (
+              <div className="testimonial-item" key={i}>
+                <div className="testimonial-item-body">
+                  <img className="animation-slide-right bg-shape" src={bgShape3} alt="Shape" />
+                  <p>{testimonials[idx].text}</p>
+                  <div className="author-box d-flex align-items-center">
+                    <img src={testimonial1} alt="Testimonial" />
+                    <div className="author-box-content">
+                      <h4>{testimonials[idx].author}</h4>
+                      <p>{testimonials[idx].role}</p>
+                    </div>
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+          <div className="testimonial-nav">
+            <div className="swiper-button-prev" onClick={prevTestimonial}>
+              <i className="iconoir-arrow-left"></i>
             </div>
-          </div>
-          <div className="swiper-button-prev" onClick={prevTestimonial}>
-            <i className="iconoir-arrow-left"></i>
-          </div>
-          <div className="swiper-button-next" onClick={nextTestimonial}>
-            <i className="iconoir-arrow-right"></i>
+            <div className="swiper-button-next" onClick={nextTestimonial}>
+              <i className="iconoir-arrow-right"></i>
+            </div>
           </div>
         </div>
       </section>

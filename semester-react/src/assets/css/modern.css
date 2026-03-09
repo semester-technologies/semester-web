@@ -1077,6 +1077,12 @@ a:hover { color: var(--accent); }
     visibility: visible !important;
 }
 
+/* Hide orphan connector on the last card in the last row (Digital Marketing) */
+.how-we-do-area .how-we-do-right-content .how-we-do-items:last-child .how-we-do-card:last-child .line-shape,
+.how-we-do-area .how-we-do-right-content .how-we-do-items:last-child .how-we-do-card:last-child .circle-shape {
+    display: none !important;
+}
+
 /* SVG connector overlay for process flow */
 .process-connectors-svg {
     position: absolute;
@@ -1245,17 +1251,43 @@ a:hover { color: var(--accent); }
     font-size: 13px; margin: 0; font-style: normal; font-family: var(--font_mono);
 }
 
+/* Testimonial grid — show 2 cards side by side */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 768px) {
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Testimonial nav arrows — centered below cards */
+.testimonial-nav {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+
 .swiper-button-prev, .swiper-button-next {
     width: 44px; height: 44px; border-radius: 50%;
     background: var(--bg-card) !important; border: 1px solid var(--border-default);
     transition: all 0.3s ease; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     color: var(--text-body) !important;
+    position: static;
 }
 
 .swiper-button-prev:hover, .swiper-button-next:hover {
     background: var(--accent) !important; border-color: var(--accent);
     color: #fff !important;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after {
+    display: none;
 }
 
 /* ═══════════════════════════════════════════
@@ -2278,10 +2310,10 @@ html { scroll-behavior: smooth; }
     --bg-header: rgba(242,243,247,0.96);
     --bg-footer: #1B1C1E;
 
-    --text-heading: #111113;
-    --text-body: #2D2D35;
-    --text-secondary: #4A4A55;
-    --text-muted: #75758A;
+    --text-heading: #0D0D0F;
+    --text-body: #242430;
+    --text-secondary: #3E3E4D;
+    --text-muted: #65657A;
     --text-on-green: #1B1C1E;
     --text-on-purple: #FFFFFF;
     --text-link: #4A3280;
@@ -2307,6 +2339,58 @@ html { scroll-behavior: smooth; }
     --gray: #D5D6DD;
 }
 
+/* Light mode — stronger text contrast across the board */
+[data-theme="light"] .section-title {
+    color: #0D0D0F !important;
+}
+
+[data-theme="light"] .hero-section-content p,
+[data-theme="light"] .hero-portfolio-body p {
+    color: #3E3E4D !important;
+}
+
+[data-theme="light"] .section-header p {
+    color: #3E3E4D !important;
+}
+
+/* Light mode — CTA cards visible text */
+[data-theme="light"] .tri-cta-card h4 {
+    color: #0D0D0F !important;
+}
+
+[data-theme="light"] .tri-cta-card .cta-sub {
+    color: #3E3E4D !important;
+}
+
+/* Light mode — feature/pillar cards text */
+[data-theme="light"] .pillar-card h3,
+[data-theme="light"] .feature2-card h3 {
+    color: #0D0D0F !important;
+}
+
+[data-theme="light"] .pillar-card p,
+[data-theme="light"] .feature2-card p {
+    color: #3E3E4D !important;
+}
+
+/* Light mode — contact info box text */
+[data-theme="light"] .contact-info-box h4 {
+    color: #0D0D0F !important;
+}
+
+[data-theme="light"] .contact-info-box p {
+    color: #3E3E4D !important;
+}
+
+/* Light mode — career box text */
+[data-theme="light"] .career-box h3 {
+    color: #0D0D0F !important;
+}
+
+[data-theme="light"] .career-box p {
+    color: #3E3E4D !important;
+}
+
 /* Light mode specific overrides for cleaner look */
 [data-theme="light"] .header-area {
     border-bottom-color: rgba(0,0,0,0.06) !important;
@@ -2328,7 +2412,7 @@ html { scroll-behavior: smooth; }
 }
 
 [data-theme="light"] .how-we-do-card .how-we-do-icon img {
-    filter: brightness(0) saturate(100%) invert(25%) sepia(60%) saturate(800%) hue-rotate(240deg) brightness(90%) !important;
+    filter: brightness(0) saturate(100%) invert(70%) sepia(30%) saturate(600%) hue-rotate(60deg) !important;
 }
 
 [data-theme="light"] .how-we-do-area .custom-container > .custom-row {
@@ -4608,14 +4692,14 @@ html { scroll-behavior: smooth; }
    CONTACT FORM — Layout Fix
    ═══════════════════════════════════════════ */
 
-/* Reduce the massive 84px gap between form columns */
+/* Moderate the gap between form columns */
 .hero-contact-form .contact-form {
-    gap: 40px !important;
+    gap: 60px !important;
 }
 
-/* Reduce input group margins */
+/* Moderate input group margins */
 .hero-contact-form .contact-form .input-row .input-group {
-    margin-bottom: 20px !important;
+    margin-bottom: 28px !important;
 }
 
 /* Make form wrap on smaller screens */
@@ -4626,24 +4710,14 @@ html { scroll-behavior: smooth; }
     }
 }
 
-/* Contact form wrap — consistent padding */
-.contact-form-wrap {
-    padding: 40px !important;
-}
-
+/* Contact form wrap — restore original padding */
 @media (max-width: 768px) {
     .contact-form-wrap {
-        padding: 28px 20px !important;
+        padding: 32px 20px !important;
     }
 }
 
-/* Fix input fields in both modes */
-.hero-contact-form .contact-form .input-row .input-group input,
-.hero-contact-form .contact-form .input-row .input-group textarea,
-.hero-contact-form .contact-form .input-row .input-group select {
-    padding: 10px 14px !important;
-    font-size: 14px !important;
-}
+/* Restore original input sizing — don't shrink inputs */
 
 /* Consistent form spacing for contact area */
 .contact-area .custom-row {
