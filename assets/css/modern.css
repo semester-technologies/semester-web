@@ -377,16 +377,16 @@ a:hover { color: var(--accent); }
 
 [data-theme="light"] .section-title em,
 [data-theme="light"] .section-title span {
-    color: var(--sem-purple) !important;
+    color: var(--accent) !important;
     font-style: normal;
 }
 
 [data-theme="light"] .section-subtitle {
-    color: var(--sem-purple) !important;
-    background: rgba(88,62,138,0.06);
+    color: var(--accent) !important;
+    background: rgba(var(--accent-rgb),0.06);
     padding: 4px 12px;
     border-radius: var(--radius_full);
-    border: 1px solid rgba(88,62,138,0.1);
+    border: 1px solid rgba(var(--accent-rgb),0.1);
 }
 
 .section-header p {
@@ -521,7 +521,7 @@ a:hover { color: var(--accent); }
 
 [data-theme="light"] .header-area .navbar-wrapper.active ul li a:hover,
 [data-theme="light"] .header-area .navbar-wrapper.active ul li a.active-nav {
-    color: var(--sem-purple) !important;
+    color: var(--accent) !important;
 }
 
 /* ═══════════════════════════════════════════
@@ -583,8 +583,8 @@ a:hover { color: var(--accent); }
 }
 
 [data-theme="light"] .hero-company-box:hover {
-    border-color: rgba(88,62,138,0.3);
-    box-shadow: 0 0 20px rgba(88,62,138,0.06);
+    border-color: rgba(var(--accent-rgb),0.3);
+    box-shadow: 0 0 20px rgba(var(--accent-rgb),0.06);
 }
 
 .hero-company-box h1 {
@@ -640,8 +640,8 @@ a:hover { color: var(--accent); }
 }
 
 .tri-cta-card:hover {
-    background: var(--sem-purple) !important;
-    border-color: var(--sem-purple);
+    background: var(--accent) !important;
+    border-color: var(--accent);
     box-shadow: var(--shadow-purple);
 }
 
@@ -705,8 +705,8 @@ a:hover { color: var(--accent); }
 }
 
 .service-card:hover {
-    border-color: rgba(88,62,138,0.3) !important;
-    box-shadow: 0 0 24px rgba(88,62,138,0.08);
+    border-color: rgba(var(--accent-rgb),0.3) !important;
+    box-shadow: 0 0 24px rgba(var(--accent-rgb),0.08);
 }
 
 .service-card img {
@@ -750,13 +750,13 @@ a:hover { color: var(--accent); }
 }
 
 .case-studio-area .case-studio .case-studio-tabs .nav-item button.active {
-    background: var(--sem-purple) !important;
+    background: var(--accent) !important;
     color: #fff !important;
 }
 
 .case-studio-area .case-studio .case-studio-tabs .nav-item button:hover:not(.active) {
-    background: rgba(88,62,138,0.08);
-    color: var(--sem-purple-light) !important;
+    background: rgba(var(--accent-rgb),0.08);
+    color: var(--accent-light) !important;
 }
 
 .case-studio-area .case-studio .case-studio-tab-content .case-studio-body .left,
@@ -851,7 +851,7 @@ a:hover { color: var(--accent); }
 
 /* Step boxes */
 .step-box {
-    background: var(--sem-purple); color: #fff !important;
+    background: var(--accent); color: var(--text-on-accent) !important;
     border-radius: var(--radius_md); padding: 10px 18px;
     font-size: 13px; font-weight: 700; font-family: var(--font_mono);
 }
@@ -920,14 +920,14 @@ a:hover { color: var(--accent); }
 }
 
 .feature2-card:hover {
-    border-color: rgba(88,62,138,0.25) !important;
-    box-shadow: 0 0 24px rgba(88,62,138,0.06);
+    border-color: rgba(var(--accent-rgb),0.25) !important;
+    box-shadow: 0 0 24px rgba(var(--accent-rgb),0.06);
 }
 
 .feature2-card .icon {
     width: 48px; height: 48px; border-radius: var(--radius_md);
-    background: rgba(88,62,138,0.1) !important;
-    border: 1px solid rgba(88,62,138,0.12);
+    background: rgba(var(--accent-rgb),0.1) !important;
+    border: 1px solid rgba(var(--accent-rgb),0.12);
     display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
 }
 
@@ -1016,12 +1016,12 @@ a:hover { color: var(--accent); }
 }
 
 .faq-item:hover {
-    border-color: rgba(88,62,138,0.15);
+    border-color: rgba(var(--accent-rgb),0.15);
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .faq-item.open {
-    border-color: rgba(88,62,138,0.2);
+    border-color: rgba(var(--accent-rgb),0.2);
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
 
@@ -1465,7 +1465,7 @@ a:hover { color: var(--accent); }
 }
 
 .career-box h2 span {
-    color: var(--sem-purple) !important;
+    color: var(--accent) !important;
 }
 
 .career-box .career-time {
@@ -2313,9 +2313,9 @@ html { scroll-behavior: smooth; }
 
 [data-theme="light"] .case-studio-body .service-card:hover {
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    border-color: rgba(88,62,138,0.15) !important;
+    border-color: rgba(var(--accent-rgb),0.15) !important;
     border-left-width: 3px !important;
-    border-left-color: var(--sem-purple) !important;
+    border-left-color: var(--accent) !important;
     transform: translateX(4px);
     background: #fff !important;
 }
@@ -2346,26 +2346,48 @@ html { scroll-behavior: smooth; }
 [data-theme="light"] .pillar-card:hover,
 [data-theme="light"] .logo-tile:hover {
     box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
-    border-color: rgba(88,62,138,0.15) !important;
+    border-color: rgba(var(--accent-rgb),0.15) !important;
 }
 
-/* ── Light mode — KILL base template white-text-on-hover ── */
-/* style.css forces color: #ffffff on service-card hover, which hides text on light cards */
+/* ── Light mode — KILL base template purple-fill hover animation ── */
+/* style.css expands a ::before purple gradient on hover + forces white text — disable it */
+[data-theme="light"] .service-card::before {
+    display: none !important;
+}
+
+[data-theme="light"] .service-card:hover {
+    transform: translateY(-4px) !important;
+    background: #fff !important;
+    border-color: rgba(var(--accent-rgb),0.2) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04) !important;
+}
+
 [data-theme="light"] .service-card:hover h3,
-[data-theme="light"] .service-card:hover h3 a,
-[data-theme="light"] .service-card:hover p {
+[data-theme="light"] .service-card:hover h3 a {
     color: var(--text-heading) !important;
+}
+
+[data-theme="light"] .service-card:hover p {
+    color: var(--text-secondary) !important;
+}
+
+[data-theme="light"] .service-card:hover img {
+    filter: brightness(0) saturate(100%) invert(25%) sepia(50%) saturate(500%) hue-rotate(230deg) !important;
 }
 
 [data-theme="light"] .case-studio-body .service-card:hover {
     background: var(--bg-surface-2) !important;
-    border-left-color: var(--sem-purple) !important;
+    border-left-color: var(--accent) !important;
 }
 
 [data-theme="light"] .case-studio-body .service-card:hover h3,
 [data-theme="light"] .case-studio-body .service-card:hover h3 a,
 [data-theme="light"] .case-studio-body .service-card:hover p {
     color: var(--text-heading) !important;
+}
+
+[data-theme="light"] .case-studio-contents.service-card::before {
+    display: none !important;
 }
 
 [data-theme="light"] .case-studio-contents.service-card:hover h3,
@@ -2383,7 +2405,7 @@ html { scroll-behavior: smooth; }
 
 /* Light mode hero — softer gradient */
 [data-theme="light"] .hero-section-content h1 em {
-    background: linear-gradient(90deg, var(--sem-purple), var(--sem-purple-light), var(--sem-purple));
+    background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -2400,8 +2422,8 @@ html { scroll-behavior: smooth; }
 
 [data-theme="light"] .hero-contact-form .contact-form .input-row .input-group input:focus,
 [data-theme="light"] .hero-contact-form .contact-form .input-row .input-group textarea:focus {
-    border-color: var(--sem-purple) !important;
-    box-shadow: 0 0 0 3px rgba(88,62,138,0.08);
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb),0.08);
 }
 
 /* Light mode — subtle purple accent on buttons */
@@ -2410,7 +2432,7 @@ html { scroll-behavior: smooth; }
 }
 
 [data-theme="light"] .theme-btn:hover {
-    box-shadow: 0 4px 16px rgba(88,62,138,0.15);
+    box-shadow: 0 4px 16px rgba(var(--accent-rgb),0.15);
 }
 
 /* Light mode — contact experience section with softer treatment */
@@ -2427,24 +2449,24 @@ html { scroll-behavior: smooth; }
 }
 
 [data-theme="light"] .faq-item:hover {
-    border-color: rgba(88,62,138,0.12) !important;
+    border-color: rgba(var(--accent-rgb),0.12) !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 [data-theme="light"] .faq-item.open {
-    border-color: rgba(88,62,138,0.18) !important;
+    border-color: rgba(var(--accent-rgb),0.18) !important;
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
 
 [data-theme="light"] .faq-question span {
-    background: rgba(88,62,138,0.06) !important;
-    border-color: rgba(88,62,138,0.1) !important;
-    color: var(--sem-purple) !important;
+    background: rgba(var(--accent-rgb),0.06) !important;
+    border-color: rgba(var(--accent-rgb),0.1) !important;
+    color: var(--accent) !important;
 }
 
 [data-theme="light"] .faq-item.open .faq-question span {
-    background: var(--sem-purple) !important;
-    color: #fff !important;
+    background: var(--accent) !important;
+    color: var(--text-on-accent) !important;
 }
 
 [data-theme="light"] .faq-answer {
@@ -2453,7 +2475,7 @@ html { scroll-behavior: smooth; }
 }
 
 [data-theme="light"] .faq-question:hover {
-    color: var(--sem-purple) !important;
+    color: var(--accent) !important;
 }
 
 /* Light mode — footer subscribe */
@@ -2482,12 +2504,12 @@ html { scroll-behavior: smooth; }
 
 /* Light mode — CTA section */
 [data-theme="light"] .cta-area .cta-body {
-    box-shadow: 0 8px 40px rgba(88,62,138,0.12);
+    box-shadow: 0 8px 40px rgba(var(--accent-rgb),0.12);
 }
 
 /* Light mode — search box */
 [data-theme="light"] .search-box {
-    border-color: var(--sem-purple);
+    border-color: var(--accent);
 }
 
 [data-theme="light"] .search-box input {
@@ -2495,8 +2517,8 @@ html { scroll-behavior: smooth; }
 }
 
 [data-theme="light"] .search-box button {
-    background: var(--sem-purple) !important;
-    color: #fff !important;
+    background: var(--accent) !important;
+    color: var(--text-on-accent) !important;
 }
 
 /* Light mode — rate results */
@@ -2507,13 +2529,13 @@ html { scroll-behavior: smooth; }
 }
 
 [data-theme="light"] .rate-result-item span:last-child {
-    color: var(--sem-purple) !important;
+    color: var(--accent) !important;
 }
 
 /* Light mode — bundle card featured */
 [data-theme="light"] .bundle-card.featured {
-    border-color: var(--sem-purple) !important;
-    background: rgba(88,62,138,0.02) !important;
+    border-color: var(--accent) !important;
+    background: rgba(var(--accent-rgb),0.02) !important;
 }
 
 
@@ -2959,7 +2981,7 @@ html { scroll-behavior: smooth; }
 }
 
 .our-team-2-card .designation {
-    color: var(--sem-purple) !important;
+    color: var(--accent) !important;
 }
 
 .our-team-2-card .social-links {
@@ -2968,7 +2990,7 @@ html { scroll-behavior: smooth; }
 }
 
 .our-team-2-card .social-links li a {
-    color: var(--sem-purple) !important;
+    color: var(--accent) !important;
 }
 
 .our-team-2-card .social-links li a:hover {
@@ -3064,7 +3086,7 @@ html { scroll-behavior: smooth; }
 
 [data-theme="light"] .our-team-2-card:hover {
     box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
-    border-color: rgba(88,62,138,0.15) !important;
+    border-color: rgba(var(--accent-rgb),0.15) !important;
 }
 
 [data-theme="light"] .our-team-2-card .social-links {
@@ -3281,11 +3303,11 @@ html { scroll-behavior: smooth; }
 
 .case-studio-tabs .nav-item .nav-link.active {
     color: #fff !important;
-    border-color: var(--sem-purple) !important;
+    border-color: var(--accent) !important;
 }
 
 .case-studio-tabs .nav-item .nav-link.active::before {
-    background: var(--sem-purple) !important;
+    background: var(--accent) !important;
 }
 
 [data-theme="light"] .case-studio-tabs .nav-item .nav-link {
@@ -3295,15 +3317,15 @@ html { scroll-behavior: smooth; }
 
 [data-theme="light"] .case-studio-tabs .nav-item .nav-link.active {
     color: #fff !important;
-    border-color: var(--sem-purple) !important;
+    border-color: var(--accent) !important;
 }
 
 [data-theme="light"] .case-studio-tabs .nav-item .nav-link:hover:not(.active) {
-    color: var(--sem-purple) !important;
+    color: var(--accent) !important;
 }
 
 .case-studio-tabs .nav-item .nav-link:hover:not(.active) {
-    border-color: var(--sem-purple) !important;
+    border-color: var(--accent) !important;
     color: var(--text-heading) !important;
 }
 
@@ -3323,7 +3345,7 @@ html { scroll-behavior: smooth; }
 
 .case-studio-body .service-card:hover {
     background: var(--bg-card-hover) !important;
-    border-left-color: var(--sem-purple) !important;
+    border-left-color: var(--accent) !important;
 }
 
 /* ── CTA STYLE 3 (Career page) ── */
