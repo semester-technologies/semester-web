@@ -1612,8 +1612,29 @@ a:hover { color: var(--accent); }
    ═══════════════════════════════════════════ */
 .contact-form-wrap {
     background: var(--bg-card) !important;
-    border-radius: var(--radius_xl); padding: 48px;
+    border-radius: var(--radius_xl);
     border: 1px solid var(--border-default) !important;
+}
+
+.contact-area .contact-form-wrap {
+    padding: 80px 64px 64px 64px;
+    flex: 1;
+    min-width: 0;
+}
+
+.contact-area .contact-experience {
+    flex: none;
+    width: 100%;
+    max-width: 360px;
+}
+
+.contact-area .contact-form-wrap .hero-contact-form .contact-form {
+    gap: 60px;
+}
+
+.contact-area .contact-form-wrap .hero-contact-form .contact-form .input-main-row {
+    flex: 1;
+    min-width: 0;
 }
 
 /* Contact form — universal (non-hero variant too) */
@@ -2389,7 +2410,8 @@ html { scroll-behavior: smooth; }
     .hero-company-box { padding: 24px 20px; }
     .hero-company-box h1 { font-size: 32px; }
     .career-body { padding: 40px 24px; }
-    .contact-form-wrap { padding: 32px 20px; }
+    .contact-area .contact-form-wrap { padding: 40px 28px; }
+    .contact-area .contact-form-wrap .hero-contact-form .contact-form { gap: 0; flex-direction: column; }
     .company-service-area .hero-service-about { padding: 40px 24px; }
     .service-area, .case-studio-area, .feature2-area, .testimonial-area { padding: 60px 0; }
     .section-title { font-size: clamp(28px, 5vw, 40px); }
