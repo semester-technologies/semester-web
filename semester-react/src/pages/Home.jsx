@@ -19,7 +19,6 @@ import hwdIcon4 from '../assets/imgs/hwd-icon-4.svg'
 import hwdIcon5 from '../assets/imgs/hwd-icon-5.svg'
 import hwdIcon6 from '../assets/imgs/hwd-icon-6.svg'
 import bgShape1 from '../assets/imgs/bg-shape-1.svg'
-import bgShape3 from '../assets/imgs/bg-shape-3.svg'
 import bgShape5 from '../assets/imgs/bg-shape-5.svg'
 import bgShape6 from '../assets/imgs/bg-shape-6.svg'
 import bgShapeFeature from '../assets/imgs/bg-shape-feature.svg'
@@ -159,8 +158,12 @@ export default function Home() {
     setQuizResult(messages[type])
   }
 
-  const prevTestimonial = () => setTestimonialIndex((i) => (i === 0 ? testimonials.length - 2 : i - 2))
-  const nextTestimonial = () => setTestimonialIndex((i) => (i + 2 >= testimonials.length ? 0 : i + 2))
+  const testimonialsPerPage = 2
+  const maxTestimonialIdx = Math.ceil(testimonials.length / testimonialsPerPage) - 1
+  const visibleTestimonials = testimonials.slice(testimonialIndex * testimonialsPerPage, testimonialIndex * testimonialsPerPage + testimonialsPerPage)
+
+  const prevTestimonial = () => setTestimonialIndex((i) => Math.max(0, i - 1))
+  const nextTestimonial = () => setTestimonialIndex((i) => Math.min(maxTestimonialIdx, i + 1))
 
   const activePath = courseCareerPaths[activeTab]
 
@@ -601,36 +604,37 @@ export default function Home() {
           <div className="section-header text-center mb-5">
             <h5 className="section-subtitle mb-2">TESTIMONIALS</h5>
             <h1 className="section-title mb-3">Trusted by Visionaries.</h1>
-            <p style={{ margin: 'auto', color: 'var(--text-secondary)', fontSize: '17px' }}>
+            <p style={{ margin: 'auto', fontSize: '17px' }}>
               Their professionalism and commitment to our success were evident throughout the entire process.
             </p>
           </div>
-        </div>
-        <div className="testimonial-slider-wrap">
-          <div className="testimonial-slider testimonial-grid">
-            {[testimonialIndex, (testimonialIndex + 1) % testimonials.length].map((idx, i) => (
-              <div className="testimonial-item" key={i}>
-                <div className="testimonial-item-body">
-                  <img className="animation-slide-right bg-shape" src={bgShape3} alt="Shape" />
-                  <p>{testimonials[idx].text}</p>
-                  <div className="author-box d-flex align-items-center">
-                    <img src={testimonial1} alt="Testimonial" />
-                    <div className="author-box-content">
-                      <h4>{testimonials[idx].author}</h4>
-                      <p>{testimonials[idx].role}</p>
+          <div className="testimonial-carousel">
+            <button className="testimonial-arrow testimonial-arrow-left" onClick={prevTestimonial} disabled={testimonialIndex === 0} aria-label="Previous testimonials">
+              <i className="las la-angle-left"></i>
+            </button>
+            <div className="testimonial-carousel-track">
+              {visibleTestimonials.map((t, i) => (
+                <div className="testimonial-card-v2" key={testimonialIndex * testimonialsPerPage + i}>
+                  <div className="testimonial-quote-icon"><i className="las la-quote-left"></i></div>
+                  <p className="testimonial-text">{t.text}</p>
+                  <div className="testimonial-author">
+                    <img src={testimonial1} alt={t.author} />
+                    <div>
+                      <h4>{t.author}</h4>
+                      <span>{t.role}</span>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <button className="testimonial-arrow testimonial-arrow-right" onClick={nextTestimonial} disabled={testimonialIndex === maxTestimonialIdx} aria-label="Next testimonials">
+              <i className="las la-angle-right"></i>
+            </button>
           </div>
-          <div className="testimonial-nav">
-            <div className="swiper-button-prev" onClick={prevTestimonial}>
-              <i className="iconoir-arrow-left"></i>
-            </div>
-            <div className="swiper-button-next" onClick={nextTestimonial}>
-              <i className="iconoir-arrow-right"></i>
-            </div>
+          <div className="testimonial-dots">
+            {Array.from({ length: maxTestimonialIdx + 1 }, (_, i) => (
+              <button key={i} className={`testimonial-dot${i === testimonialIndex ? ' active' : ''}`} onClick={() => setTestimonialIndex(i)} aria-label={`Go to testimonials ${i + 1}`} />
+            ))}
           </div>
         </div>
       </section>
