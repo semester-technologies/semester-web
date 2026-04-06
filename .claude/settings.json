@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/apple/Downloads/semester/**)",
+      "Bash(git checkout:*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}

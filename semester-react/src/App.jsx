@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import ThemeToggle from './components/ThemeToggle'
 import ScrollToTop from './components/ScrollToTop'
+import ScrollToTopButton from './components/ScrollToTopButton'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -35,6 +36,7 @@ function App() {
         <Footer />
       </main>
       <ThemeToggle />
+      <ScrollToTopButton />
     </>
   )
 }
