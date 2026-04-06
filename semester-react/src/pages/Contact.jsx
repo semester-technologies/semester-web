@@ -33,8 +33,13 @@ export default function Contact() {
               </div>
               <div className="contact-info-box simple-shadow">
                 <div className="icon"><i className="las la-map"></i></div>
-                <h4>Contact Office</h4>
-                <p>Suite C2, Nymex Plaza, Opposite ammasco filling station<br />Gado Nasco Road, NNPC Junction, Kubwa, Abuja, Nigeria.</p>
+                <h4>Lagos Office</h4>
+                <p>12, Bashiru Oweh Street, Computer Village,<br />Ikeja, Lagos, Nigeria.</p>
+              </div>
+              <div className="contact-info-box simple-shadow">
+                <div className="icon"><i className="las la-map"></i></div>
+                <h4>Abuja Office</h4>
+                <p>Suite C2, Nymex Plaza, Opposite Ammasco Filling Station,<br />Gado Nasco Road, NNPC Junction, Kubwa, Abuja, Nigeria.</p>
               </div>
             </div>
           </div>
@@ -47,20 +52,15 @@ export default function Contact() {
                 <h6><a href="mailto:sales@semestertech.ng">sales@semestertech.ng</a></h6>
               </div>
               <div className="contact-info-box simple-shadow">
+                <div className="icon"><i className="las la-share-alt"></i></div>
                 <h4>Social Media</h4>
-                <div className="d-flex flex-column align-items-start">
-                  <a href="#" className="fs-5 p-1" style={{ color: 'var(--accent)' }}>
-                    <i className="iconoir-dribbble"></i> Dribbble
-                  </a>
-                  <a href="#" className="fs-5 p-1" style={{ color: 'var(--accent)' }}>
-                    <i className="iconoir-twitter"></i> Twitter
-                  </a>
-                  <a href="#" className="fs-5 p-1" style={{ color: 'var(--accent)' }}>
-                    <i className="iconoir-instagram"></i> Instagram
-                  </a>
-                  <a href="#" className="fs-5 p-1" style={{ color: 'var(--accent)' }}>
-                    <i className="iconoir-linkedin"></i> LinkedIn
-                  </a>
+                <p>Follow us on our channels</p>
+                <div className="d-flex flex-wrap gap-3">
+                  <a href="#" className="d-flex align-items-center gap-1" style={{ color: 'var(--accent)', fontSize: '14px', fontWeight: 600 }}><i className="iconoir-tiktok" style={{ fontSize: '18px' }}></i> TikTok</a>
+                  <a href="#" className="d-flex align-items-center gap-1" style={{ color: 'var(--accent)', fontSize: '14px', fontWeight: 600 }}><i className="iconoir-facebook" style={{ fontSize: '18px' }}></i> Facebook</a>
+                  <a href="#" className="d-flex align-items-center gap-1" style={{ color: 'var(--accent)', fontSize: '14px', fontWeight: 600 }}><i className="iconoir-instagram" style={{ fontSize: '18px' }}></i> Instagram</a>
+                  <a href="#" className="d-flex align-items-center gap-1" style={{ color: 'var(--accent)', fontSize: '14px', fontWeight: 600 }}><i className="iconoir-linkedin" style={{ fontSize: '18px' }}></i> LinkedIn</a>
+                  <a href="#" className="d-flex align-items-center gap-1" style={{ color: 'var(--accent)', fontSize: '14px', fontWeight: 600 }}><i className="iconoir-youtube" style={{ fontSize: '18px' }}></i> YouTube</a>
                 </div>
               </div>
             </div>

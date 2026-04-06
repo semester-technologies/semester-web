@@ -71,8 +71,10 @@ export default function Footer() {
               </div>
             </div>
             <div className="col-12 col-sm-6 col-md-3">
-              <h2 className="text-white">Contact Office</h2>
-              <p className="text-white">Suite C2, Nymex Plaza, Opposite Ammasco Filling Station<br />Gado Nasco Road, NNPC Junction, Kubwa, Abuja, Nigeria.</p>
+              <h2 className="text-white">Lagos Office</h2>
+              <p className="text-white">12, Bashiru Oweh Street, Computer Village,<br />Ikeja, Lagos, Nigeria.</p>
+              <h2 className="text-white mt-4">Abuja Office</h2>
+              <p className="text-white">Suite C2, Nymex Plaza, Opposite Ammasco Filling Station,<br />Gado Nasco Road, NNPC Junction, Kubwa, Abuja, Nigeria.</p>
             </div>
           </div>
         </div>
@@ -82,9 +84,10 @@ export default function Footer() {
           <div className="custom-row d-flex align-items-center justify-content-between flex-wrap gap-3">
             <ul className="social-links d-flex align-items-center">
               <li><a href="#"><i className="iconoir-tiktok"></i></a></li>
-              <li><a href="#"><i className="iconoir-twitter"></i></a></li>
+              <li><a href="#"><i className="iconoir-facebook"></i></a></li>
               <li><a href="#"><i className="iconoir-instagram"></i></a></li>
               <li><a href="#"><i className="iconoir-linkedin"></i></a></li>
+              <li><a href="#"><i className="iconoir-youtube"></i></a></li>
             </ul>
             <p className="mb-0">&copy; 2026 Semester Technologies. Building the Future. All Rights Reserved.</p>
           </div>
