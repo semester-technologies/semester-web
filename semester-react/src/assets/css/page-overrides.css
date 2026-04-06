@@ -1,0 +1,129 @@
+/* Page-specific overrides — shared across pages */
+.case-studio-cat {
+  display: inline-block;
+  border-radius: 10px;
+  color: var(--primary_color);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  background: var(--primary_light2);
+  padding: 8px 21px;
+  position: absolute;
+  left: 24px;
+  top: 24px;
+}
+.case-studio-tab-content .service-card {
+  margin: 0px;
+}
+.news2-lists,
+.contact2-infos,
+.feature2-area .feature2-content-body,
+.service2-items {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 52px;
+}
+@media (max-width: 699px) {
+  .news2-lists,
+  .contact2-infos,
+  .feature2-area .feature2-content-body,
+  .service2-items {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Responsive overrides for all pages ── */
+
+/* Career page — career body layout fix */
+@media (max-width: 992px) {
+  .career-body {
+    flex-direction: column;
+  }
+
+  .career-body .career-left {
+    max-width: 100%;
+    padding-right: 0;
+  }
+
+  .career-body .career-lists {
+    padding-left: 0;
+  }
+}
+
+/* Case-studio body — stack on tablet */
+@media (max-width: 992px) {
+  .case-studio-body.d-flex {
+    flex-direction: column;
+  }
+
+  .case-studio-body .left {
+    width: 100%;
+  }
+
+  .case-studio-body .right {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Contact area custom-row — stack on mobile */
+@media (max-width: 992px) {
+  .contact-area .custom-row {
+    flex-direction: column;
+  }
+
+  .contact-area .contact-form-wrap {
+    width: 100%;
+  }
+
+  .contact-area .contact-experience {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Logo grid responsive */
+@media (max-width: 480px) {
+  .logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+/* Compare table scroll on mobile */
+@media (max-width: 576px) {
+  .compare-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Portfolio filter tags responsive */
+@media (max-width: 576px) {
+  .filter-tag {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+
+/* Service section header stack on tablet */
+@media (max-width: 992px) {
+  .service-section-header.section-header.d-flex {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 16px;
+  }
+}
+
+/* Our team 2 header stack on mobile */
+@media (max-width: 768px) {
+  .our-team-2-header.d-flex {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

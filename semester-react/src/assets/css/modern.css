@@ -107,44 +107,49 @@
     --text-on-accent: var(--text-on-purple);
     --shadow-accent: 0 4px 25px rgba(var(--accent-rgb),0.1);
 
-    --bg-body: #F8F9FC;
-    --bg-surface: #FFFFFF;
-    --bg-surface-2: #F3F4F8;
-    --bg-surface-3: #ECEDF2;
+    /* Surfaces — slightly warm gray for visual depth */
+    --bg-body: #F2F3F7;
+    --bg-surface: #EAEBF0;
+    --bg-surface-2: #E2E3E9;
+    --bg-surface-3: #D5D6DD;
     --bg-elevated: #FFFFFF;
     --bg-card: #FFFFFF;
-    --bg-card-hover: #F8F9FC;
+    --bg-card-hover: #F2F3F7;
     --bg-input: #FFFFFF;
-    --bg-header: rgba(255,255,255,0.92);
+    --bg-header: rgba(242,243,247,0.96);
     --bg-footer: #1B1C1E;
 
-    --text-heading: #1B1C1E;
-    --text-body: #3A3A42;
-    --text-secondary: #6B6B76;
-    --text-muted: #9999A5;
+    /* Text — strong contrast for readability */
+    --text-heading: #0D0D0F;
+    --text-body: #242430;
+    --text-secondary: #3E3E4D;
+    --text-muted: #65657A;
     --text-on-green: #1B1C1E;
     --text-on-purple: #FFFFFF;
-    --text-link: #583E8A;
+    --text-link: #4A3280;
 
-    --border-default: rgba(0,0,0,0.08);
-    --border-light: rgba(0,0,0,0.06);
-    --border-strong: rgba(0,0,0,0.12);
+    /* Borders — subtle separation */
+    --border-default: rgba(0,0,0,0.10);
+    --border-light: rgba(0,0,0,0.07);
+    --border-strong: rgba(0,0,0,0.15);
 
+    /* Shadows */
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-    --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
-    --shadow-xl: 0 20px 60px rgba(0,0,0,0.12);
-    --shadow-green: 0 4px 25px rgba(133,199,82,0.12);
-    --shadow-purple: 0 4px 25px rgba(88,62,138,0.1);
+    --shadow-md: 0 4px 14px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+    --shadow-xl: 0 16px 50px rgba(0,0,0,0.12);
+    --shadow-green: 0 4px 20px rgba(133,199,82,0.12);
+    --shadow-purple: 0 4px 20px rgba(88,62,138,0.10);
 
     --dot-color: rgba(0,0,0,0.03);
 
-    --heading_color: #1B1C1E;
-    --text_color: #3A3A42;
-    --light_white: #F8F9FC;
+    /* Template var mappings */
+    --heading_color: #0D0D0F;
+    --text_color: #242430;
+    --light_white: #F2F3F7;
     --dark1: #1B1C1E;
-    --dark2: #F3F4F8;
-    --gray: #ECEDF2;
+    --dark2: #E2E3E9;
+    --gray: #D5D6DD;
 }
 
 /* ═══════════════════════════════════════════
@@ -491,60 +496,269 @@ a:hover { color: var(--accent); }
 }
 
 /* ═══════════════════════════════════════════
-   HEADER
+   HEADER — Complete Redesign (Semester Custom)
    ═══════════════════════════════════════════ */
-.header-area {
+
+/* Kill all old header styles — we override everything */
+.header-area.sem-header {
     background: var(--bg-header) !important;
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--border-default) !important;
     padding: 0;
-    position: sticky;
-    top: 0;
+    position: relative;  /* NOT sticky on mobile */
     z-index: 1024;
     transition: background 0.4s ease;
 }
 
-.header-area .custom-container { padding-top: 0; padding-bottom: 0; }
-.header-area .logo img { max-width: 140px; display: block; }
-.header-area .header-left { gap: 48px; }
-.header-area .navbar-wrapper > ul { gap: 32px; }
-.header-area .navbar-wrapper > ul > li { line-height: 72px; }
+/* Sticky only on desktop */
+@media (min-width: 993px) {
+    .header-area.sem-header {
+        position: sticky;
+        top: 0;
+    }
+}
 
-.header-area .navbar-wrapper ul li a {
+.sem-header .custom-container { padding-top: 0; padding-bottom: 0; }
+
+.sem-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    gap: 24px;
+}
+
+/* Logo */
+.sem-logo img {
+    max-width: 130px;
+    display: block;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .sem-logo img {
+        max-width: 100px;
+    }
+}
+
+/* Desktop nav */
+.sem-nav-desktop ul {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sem-nav-desktop ul li a {
     color: var(--text-secondary) !important;
     font-size: 14px;
     font-weight: 600;
     font-family: var(--font_brand);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.25s ease;
+    white-space: nowrap;
 }
 
-.header-area .navbar-wrapper ul li a::after { display: none; }
+.sem-nav-desktop ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 50%;
+    width: 0; height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease, left 0.3s ease;
+    border-radius: 2px;
+}
 
-.header-area .navbar-wrapper ul li a:hover,
-.header-area .navbar-wrapper ul li a.active-nav {
+.sem-nav-desktop ul li a:hover,
+.sem-nav-desktop ul li a.active {
     color: var(--accent) !important;
 }
 
-.header-area .header-contact-info { gap: 24px; }
-.header-area .header-contact-info .phone-number { display: none; }
-.header-area .header-contact-info .theme-btn { padding: 10px 24px; font-size: 13px; }
-.header-area .navbar-wrapper.active { background: var(--bg-surface) !important; }
-.header-area .navbar-wrapper .close-menu-bar i,
-.header-area .menu-bar i { color: var(--text-heading) !important; }
-
-/* Light mode — mobile nav sidebar */
-[data-theme="light"] .header-area .navbar-wrapper.active {
-    background: #fff !important;
-    box-shadow: -4px 0 24px rgba(0,0,0,0.1);
+.sem-nav-desktop ul li a:hover::before,
+.sem-nav-desktop ul li a.active::before {
+    width: 100%; left: 0;
 }
 
-[data-theme="light"] .header-area .navbar-wrapper.active ul li a {
+/* Hide desktop nav on mobile */
+@media (max-width: 992px) {
+    .sem-nav-desktop {
+        display: none;
+    }
+}
+
+/* Header actions (contact btn + hamburger) */
+.sem-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sem-contact-btn {
+    padding: 9px 20px !important;
+    font-size: 13px !important;
+}
+
+@media (max-width: 768px) {
+    .sem-contact-btn {
+        padding: 7px 14px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* Hide contact btn on very small screens */
+@media (max-width: 480px) {
+    .sem-contact-btn {
+        display: none !important;
+    }
+}
+
+/* Hamburger — only on mobile */
+.sem-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius_md);
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.25s ease;
+}
+
+.sem-hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--text-heading);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.sem-hamburger:hover {
+    border-color: var(--accent);
+}
+
+.sem-hamburger:hover span {
+    background: var(--accent);
+}
+
+@media (max-width: 992px) {
+    .sem-hamburger {
+        display: flex;
+    }
+}
+
+/* ── Mobile Nav — Dropdown below header ── */
+.sem-mobile-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1023;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-default);
+    box-shadow: var(--shadow-lg);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease;
+    opacity: 0;
+}
+
+@media (max-width: 992px) {
+    .sem-mobile-nav {
+        display: block;
+    }
+}
+
+.sem-mobile-nav.open {
+    max-height: 500px;
+    opacity: 1;
+}
+
+[data-theme="light"] .sem-mobile-nav {
+    background: #fff;
+    border-bottom-color: rgba(0,0,0,0.06);
+}
+
+.sem-mobile-nav nav {
+    padding: 16px 24px 24px;
+}
+
+.sem-mobile-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.sem-mobile-nav ul li a {
+    display: block;
+    padding: 12px 0;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font_brand);
+    color: var(--text-body) !important;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-default);
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.sem-mobile-nav ul li:last-child a {
+    border-bottom: none;
+}
+
+.sem-mobile-nav ul li a:hover,
+.sem-mobile-nav ul li a.active {
+    color: var(--accent) !important;
+    padding-left: 8px;
+}
+
+[data-theme="light"] .sem-mobile-nav ul li a {
     color: #1B1C1E !important;
+    border-bottom-color: rgba(0,0,0,0.06);
 }
 
-[data-theme="light"] .header-area .navbar-wrapper.active ul li a:hover,
-[data-theme="light"] .header-area .navbar-wrapper.active ul li a.active-nav {
+[data-theme="light"] .sem-mobile-nav ul li a:hover,
+[data-theme="light"] .sem-mobile-nav ul li a.active {
     color: var(--accent) !important;
+}
+
+.sem-mobile-cta {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    width: 100%;
+}
+
+/* Overlay */
+.sem-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 1022;
+}
+
+/* ── Kill ALL old template header stuff we don't need ── */
+.sem-header .header-left,
+.sem-header .header-left-right,
+.sem-header .header-right,
+.sem-header .navbar-wrapper,
+.sem-header .header-contact-info,
+.sem-header .menu-bar,
+.sem-header .close-menu-bar {
+    display: none !important;
 }
 
 /* ═══════════════════════════════════════════
@@ -868,6 +1082,12 @@ a:hover { color: var(--accent); }
     visibility: visible !important;
 }
 
+/* Hide orphan connector on the last card in the last row (Digital Marketing) */
+.how-we-do-area .how-we-do-right-content .how-we-do-items:last-child .how-we-do-card:last-child .line-shape,
+.how-we-do-area .how-we-do-right-content .how-we-do-items:last-child .how-we-do-card:last-child .circle-shape {
+    display: none !important;
+}
+
 /* SVG connector overlay for process flow */
 .process-connectors-svg {
     position: absolute;
@@ -881,7 +1101,7 @@ a:hover { color: var(--accent); }
 }
 
 .process-connectors-svg line {
-    stroke: rgba(133, 199, 82, 0.35);
+    stroke: rgba(var(--accent-rgb), 0.35);
     stroke-width: 1.5;
     stroke-dasharray: 6 4;
 }
@@ -895,9 +1115,9 @@ a:hover { color: var(--accent); }
     to { stroke-dashoffset: -200; }
 }
 
-/* Green dot at each connection point */
+/* Dot at each connection point */
 .process-connectors-svg circle {
-    fill: rgba(133, 199, 82, 0.5);
+    fill: rgba(var(--accent-rgb), 0.5);
 }
 
 /* Hide on mobile */
@@ -965,9 +1185,18 @@ a:hover { color: var(--accent); }
    PARTNERS
    ═══════════════════════════════════════════ */
 .partners-section { background: var(--sem-purple) !important; padding: 100px 0; }
-.partners-section .section-subtitle { color: var(--accent-light) !important; }
+.partners-section .section-subtitle { color: rgba(255,255,255,0.7) !important; }
 .partners-section .section-title { color: #fff !important; }
 .partners-section p { color: rgba(255,255,255,0.75) !important; }
+
+/* Partners — button & link visibility on purple bg */
+.partners-section .theme-btn {
+    background: var(--sem-green) !important;
+    color: #1B1C1E !important;
+}
+.partners-section .theme-btn:hover {
+    background: var(--sem-green-dark) !important;
+}
 
 /* ═══════════════════════════════════════════
    ICON CIRCLE / FEATURE2
@@ -1001,7 +1230,14 @@ a:hover { color: var(--accent); }
     display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
 }
 
-.feature2-card .icon img { height: 24px; }
+.feature2-card .icon img {
+    height: 24px;
+    filter: brightness(0) saturate(100%) invert(69%) sepia(52%) saturate(405%) hue-rotate(55deg) brightness(96%) contrast(87%);
+}
+
+[data-theme="light"] .feature2-card .icon img {
+    filter: brightness(0) saturate(100%) invert(25%) sepia(50%) saturate(500%) hue-rotate(230deg);
+}
 
 /* ═══════════════════════════════════════════
    TESTIMONIALS
@@ -1036,17 +1272,238 @@ a:hover { color: var(--accent); }
     font-size: 13px; margin: 0; font-style: normal; font-family: var(--font_mono);
 }
 
+/* Testimonial grid — show 2 cards side by side */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 768px) {
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Testimonial Carousel v2 ── */
+.testimonial-carousel {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.testimonial-carousel-track {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    flex: 1;
+    min-width: 0;
+}
+
+/* ── Card v2 — single flat card ── */
+.testimonial-card-v2 {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius_xl);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.testimonial-card-v2:hover {
+    box-shadow: var(--shadow-md);
+    border-color: rgba(var(--accent-rgb), 0.2);
+}
+
+.testimonial-quote-icon {
+    font-size: 28px;
+    color: var(--accent);
+    margin-bottom: 16px;
+    line-height: 1;
+}
+
+.testimonial-card-v2 .testimonial-text {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-secondary) !important;
+    font-style: italic;
+    margin-bottom: 24px;
+    flex: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+}
+
+.testimonial-author img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+}
+
+.testimonial-author h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 2px;
+    color: var(--text-heading) !important;
+}
+
+.testimonial-author span {
+    font-size: 13px;
+    color: var(--text-muted) !important;
+    font-family: var(--font_mono);
+}
+
+/* Light mode card */
+[data-theme="light"] .testimonial-card-v2 {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.08);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+[data-theme="light"] .testimonial-card-v2:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-color: rgba(var(--accent-rgb), 0.2);
+}
+
+[data-theme="light"] .testimonial-card-v2 .testimonial-text {
+    color: #444 !important;
+}
+
+[data-theme="light"] .testimonial-author h4 {
+    color: #1B1C1E !important;
+}
+
+[data-theme="light"] .testimonial-author span {
+    color: #777 !important;
+}
+
+/* ── Arrow buttons ── */
+.testimonial-arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-default);
+    color: var(--text-body) !important;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.testimonial-arrow:hover:not(:disabled) {
+    background: var(--accent) !important;
+    border-color: var(--accent);
+    color: #fff !important;
+}
+
+.testimonial-arrow:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+}
+
+[data-theme="light"] .testimonial-arrow {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.12);
+    color: #1B1C1E !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+[data-theme="light"] .testimonial-arrow:hover:not(:disabled) {
+    background: var(--accent) !important;
+    border-color: var(--accent);
+    color: #fff !important;
+}
+
+/* ── Dots ── */
+.testimonial-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 32px;
+}
+
+.testimonial-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: var(--border-default);
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.testimonial-dot.active {
+    background: var(--accent);
+    transform: scale(1.3);
+}
+
+[data-theme="light"] .testimonial-dot {
+    background: #d0d0d0;
+}
+
+[data-theme="light"] .testimonial-dot.active {
+    background: var(--accent);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .testimonial-carousel-track {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-carousel {
+        gap: 12px;
+    }
+
+    .testimonial-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .testimonial-card-v2 {
+        padding: 28px 24px;
+    }
+}
+
+/* Testimonial nav arrows — centered below cards (legacy) */
+.testimonial-nav {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+
 .swiper-button-prev, .swiper-button-next {
     width: 44px; height: 44px; border-radius: 50%;
     background: var(--bg-card) !important; border: 1px solid var(--border-default);
     transition: all 0.3s ease; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     color: var(--text-body) !important;
+    position: static;
 }
 
 .swiper-button-prev:hover, .swiper-button-next:hover {
     background: var(--accent) !important; border-color: var(--accent);
     color: #fff !important;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after {
+    display: none;
 }
 
 /* ═══════════════════════════════════════════
@@ -1155,8 +1612,29 @@ a:hover { color: var(--accent); }
    ═══════════════════════════════════════════ */
 .contact-form-wrap {
     background: var(--bg-card) !important;
-    border-radius: var(--radius_xl); padding: 48px;
+    border-radius: var(--radius_xl);
     border: 1px solid var(--border-default) !important;
+}
+
+.contact-area .contact-form-wrap {
+    padding: 80px 64px 64px 64px;
+    flex: 1;
+    min-width: 0;
+}
+
+.contact-area .contact-experience {
+    flex: none;
+    width: 100%;
+    max-width: 360px;
+}
+
+.contact-area .contact-form-wrap .hero-contact-form .contact-form {
+    gap: 60px;
+}
+
+.contact-area .contact-form-wrap .hero-contact-form .contact-form .input-main-row {
+    flex: 1;
+    min-width: 0;
 }
 
 /* Contact form — universal (non-hero variant too) */
@@ -1932,7 +2410,8 @@ html { scroll-behavior: smooth; }
     .hero-company-box { padding: 24px 20px; }
     .hero-company-box h1 { font-size: 32px; }
     .career-body { padding: 40px 24px; }
-    .contact-form-wrap { padding: 32px 20px; }
+    .contact-area .contact-form-wrap { padding: 40px 28px; }
+    .contact-area .contact-form-wrap .hero-contact-form .contact-form { gap: 0; flex-direction: column; }
     .company-service-area .hero-service-about { padding: 40px 24px; }
     .service-area, .case-studio-area, .feature2-area, .testimonial-area { padding: 60px 0; }
     .section-title { font-size: clamp(28px, 5vw, 40px); }
@@ -1985,7 +2464,7 @@ html { scroll-behavior: smooth; }
 }
 
 .how-we-do-card .how-we-do-content p {
-    color: var(--text-secondary) !important;
+    color: #AAAAAA !important;
     margin: 0;
 }
 
@@ -2056,47 +2535,23 @@ html { scroll-behavior: smooth; }
     margin-bottom: 14px !important;
 }
 
-/* ── Light Mode — Refined (less shiny, more muted) ── */
-[data-theme="light"] {
-    --bg-body: #F5F6FA;
-    --bg-surface: #EFF0F5;
-    --bg-surface-2: #E8E9EF;
-    --bg-surface-3: #DDDEE5;
-    --bg-elevated: #FFFFFF;
-    --bg-card: #FFFFFF;
-    --bg-card-hover: #F5F6FA;
-    --bg-input: #F5F6FA;
-    --bg-header: rgba(245,246,250,0.95);
-    --bg-footer: #1B1C1E;
+/* (Light mode tokens consolidated into primary block above) */
 
-    --text-heading: #1B1C1E;
-    --text-body: #3E3E46;
-    --text-secondary: #62626E;
-    --text-muted: #8E8E9A;
-    --text-on-green: #1B1C1E;
-    --text-on-purple: #FFFFFF;
-    --text-link: #583E8A;
-
-    --border-default: rgba(0,0,0,0.07);
-    --border-light: rgba(0,0,0,0.05);
-    --border-strong: rgba(0,0,0,0.1);
-
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
-    --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
-    --shadow-xl: 0 16px 50px rgba(0,0,0,0.1);
-    --shadow-green: 0 4px 20px rgba(133,199,82,0.1);
-    --shadow-purple: 0 4px 20px rgba(88,62,138,0.08);
-
-    --dot-color: rgba(0,0,0,0.025);
-
-    --heading_color: #1B1C1E;
-    --text_color: #3E3E46;
-    --light_white: #F5F6FA;
-    --dark1: #1B1C1E;
-    --dark2: #E8E9EF;
-    --gray: #DDDEE5;
-}
+/* Light mode — reinforced text contrast for elements that might inherit weak template colors */
+[data-theme="light"] .section-title { color: var(--text-heading) !important; }
+[data-theme="light"] .hero-section-content p,
+[data-theme="light"] .hero-portfolio-body p { color: var(--text-secondary) !important; }
+[data-theme="light"] .section-header p { color: var(--text-secondary) !important; }
+[data-theme="light"] .tri-cta-card h4 { color: var(--text-heading) !important; }
+[data-theme="light"] .tri-cta-card .cta-sub { color: var(--text-secondary) !important; }
+[data-theme="light"] .pillar-card h3,
+[data-theme="light"] .feature2-card h3 { color: var(--text-heading) !important; }
+[data-theme="light"] .pillar-card p,
+[data-theme="light"] .feature2-card p { color: var(--text-secondary) !important; }
+[data-theme="light"] .contact-info-box h4 { color: var(--text-heading) !important; }
+[data-theme="light"] .contact-info-box p { color: var(--text-secondary) !important; }
+[data-theme="light"] .career-box h3 { color: var(--text-heading) !important; }
+[data-theme="light"] .career-box p { color: var(--text-secondary) !important; }
 
 /* Light mode specific overrides for cleaner look */
 [data-theme="light"] .header-area {
@@ -2119,7 +2574,7 @@ html { scroll-behavior: smooth; }
 }
 
 [data-theme="light"] .how-we-do-card .how-we-do-icon img {
-    filter: brightness(0) saturate(100%) invert(25%) sepia(60%) saturate(800%) hue-rotate(240deg) brightness(90%) !important;
+    filter: brightness(0) saturate(100%) invert(70%) sepia(30%) saturate(600%) hue-rotate(60deg) !important;
 }
 
 [data-theme="light"] .how-we-do-area .custom-container > .custom-row {
@@ -2140,7 +2595,7 @@ html { scroll-behavior: smooth; }
 }
 
 [data-theme="light"] .how-we-do-card .how-we-do-content p {
-    color: #999 !important;
+    color: #B0B0B0 !important;
 }
 
 /* Light mode — process flow connectors on dark bg */
@@ -2169,13 +2624,17 @@ html { scroll-behavior: smooth; }
     background: #1B1C1E !important;
 }
 
+[data-theme="light"] .featured-projects-area .section-title { color: #fff !important; }
+[data-theme="light"] .featured-projects-area .section-subtitle { color: rgba(255,255,255,0.7) !important; }
+[data-theme="light"] .featured-projects-area > .custom-container > .text-center > p { color: #B0B0B0 !important; }
+
 [data-theme="light"] .project-card {
     background: #232428 !important;
     border-color: rgba(255,255,255,0.08) !important;
 }
 
 [data-theme="light"] .project-card h3 { color: #fff !important; }
-[data-theme="light"] .project-card p { color: #999 !important; }
+[data-theme="light"] .project-card p { color: #B0B0B0 !important; }
 
 [data-theme="light"] .partners-section { background: var(--sem-purple) !important; }
 
@@ -2191,14 +2650,14 @@ html { scroll-behavior: smooth; }
 }
 [data-theme="light"] .footer-area .subscribe-box input::placeholder { color: rgba(255,255,255,0.4) !important; }
 [data-theme="light"] .footer-links h3 { color: #fff !important; }
-[data-theme="light"] .footer-links ul li a { color: #888 !important; }
+[data-theme="light"] .footer-links ul li a { color: #AAAAAA !important; }
 [data-theme="light"] .footer-area p { color: rgba(255,255,255,0.7) !important; }
 [data-theme="light"] .footer-area h2, [data-theme="light"] .footer-area h3 { color: #fff !important; }
 [data-theme="light"] .footer-area a:not(.theme-btn) { color: rgba(255,255,255,0.7) !important; }
 [data-theme="light"] .footer-area a:not(.theme-btn):hover { color: var(--accent) !important; }
 [data-theme="light"] .footer-area .social-links li a i { color: rgba(255,255,255,0.7) !important; }
 [data-theme="light"] .footer-area .social-links li a:hover i { color: var(--accent) !important; }
-[data-theme="light"] .copyright-area p { color: #666 !important; }
+[data-theme="light"] .copyright-area p { color: #999 !important; }
 
 /* Light mode — keep dark sections dark */
 /* Reset subtitle pill style inside dark sections */
@@ -2222,15 +2681,16 @@ html { scroll-behavior: smooth; }
 [data-theme="light"] .svc-category-dark .section-title { color: #fff !important; }
 
 [data-theme="light"] .svc-category-dark { background: #1B1C1E !important; }
+[data-theme="light"] .svc-category-dark p { color: #B0B0B0 !important; }
 [data-theme="light"] .svc-category-dark .svc-item h5 { color: #fff !important; }
-[data-theme="light"] .svc-category-dark .svc-item p { color: #999 !important; }
-[data-theme="light"] .svc-category-dark .expert-badge-dark { color: #999 !important; }
+[data-theme="light"] .svc-category-dark .expert-badge-dark { color: #B0B0B0 !important; }
 
 [data-theme="light"] .tech-stack-area { background: #1B1C1E !important; }
 [data-theme="light"] .tech-stack-area .section-title { color: #fff !important; }
+[data-theme="light"] .tech-stack-area > .custom-container > .text-center > p { color: #B0B0B0 !important; }
 [data-theme="light"] .tech-card { background: #232428 !important; border-color: rgba(255,255,255,0.08) !important; }
-[data-theme="light"] .tech-card h4 { color: #fff !important; }
-[data-theme="light"] .tech-card p, [data-theme="light"] .tech-card li { color: #999 !important; }
+[data-theme="light"] .tech-card h4, [data-theme="light"] .tech-card h5 { color: #fff !important; }
+[data-theme="light"] .tech-card p, [data-theme="light"] .tech-card li { color: #B0B0B0 !important; }
 
 [data-theme="light"] .manifesto-area { background: #1B1C1E !important; }
 [data-theme="light"] .manifesto-area .section-title { color: #fff !important; }
@@ -2238,14 +2698,19 @@ html { scroll-behavior: smooth; }
 
 [data-theme="light"] .architecture-area { background: #1B1C1E !important; }
 [data-theme="light"] .architecture-area .section-title { color: #fff !important; }
+[data-theme="light"] .architecture-area > .custom-container > .text-center > p { color: #B0B0B0 !important; }
 [data-theme="light"] .arch-card { background: #232428 !important; border-color: rgba(255,255,255,0.08) !important; }
+[data-theme="light"] .arch-card h4 { color: var(--accent) !important; }
 [data-theme="light"] .arch-card h3 { color: #fff !important; }
-[data-theme="light"] .arch-card p { color: #999 !important; }
+[data-theme="light"] .arch-card p { color: #B0B0B0 !important; }
+[data-theme="light"] .arch-card .arch-icon { color: #fff !important; }
 
 [data-theme="light"] .numbers-area { background: #1B1C1E !important; }
 [data-theme="light"] .numbers-area .section-title { color: #fff !important; }
 [data-theme="light"] .stat-card { background: #232428 !important; border-color: rgba(255,255,255,0.08) !important; }
-[data-theme="light"] .stat-card p { color: #999 !important; }
+[data-theme="light"] .stat-card .stat-num { color: #fff !important; }
+[data-theme="light"] .stat-card h3 { color: #fff !important; }
+[data-theme="light"] .stat-card p { color: #B0B0B0 !important; }
 
 /* Light mode scrollbar */
 [data-theme="light"] ::-webkit-scrollbar-track { background: var(--bg-body); }
@@ -2938,7 +3403,7 @@ html { scroll-behavior: smooth; }
 }
 
 [data-theme="light"] .service-black-area .section-header p {
-    color: #aaa !important;
+    color: #B0B0B0 !important;
 }
 
 [data-theme="light"] .service-black-area .service-card {
@@ -2952,7 +3417,7 @@ html { scroll-behavior: smooth; }
 }
 
 [data-theme="light"] .service-black-area .service-card p {
-    color: #999 !important;
+    color: #B0B0B0 !important;
 }
 
 /* Light mode — career tabs inside service-black-area */
@@ -3043,6 +3508,13 @@ html { scroll-behavior: smooth; }
 /* Light mode — final CTA */
 [data-theme="light"] .final-cta {
     background: var(--sem-purple) !important;
+}
+[data-theme="light"] .final-cta .theme-btn {
+    background: var(--sem-green) !important;
+    color: #1B1C1E !important;
+}
+[data-theme="light"] .final-cta .theme-btn:hover {
+    background: var(--sem-green-dark) !important;
 }
 
 /* ═══════════════════════════════════════════
@@ -3932,5 +4404,601 @@ html { scroll-behavior: smooth; }
 
 [data-theme="light"] .our-team-3-area .our-team-2-card .social-links li a {
     color: var(--accent) !important;
+}
+
+/* ═══════════════════════════════════════════
+   COMPREHENSIVE DARK/LIGHT + RESPONSIVE FIXES
+   ═══════════════════════════════════════════ */
+
+/* Old mobile navbar sidebar overrides removed — using new sem-header system */
+
+/* ── Fix: Contact page — info box stacking on mobile ── */
+.contact-inner-info-box {
+    gap: 24px;
+}
+
+.contact-inner-info-box .contact-info-box {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+    .contact-inner-info-box .contact-info-box {
+        width: 100%;
+    }
+}
+
+/* ── Fix: Login/Register — form responsive width ── */
+.contact-area.bg-dark .contact-form-wrap {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .contact-area.bg-dark .contact-form-wrap {
+        padding: 32px 20px;
+    }
+
+    .contact-area.bg-dark .custom-row {
+        flex-direction: column;
+    }
+}
+
+/* ── Fix: Footer subscribe input — always visible on dark bg ── */
+.footer-area .subscribe-box input {
+    background: rgba(255,255,255,0.06) !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    color: #fff !important;
+    border-radius: var(--radius_md);
+    width: 100%;
+}
+
+.footer-area .subscribe-box input::placeholder {
+    color: rgba(255,255,255,0.4) !important;
+}
+
+/* ── Fix: Footer responsive — column stacking ── */
+@media (max-width: 768px) {
+    .footer-top .row {
+        gap: 24px;
+    }
+
+    .footer-area .copyright-area .custom-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .footer-area .social-links {
+        justify-content: center;
+    }
+}
+
+/* ── Fix: Career page — career-box always dark surface ── */
+.career-box {
+    background: var(--bg-surface) !important;
+}
+
+[data-theme="light"] .career-box {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+}
+
+[data-theme="light"] .career-box h2 {
+    color: #1B1C1E !important;
+}
+
+[data-theme="light"] .career-box p {
+    color: #555 !important;
+}
+
+[data-theme="light"] .career-box .career-time span {
+    color: #666 !important;
+}
+
+/* ── Fix: Career page bg-dark sections in light mode ── */
+[data-theme="light"] .case-studio-area.bg-dark {
+    background: #1B1C1E !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .section-title {
+    color: #fff !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .section-subtitle {
+    color: var(--accent) !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .career-box {
+    background: #232428 !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .career-box h2 {
+    color: #fff !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .career-box p {
+    color: #999 !important;
+}
+
+[data-theme="light"] .case-studio-area.bg-dark .career-box .career-time span {
+    color: #888 !important;
+}
+
+/* ── Fix: Contact area bg-dark in light mode ── */
+[data-theme="light"] .contact-area.bg-dark {
+    background: #1B1C1E !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .contact-form-wrap {
+    background: #232428 !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .contact-form-wrap h1,
+[data-theme="light"] .contact-area.bg-dark .contact-form-wrap h5,
+[data-theme="light"] .contact-area.bg-dark .contact-form-wrap label {
+    color: #fff !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .contact-form-wrap input,
+[data-theme="light"] .contact-area.bg-dark .contact-form-wrap textarea,
+[data-theme="light"] .contact-area.bg-dark .contact-form-wrap select {
+    background: #1B1C1E !important;
+    border-color: rgba(255,255,255,0.1) !important;
+    color: #fff !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .contact-form-wrap input::placeholder,
+[data-theme="light"] .contact-area.bg-dark .contact-form-wrap textarea::placeholder {
+    color: rgba(255,255,255,0.4) !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .contact-experience {
+    background: #232428 !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .contact-experience h1 {
+    color: #fff !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .contact-experience p {
+    color: #999 !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .contact-experience h1 span {
+    color: var(--accent) !important;
+}
+
+/* ── Fix: Light mode — service-black-area always dark (duplicate consolidated) ── */
+
+/* ── Fix: Portfolio page — responsive grid ── */
+@media (max-width: 576px) {
+    .stat-card {
+        padding: 20px 16px;
+    }
+
+    .case-card-header {
+        padding: 20px 20px 16px;
+    }
+
+    .case-card-body {
+        padding: 16px 20px;
+    }
+}
+
+/* ── Fix: Services page search box responsive ── */
+@media (max-width: 576px) {
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box input {
+        border-radius: var(--radius_lg) var(--radius_lg) 0 0 !important;
+    }
+
+    .search-box button {
+        border-radius: 0 0 var(--radius_lg) var(--radius_lg) !important;
+    }
+}
+
+/* ── Fix: Hero section responsive padding ── */
+@media (max-width: 768px) {
+    .hero-section-wrap .hero-section-content-wrap {
+        padding-top: 100px !important;
+        padding-bottom: 60px !important;
+    }
+
+    .hero-home2.hero-section-wrap .hero-section-content-wrap {
+        padding-top: 100px !important;
+    }
+}
+
+/* ── Fix: Section header responsive — stack on mobile ── */
+@media (max-width: 768px) {
+    .service-section-header.d-flex {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 16px;
+    }
+
+    .section-header.d-flex {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 16px;
+    }
+}
+
+/* ── Fix: CTA area responsive ── */
+@media (max-width: 768px) {
+    .cta-area .cta-body {
+        padding: 48px 24px;
+    }
+
+    .final-cta {
+        padding: 60px 0;
+    }
+}
+
+/* ── Fix: Light mode — bg-light-soft override ── */
+[data-theme="light"] .bg-light-soft {
+    background: var(--bg-surface-2) !important;
+}
+
+/* ── Fix: Light mode — case-studio-tabs ── */
+[data-theme="light"] .case-studio-area .case-studio .case-studio-tabs {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .case-studio-area .case-studio .case-studio-tabs .nav-item button {
+    color: #555 !important;
+}
+
+[data-theme="light"] .case-studio-area .case-studio .case-studio-tabs .nav-item button.active {
+    background: var(--accent) !important;
+    color: #fff !important;
+}
+
+/* ── Fix: Light mode — contact info boxes ── */
+[data-theme="light"] .contact-info-box {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.06) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* ── Fix: Light mode — quiz box ── */
+[data-theme="light"] .quiz-box {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.08) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+/* ── Fix: Responsive — various text overflow ── */
+@media (max-width: 576px) {
+    .section-title br {
+        display: none;
+    }
+
+    .hero-section-content h1 br {
+        display: none;
+    }
+
+    .authority-metrics {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .tri-cta-card {
+        padding: 20px;
+    }
+}
+
+/* ── Fix: Responsive bundles ── */
+@media (max-width: 768px) {
+    .bundle-card {
+        padding: 24px 20px;
+    }
+
+    .career-body {
+        padding: 32px 20px !important;
+    }
+}
+
+/* ── Fix: Services-list always uses grid (not flex) ── */
+.services-list {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 1199px) {
+    .services-list {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .services-list {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-list {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ── Fix: Light mode — hero company boxes ── */
+[data-theme="light"] .hero-company-box {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+[data-theme="light"] .hero-company-box h1 {
+    color: var(--accent) !important;
+}
+
+[data-theme="light"] .hero-company-box h3 {
+    color: #1B1C1E !important;
+}
+
+[data-theme="light"] .hero-company-box p {
+    color: #666 !important;
+}
+
+/* ── Fix: Light mode — authority bar ── */
+[data-theme="light"] .authority-bar {
+    background: #fff !important;
+    border-bottom-color: rgba(0,0,0,0.06) !important;
+}
+
+/* ── Fix: Light mode — client area ── */
+[data-theme="light"] .client-area {
+    background: var(--bg-body) !important;
+    border-bottom-color: rgba(0,0,0,0.06) !important;
+}
+
+/* ── Fix: Testimonial area responsive ── */
+@media (max-width: 768px) {
+    .testimonial-area .testimonial-slider-wrap {
+        padding: 0 16px;
+    }
+
+    .testimonial-item-body {
+        padding: 24px;
+    }
+}
+
+/* ── Fix: Light mode — contact form wrap (non-dark sections) ── */
+[data-theme="light"] .contact-form-wrap {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.06) !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+/* ── Fix: Light mode — form inputs outside dark sections ── */
+[data-theme="light"] .contact-form .input-row .input-group input,
+[data-theme="light"] .contact-form .input-row .input-group textarea,
+[data-theme="light"] .contact-form .input-row .input-group select {
+    background: #F8F9FC !important;
+    border-color: rgba(0,0,0,0.08) !important;
+    color: #1B1C1E !important;
+}
+
+[data-theme="light"] .contact-form .input-row .input-group input::placeholder,
+[data-theme="light"] .contact-form .input-row .input-group textarea::placeholder {
+    color: #999 !important;
+}
+
+/* ── Fix: Our team 2 area cards in light mode ── */
+[data-theme="light"] .our-team-2-area .our-team-2-card {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.06) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+[data-theme="light"] .our-team-2-area .our-team-2-card h2 {
+    color: #1B1C1E !important;
+}
+
+[data-theme="light"] .our-team-2-area .our-team-2-card .designation {
+    color: var(--accent) !important;
+}
+
+/* ── Fix: Light mode — bg-dark helper always stays dark ── */
+[data-theme="light"] .bg-dark {
+    background: #1B1C1E !important;
+}
+
+[data-theme="light"] .bg-dark .section-title {
+    color: #fff !important;
+}
+
+[data-theme="light"] .bg-dark .section-subtitle {
+    color: var(--accent) !important;
+}
+
+/* ── Fix: Responsive — company service area ── */
+@media (max-width: 768px) {
+    .company-service-area .hero-service-about {
+        padding: 32px 20px;
+    }
+
+    .about-service3-area .custom-row,
+    .about-service4-inner {
+        flex-direction: column;
+        gap: 32px !important;
+    }
+}
+
+/* ── Fix: Light mode — our-team-2-header ── */
+[data-theme="light"] .our-team-2-header {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.06) !important;
+}
+
+/* ═══════════════════════════════════════════
+   CONTACT FORM — Layout Fix
+   ═══════════════════════════════════════════ */
+
+/* Moderate the gap between form columns */
+.hero-contact-form .contact-form {
+    gap: 60px !important;
+}
+
+/* Moderate input group margins */
+.hero-contact-form .contact-form .input-row .input-group {
+    margin-bottom: 28px !important;
+}
+
+/* Make form wrap on smaller screens */
+@media (max-width: 992px) {
+    .hero-contact-form .contact-form {
+        flex-direction: column !important;
+        gap: 0 !important;
+    }
+}
+
+/* Contact form wrap — restore original padding */
+@media (max-width: 768px) {
+    .contact-form-wrap {
+        padding: 32px 20px !important;
+    }
+}
+
+/* Restore original input sizing — don't shrink inputs */
+
+/* Consistent form spacing for contact area */
+.contact-area .custom-row {
+    gap: 32px;
+}
+
+/* Light mode — contact form in dark section should stay dark */
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group input,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group textarea,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group select {
+    background: #1B1C1E !important;
+    border-color: rgba(255,255,255,0.1) !important;
+    color: #fff !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group input::placeholder,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group textarea::placeholder {
+    color: rgba(255,255,255,0.35) !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .input-group label {
+    color: #fff !important;
+}
+
+/* Light mode — radio/checkbox labels in dark section */
+[data-theme="light"] .contact-area.bg-dark .choice-a-company .radio-box label {
+    color: #aaa !important;
+    border-color: rgba(255,255,255,0.1) !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .choice-a-company .radio-box input:checked ~ label {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-color: var(--accent) !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .feedback-checkboxes .feedback-item label {
+    color: #aaa !important;
+}
+
+/* Light mode — section title inside dark sections */
+[data-theme="light"] .contact-area.bg-dark .section-title,
+[data-theme="light"] .contact-area.bg-dark h1 {
+    color: #fff !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark .section-subtitle {
+    color: var(--accent) !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark p {
+    color: #aaa !important;
+}
+
+[data-theme="light"] .contact-area.bg-dark p a {
+    color: var(--accent) !important;
+}
+
+/* ═══════════════════════════════════════════
+   LIGHT MODE — Stronger Contrast Polish
+   ═══════════════════════════════════════════ */
+
+/* Card borders more visible */
+[data-theme="light"] .service-card,
+[data-theme="light"] .feature2-card,
+[data-theme="light"] .bundle-card,
+[data-theme="light"] .pillar-card,
+[data-theme="light"] .case-card,
+[data-theme="light"] .contact-info-box,
+[data-theme="light"] .simple-shadow {
+    border-color: rgba(0,0,0,0.10) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* How-we-do area label text more visible in light mode */
+[data-theme="light"] .how-we-do-card .how-we-do-content h4 {
+    color: var(--sem-green) !important;
+}
+
+/* Light mode hero subtitle pill cleaner */
+[data-theme="light"] .section-subtitle {
+    background: rgba(88,62,138,0.08) !important;
+    border: 1px solid rgba(88,62,138,0.12) !important;
+    color: var(--sem-purple) !important;
+}
+
+/* Manifesto area stays dark in light mode */
+[data-theme="light"] .manifesto-area p {
+    color: #ddd !important;
+}
+/* Story area is LIGHT bg in light mode — use dark text */
+[data-theme="light"] .story-area .story-text p {
+    color: #3E3E4D !important;
+}
+[data-theme="light"] .story-area .story-loop {
+    background: #fff !important;
+}
+[data-theme="light"] .story-area .story-loop p {
+    color: #242430 !important;
+}
+
+/* Light mode input borders */
+[data-theme="light"] .hero-contact-form .contact-form .input-row .input-group input,
+[data-theme="light"] .hero-contact-form .contact-form .input-row .input-group textarea,
+[data-theme="light"] .hero-contact-form .contact-form .input-row .input-group select {
+    border-color: rgba(0,0,0,0.12) !important;
+}
+
+/* Light mode — How-we-do section (stays dark) text enhancement */
+[data-theme="light"] .how-we-do-area .how-we-do-left-content .top p {
+    color: #ccc !important;
+}
+
+/* Light mode — about-service3 always readable */
+[data-theme="light"] .about-service3-area {
+    background: #fff !important;
+}
+
+[data-theme="light"] .about-service3-area h1 {
+    color: #111 !important;
+}
+
+[data-theme="light"] .about-service3-area p {
+    color: #444 !important;
+}
+
+[data-theme="light"] .about-service3-area ul li {
+    color: #333 !important;
 }
 
