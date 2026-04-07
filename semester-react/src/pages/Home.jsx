@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import ContactForm from '../components/ContactForm'
 import ClientMarquee from '../components/ClientMarquee'
+import SEO, { organizationSchema, faqSchema } from '../components/SEO'
 
 import serviceIcon1 from '../assets/imgs/service-icon-1.svg'
 import serviceIcon2 from '../assets/imgs/service-icon-2.svg'
@@ -107,10 +108,18 @@ const testimonials = [
 ]
 
 const faqItems = [
+  // Client FAQs
   { q: 'Do you offer installment payments for large projects?', a: 'Yes. Our Service Agreement outlines a milestone-based payment structure. You pay as we deliver, ensuring trust and transparency.' },
   { q: 'Can I hire you just for design, or do I need the full package?', a: 'Our 200+ services are modular. You can hire us for a Logo Design (50k) today and Web Development next year. We scale with you.' },
   { q: 'How do you handle legal registrations?', a: 'We have a dedicated Legal Team that handles Name Research, CAC Registration, and TIN generation directly, ensuring your business is compliant from Day 1.' },
-  { q: 'Is the Academy physical or virtual?', a: 'We offer both. Our Instructor-Led Classes provide physical collaboration, while our virtual mentorship allows for global access.' },
+  { q: 'What payment methods do you accept?', a: 'We accept bank transfers, Paystack, Flutterwave, and international wire transfers. All payments are documented in your Service Agreement.' },
+  { q: 'Do you sign NDAs before discussing my project?', a: 'Absolutely. We take confidentiality seriously. We can sign an NDA before the Intake Call (Step 2) if required.' },
+  // Student FAQs
+  { q: 'Is the Academy physical or virtual?', a: 'We offer both. Our Instructor-Led Classes provide physical collaboration at our Lagos and Abuja offices, while our virtual mentorship allows for global access.' },
+  { q: 'What is the class size?', a: 'We keep cohorts small — typically 15-20 students per class — to ensure personalized attention from mentors.' },
+  { q: 'Do you offer job placement after training?', a: 'Yes. Top performers are absorbed into our Agency team or connected to our network of hiring partners. Our alumni have a 92% employment rate within 3 months.' },
+  { q: 'Can I pay course fees in installments?', a: 'Yes. We offer flexible payment plans — typically 50% upfront and 50% at the midpoint of your course.' },
+  { q: 'Do I get a certificate after completing a course?', a: 'Yes. All graduates receive a Semester Tech Professional Certificate and a portfolio of real projects built during the program.' },
 ]
 
 const featureCards = [
@@ -167,8 +176,20 @@ export default function Home() {
 
   const activePath = courseCareerPaths[activeTab]
 
+  const combinedSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [organizationSchema, faqSchema(faqItems)],
+  }
+
   return (
     <>
+      <SEO
+        title="Tech Training & Software Agency in Nigeria"
+        description="Semester Tech is Nigeria's premier tech training academy and software agency. 200+ services, 120+ trained experts. Learn tech, build software, scale your business. Lagos & Abuja."
+        path="/"
+        schema={combinedSchema}
+      />
+
       {/* Hero */}
       <section className="hero-section-wrap hero-home2 py-0">
         <div className="hero-section-content-wrap">
@@ -183,7 +204,7 @@ export default function Home() {
               </p>
               <div className="row g-3 justify-content-center mt-3">
                 <div className="col-12 col-sm-6 col-md-4">
-                  <Link to="/services" className="tri-cta-card h-100">
+                  <Link to="/academy" className="tri-cta-card h-100">
                     <div className="cta-label">For Students</div>
                     <h4>Launch Your Career</h4>
                     <div className="cta-sub">Start Learning →</div>
@@ -415,8 +436,16 @@ export default function Home() {
           <p className="fw-semibold mb-3" style={{ color: 'var(--text-heading)', fontSize: '15px' }}>
             Key Courses: Frontend Engineering &nbsp;&bull;&nbsp; Product Design (UI/UX) &nbsp;&bull;&nbsp; Data Analysis &nbsp;&bull;&nbsp; Digital Marketing
           </p>
-          <div className="btns-group">
-            <Link to="/services" className="theme-btn">Explore Courses</Link>
+          {/* Urgency Banner */}
+          <div className="urgency-banner">
+            <div className="urgency-content">
+              <span className="urgency-badge">Next Cohort</span>
+              <strong>May 12, 2026</strong> — Limited to 20 students per class.
+              <Link to="/register" className="urgency-link">Secure Your Spot →</Link>
+            </div>
+          </div>
+          <div className="btns-group mt-3">
+            <Link to="/academy" className="theme-btn">Explore Courses</Link>
             <Link to="/login" className="theme-btn2">Student Portal Login <i className="iconoir-arrow-up-right"></i></Link>
           </div>
         </div>
@@ -692,6 +721,71 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Cross-Sell: Academy ↔ Agency */}
+      <section className="cross-sell-area">
+        <div className="custom-container">
+          <div className="row g-4">
+            <div className="col-12 col-md-6">
+              <div className="cross-sell-card">
+                <span className="cross-sell-badge">For Academy Alumni</span>
+                <h3>Trained With Us? Join Our Talent Pool.</h3>
+                <p>Top graduates get priority access to paid Agency projects. Turn your skills into income while building your portfolio.</p>
+                <Link to="/contact?service=talent-pool" className="theme-btn btn-sm">Apply to Talent Pool <i className="iconoir-arrow-up-right"></i></Link>
+              </div>
+            </div>
+            <div className="col-12 col-md-6">
+              <div className="cross-sell-card">
+                <span className="cross-sell-badge">For Agency Clients</span>
+                <h3>Need Your Team Upskilled?</h3>
+                <p>We offer corporate training packages tailored to your team's stack. Same quality as our Academy, delivered at your office or virtually.</p>
+                <Link to="/contact?service=training" className="theme-btn btn-sm">Request Corporate Training <i className="iconoir-arrow-up-right"></i></Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Lead Magnet */}
+      <section className="lead-magnet-section">
+        <div className="custom-container">
+          <div className="lead-magnet-box">
+            <div className="lead-magnet-content">
+              <h3>Free: 30-Minute Strategy Session</h3>
+              <p>Not sure where to start? Book a free consultation with our team. We will help you identify the right service, course, or partnership model for your goals.</p>
+            </div>
+            <Link to="/contact?service=free-consultation" className="theme-btn">Book Free Consultation <i className="iconoir-arrow-up-right"></i></Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Referral Program */}
+      <section className="referral-area">
+        <div className="custom-container text-center">
+          <h5 className="section-subtitle">REFERRAL PROGRAM</h5>
+          <h1 className="section-title">Earn While You Share.</h1>
+          <p style={{ maxWidth: '600px', margin: '12px auto 0', color: 'var(--text-secondary)', fontSize: '17px', lineHeight: 1.7 }}>
+            Know someone who needs our services or wants to learn tech? Refer them and earn rewards.
+          </p>
+          <div className="row g-4 mt-4 justify-content-center">
+            <div className="col-12 col-sm-6 col-md-4">
+              <div className="referral-card">
+                <div className="referral-icon">&#127891;</div>
+                <h4>Refer a Student</h4>
+                <p>Get <strong>₦10,000 off</strong> your next course for every student you refer who enrolls.</p>
+              </div>
+            </div>
+            <div className="col-12 col-sm-6 col-md-4">
+              <div className="referral-card">
+                <div className="referral-icon">&#128188;</div>
+                <h4>Refer a Client</h4>
+                <p>Earn <strong>5% commission</strong> on any project from a client you refer to our Agency.</p>
+              </div>
+            </div>
+          </div>
+          <Link to="/contact?service=referral" className="theme-btn mt-4">Join Referral Program <i className="iconoir-arrow-up-right"></i></Link>
+        </div>
+      </section>
+
       {/* Contact */}
       <section className="contact-area bg-dark">
         <div className="custom-container">
@@ -718,7 +812,8 @@ export default function Home() {
             <h1 className="section-title">Frequently Asked Questions</h1>
           </div>
           <div className="mx-auto" style={{ maxWidth: '720px' }}>
-            {faqItems.map((item, i) => (
+            <h6 className="faq-segment-label">For Clients</h6>
+            {faqItems.slice(0, 5).map((item, i) => (
               <div className={`faq-item${openFaq === i ? ' open' : ''}`} key={i}>
                 <div className="faq-question" onClick={() => toggleFaq(i)}>
                   {item.q}
@@ -729,6 +824,21 @@ export default function Home() {
                 </div>
               </div>
             ))}
+            <h6 className="faq-segment-label" style={{ marginTop: '32px' }}>For Students</h6>
+            {faqItems.slice(5).map((item, i) => {
+              const idx = i + 5
+              return (
+                <div className={`faq-item${openFaq === idx ? ' open' : ''}`} key={idx}>
+                  <div className="faq-question" onClick={() => toggleFaq(idx)}>
+                    {item.q}
+                    <span>{openFaq === idx ? '−' : '+'}</span>
+                  </div>
+                  <div className="faq-answer">
+                    {item.a}
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>

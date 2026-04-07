@@ -3,7 +3,11 @@
     "allow": [
       "Read(//Users/apple/Downloads/semester/**)",
       "Bash(git checkout:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(npx vite:*)",
+      "WebFetch(domain:localhost)",
+      "WebFetch(domain:semestertech.ng)"
     ]
   }
 }

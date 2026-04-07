@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ContactForm from '../components/ContactForm'
+import SEO, { courseSchema } from '../components/SEO'
 import bgShape1 from '../assets/imgs/bg-shape-1.svg'
 import bgShape11 from '../assets/imgs/bg-shape-11.svg'
 import bgShapeMentors from '../assets/imgs/bg-shape-mentors.svg'
@@ -210,6 +211,13 @@ export default function Career() {
 
   return (
     <>
+      <SEO
+        title="Academy — Tech Training Courses in Lagos & Abuja"
+        description="Learn in-demand tech skills at Semester Tech Academy. 30+ courses in Web Development, Data Science, Cybersecurity, Robotics & more. Starting from ₦50,000. Next cohort starts May 12, 2026."
+        path="/academy"
+        schema={courseSchema('Semester Tech Academy', 'Comprehensive tech training courses in Nigeria', '100000', 'P6W')}
+      />
+
       {/* Hero */}
       <section className="hero-service-wrap hero-section-wrap hero-career-wrap">
         <div className="hero-section-content-wrap">
@@ -217,10 +225,10 @@ export default function Career() {
           <div className="custom-container">
             <div className="hero-portfolio-body">
               <div className="hero-section-content text-center">
-                <h5 className="section-subtitle">Career</h5>
-                <h1 className="section-title fade-in">You have great <em>opportunities</em></h1>
-                <p>If you are a talented and ambitious individual looking to make a mark in your career, we invite you to explore our career opportunities.</p>
-                <Link to="/contact" className="theme-btn">Enroll now</Link>
+                <h5 className="section-subtitle">Academy</h5>
+                <h1 className="section-title fade-in">Launch Your Tech <em>Career</em></h1>
+                <p>30+ courses, 8 mentors, hands-on projects. Join 120+ graduates who are now leading the industry. Classes in Lagos, Abuja, and online.</p>
+                <Link to="/register" className="theme-btn">Enroll Now</Link>
               </div>
             </div>
           </div>

@@ -127,3 +127,5 @@
     gap: 20px;
   }
 }
+
+/* Bootstrap .input-group fix is in bootstrap-fix.css (loaded right after bootstrap) */

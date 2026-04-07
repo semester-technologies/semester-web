@@ -1,0 +1,203 @@
+/*
+  .sem-field — Drop-in replacement for .input-group inside contact forms.
+  Avoids Bootstrap's .input-group { display: flex } collision entirely.
+  Copies all rules from style.css / modern.css that targeted .input-group.
+*/
+
+/* === From style.css === */
+.contact-form .input-row .sem-field {
+  margin-bottom: 25px;
+}
+.contact-form .input-row .sem-field label {
+  display: block;
+  color: var(--dark1);
+  opacity: 0.9;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 400;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.contact-form .input-row .sem-field textarea::placeholder,
+.contact-form .input-row .sem-field input::placeholder {
+  color: rgb(28 28 28 / 55%);
+}
+.contact-form .input-row .sem-field textarea,
+.contact-form .input-row .sem-field input {
+  width: 100%;
+  border: 1px solid rgb(16 24 40 / 20%);
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 7px 15px;
+  display: block;
+}
+.contact-form .input-row .sem-field textarea {
+  resize: none;
+  height: 130px;
+}
+
+/* === From style.css hero-contact-form variant === */
+.hero-contact-form .contact-form .input-row .sem-field {
+  margin-bottom: 35px;
+}
+.hero-contact-form .contact-form .input-row .sem-field textarea {
+  height: 213px;
+}
+.hero-contact-form .contact-form .input-row .sem-field .choice-a-company {
+  gap: 10px;
+  width: 100%;
+}
+.hero-contact-form .contact-form .input-row .sem-field .choice-a-company .radio-box {
+  position: relative;
+}
+.hero-contact-form .contact-form .input-row .sem-field .choice-a-company .radio-box label {
+  font-size: 16px;
+  color: rgb(28 28 28 / 55%);
+  margin: 0;
+  border: 1px solid rgb(28 28 28 / 20%);
+  border-radius: 5px;
+  padding: 8px 15px;
+  transition: .3s;
+  cursor: pointer;
+}
+.hero-contact-form .contact-form .input-row .sem-field .choice-a-company .radio-box input:checked ~ label {
+  background: var(--primary_color);
+  color: #ffffff;
+  border-color: var(--primary_color);
+}
+.hero-contact-form .contact-form .input-row .sem-field .choice-a-company .radio-box input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.hero-contact-form .contact-form .input-row .sem-field .feedback-checkboxes {
+  column-gap: 30px;
+  row-gap: 16px;
+}
+.hero-contact-form .contact-form .input-row .sem-field .feedback-checkboxes .feedback-item {
+  position: relative;
+}
+.hero-contact-form .contact-form .input-row .sem-field .feedback-checkboxes .feedback-item label {
+  color: rgb(28 28 28 / 80%);
+  font-size: 16px;
+  margin: 0;
+  line-height: 1;
+  font-weight: 300;
+  cursor: pointer;
+}
+.hero-contact-form .contact-form .input-row .sem-field .feedback-checkboxes .feedback-item input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* === From modern.css — dark/light theme overrides === */
+.contact-form .input-row .sem-field label {
+  color: var(--text-heading) !important;
+}
+.contact-form .input-row .sem-field input,
+.contact-form .input-row .sem-field textarea,
+.contact-form .input-row .sem-field select {
+  background: var(--bg-input) !important;
+  border: 1px solid var(--border-light) !important;
+  color: var(--text-body) !important;
+}
+.contact-form .input-row .sem-field input::placeholder,
+.contact-form .input-row .sem-field textarea::placeholder {
+  color: var(--text-muted) !important;
+}
+.contact-form .input-row .sem-field .choice-a-company .radio-box label {
+  color: var(--text-secondary) !important;
+  border-color: var(--border-light) !important;
+  background: transparent !important;
+}
+.contact-form .input-row .sem-field .choice-a-company .radio-box input:checked ~ label {
+  background: var(--accent) !important;
+  color: #1B1C1E !important;
+  border-color: var(--accent) !important;
+}
+.contact-form .input-row .sem-field .feedback-checkboxes .feedback-item label {
+  color: var(--text-secondary) !important;
+}
+.contact-form .input-row .sem-field .feedback-checkboxes .feedback-item input {
+  border-color: var(--border-light) !important;
+}
+
+/* hero-contact-form input styling */
+.hero-contact-form .contact-form .input-row .sem-field label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-heading) !important;
+  margin-bottom: 6px;
+  font-family: var(--font_brand);
+}
+.hero-contact-form .contact-form .input-row .sem-field input,
+.hero-contact-form .contact-form .input-row .sem-field textarea,
+.hero-contact-form .contact-form .input-row .sem-field select {
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--radius_md);
+  padding: 12px 16px;
+  font-size: 15px;
+  color: var(--text-body) !important;
+  background: var(--bg-input) !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  font-family: var(--font_brand);
+}
+.hero-contact-form .contact-form .input-row .sem-field input:focus,
+.hero-contact-form .contact-form .input-row .sem-field textarea:focus,
+.hero-contact-form .contact-form .input-row .sem-field select:focus {
+  border-color: var(--sem-green) !important;
+  box-shadow: 0 0 0 3px rgba(133,199,82,0.08);
+  outline: none;
+}
+.hero-contact-form .contact-form .input-row .sem-field input::placeholder,
+.hero-contact-form .contact-form .input-row .sem-field textarea::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* hero-contact-form radio/checkbox theming */
+.hero-contact-form .contact-form .input-row .sem-field .choice-a-company .radio-box label,
+.hero-contact-form .contact-form .input-row .sem-field .feedback-checkboxes .feedback-item label {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius_md);
+  padding: 8px 16px;
+  font-size: 14px;
+  color: var(--text-secondary) !important;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.hero-contact-form .contact-form .input-row .sem-field .choice-a-company .radio-box input:checked + label,
+.hero-contact-form .contact-form .input-row .sem-field .feedback-checkboxes .feedback-item input:checked + label {
+  background: var(--accent) !important;
+  color: #1B1C1E !important;
+  border-color: var(--accent) !important;
+}
+
+/* Light mode overrides for dark contact area */
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .sem-field input,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .sem-field textarea,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .sem-field select {
+  background: #1B1C1E !important;
+  border-color: rgba(255,255,255,0.1) !important;
+  color: #fff !important;
+}
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .sem-field input::placeholder,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .sem-field textarea::placeholder {
+  color: rgba(255,255,255,0.35) !important;
+}
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .sem-field label {
+  color: #fff !important;
+}
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .sem-field .choice-a-company .radio-box label,
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .sem-field .feedback-checkboxes .feedback-item label {
+  color: rgba(255,255,255,0.6) !important;
+  border-color: rgba(255,255,255,0.15) !important;
+}
+[data-theme="light"] .contact-area.bg-dark .hero-contact-form .contact-form .input-row .sem-field .choice-a-company .radio-box input:checked ~ label {
+  background: var(--accent) !important;
+  color: #fff !important;
+}

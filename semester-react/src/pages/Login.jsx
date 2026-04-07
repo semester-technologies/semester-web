@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' })
@@ -13,6 +14,8 @@ export default function Login() {
   }
 
   return (
+    <>
+    <SEO title="Student Login" description="Access your Semester Tech Academy student portal. Track your courses, projects, and progress." path="/login" />
     <section className="contact-area bg-dark" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
       <div className="custom-container">
         <div className="custom-row">
@@ -50,5 +53,6 @@ export default function Login() {
         </div>
       </div>
     </section>
+    </>
   )
 }

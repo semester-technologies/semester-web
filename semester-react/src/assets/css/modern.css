@@ -871,15 +871,16 @@ a:hover { color: var(--accent); }
     border-radius: var(--radius_lg);
     padding: 24px;
     text-align: center;
-    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
     text-decoration: none;
     display: block;
 }
 
 .tri-cta-card:hover {
-    background: var(--accent) !important;
-    border-color: var(--accent);
-    box-shadow: var(--shadow-purple);
+    background: var(--sem-purple) !important;
+    border-color: var(--sem-purple-light);
+    box-shadow: 0 8px 32px rgba(88, 62, 138, 0.35);
+    transform: translateY(-3px);
 }
 
 .tri-cta-card:hover h4,
@@ -888,11 +889,11 @@ a:hover { color: var(--accent); }
 
 .tri-cta-card .cta-label {
     font-family: var(--font_mono); font-size: 10px; text-transform: uppercase;
-    letter-spacing: 2px; color: var(--accent) !important; margin-bottom: 8px; font-weight: 600;
+    letter-spacing: 2px; color: var(--sem-green) !important; margin-bottom: 8px; font-weight: 600;
 }
 
-.tri-cta-card h4 { font-size: 17px; font-weight: 700; margin: 0 0 6px; }
-.tri-cta-card .cta-sub { font-size: 13px; font-weight: 500; }
+.tri-cta-card h4 { font-size: 17px; font-weight: 700; margin: 0 0 6px; color: #fff !important; }
+.tri-cta-card .cta-sub { font-size: 13px; font-weight: 500; color: var(--sem-green) !important; }
 
 /* ═══════════════════════════════════════════
    CLIENT LOGOS
@@ -1618,7 +1619,7 @@ a:hover { color: var(--accent); }
 }
 
 .contact-area .contact-form-wrap {
-    padding: 80px 64px 64px 64px;
+    padding: 40px 36px !important;
     flex: 1;
     min-width: 0;
 }
@@ -1626,11 +1627,11 @@ a:hover { color: var(--accent); }
 .contact-area .contact-experience {
     flex: none;
     width: 100%;
-    max-width: 360px;
+    max-width: 320px;
 }
 
 .contact-area .contact-form-wrap .hero-contact-form .contact-form {
-    gap: 60px;
+    gap: 40px;
 }
 
 .contact-area .contact-form-wrap .hero-contact-form .contact-form .input-main-row {
@@ -2552,7 +2553,11 @@ html { scroll-behavior: smooth; }
 [data-theme="light"] .hero-portfolio-body p { color: var(--text-secondary) !important; }
 [data-theme="light"] .section-header p { color: var(--text-secondary) !important; }
 [data-theme="light"] .tri-cta-card h4 { color: var(--text-heading) !important; }
-[data-theme="light"] .tri-cta-card .cta-sub { color: var(--text-secondary) !important; }
+[data-theme="light"] .tri-cta-card .cta-sub { color: var(--sem-green-dark) !important; }
+[data-theme="light"] .tri-cta-card .cta-label { color: var(--sem-purple) !important; }
+[data-theme="light"] .tri-cta-card:hover h4,
+[data-theme="light"] .tri-cta-card:hover .cta-sub,
+[data-theme="light"] .tri-cta-card:hover .cta-label { color: #fff !important; }
 [data-theme="light"] .pillar-card h3,
 [data-theme="light"] .feature2-card h3 { color: var(--text-heading) !important; }
 [data-theme="light"] .pillar-card p,
@@ -4461,7 +4466,8 @@ html { scroll-behavior: smooth; }
 }
 
 /* ── Fix: Login/Register — form responsive width ── */
-.contact-area.bg-dark .contact-form-wrap {
+/* Only apply max-width when there's NO sidebar (login/register pages) */
+.contact-area.bg-dark .custom-row > .contact-form-wrap:only-child {
     width: 100%;
     max-width: 560px;
     margin: 0 auto;
@@ -4875,7 +4881,9 @@ html { scroll-behavior: smooth; }
 }
 
 /* ═══════════════════════════════════════════
-   CONTACT FORM — Layout Fix
+   CONTACT FORM — Minimal layout tweaks
+   Main styling comes from style.css + responsive.css
+   Bootstrap .input-group fix is in page-overrides.css
    ═══════════════════════════════════════════ */
 
 /* Moderate the gap between form columns */
@@ -4896,18 +4904,16 @@ html { scroll-behavior: smooth; }
     }
 }
 
-/* Contact form wrap — restore original padding */
+/* Contact form wrap — restore original padding on mobile */
 @media (max-width: 768px) {
     .contact-form-wrap {
         padding: 32px 20px !important;
     }
 }
 
-/* Restore original input sizing — don't shrink inputs */
-
 /* Consistent form spacing for contact area */
 .contact-area .custom-row {
-    gap: 32px;
+    gap: 24px;
 }
 
 /* Light mode — contact form in dark section should stay dark */
@@ -5108,6 +5114,737 @@ html { scroll-behavior: smooth; }
         bottom: 20px;
         left: 20px;
         font-size: 18px;
+    }
+}
+
+/* ═══════════════════════════════════════════
+   MARKETING ENHANCEMENTS — v3
+   WhatsApp, Blog, Lead Magnets, Cross-Sell,
+   Referral, Urgency, FAQ Segments
+   ══════��═════════════════════���══════════════ */
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 90px;
+    right: 24px;
+    z-index: 9999;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: whatsapp-pulse 2s infinite;
+}
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+}
+@keyframes whatsapp-pulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+    50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7); }
+}
+
+/* Blog Cards */
+.blog-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 32px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+.blog-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+.blog-card h3 {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin: 12px 0;
+    line-height: 1.3;
+}
+.blog-card p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.7;
+    flex: 1;
+}
+.blog-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.blog-category {
+    background: rgba(var(--accent-rgb), 0.12);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.blog-date {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+.blog-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+.blog-read-time {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+.blog-read-link {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: gap 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.blog-read-link:hover {
+    gap: 8px;
+}
+
+/* Lead Magnet Banner / Box */
+.lead-magnet-banner {
+    padding: 24px 0;
+}
+.lead-magnet-section {
+    padding: 60px 0;
+}
+.lead-magnet-box {
+    background: linear-gradient(135deg, var(--sem-purple) 0%, var(--sem-purple-dark) 100%);
+    border-radius: 20px;
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+.lead-magnet-content h3 {
+    font-family: var(--font-heading);
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.lead-magnet-content p {
+    color: rgba(255,255,255,0.85);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 520px;
+}
+.lead-magnet-box .theme-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Cross-Sell Cards */
+.cross-sell-area {
+    padding: 80px 0;
+}
+.cross-sell-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px 32px;
+    height: 100%;
+    transition: border-color 0.3s ease;
+}
+.cross-sell-card:hover {
+    border-color: var(--accent);
+}
+.cross-sell-badge {
+    background: rgba(var(--accent-rgb), 0.12);
+    color: var(--accent);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+.cross-sell-card h3 {
+    font-family: var(--font-heading);
+    color: var(--text-heading);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+.cross-sell-card p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* Referral Section */
+.referral-area {
+    padding: 100px 0;
+    background: var(--bg-surface-2, var(--bg-surface));
+}
+.referral-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px 28px;
+    text-align: center;
+    height: 100%;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+.referral-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+.referral-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+.referral-card h4 {
+    font-family: var(--font-heading);
+    color: var(--text-heading);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.referral-card p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Urgency Banner */
+.urgency-banner {
+    background: linear-gradient(90deg, var(--sem-purple) 0%, var(--sem-green-dark) 100%);
+    padding: 14px 24px;
+    border-radius: 12px;
+    margin-top: 24px;
+}
+.urgency-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    color: #fff;
+    font-size: 15px;
+}
+.urgency-badge {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.urgency-link {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.urgency-link:hover {
+    color: var(--sem-green-light);
+}
+
+/* FAQ Segment Labels */
+.faq-segment-label {
+    color: var(--accent);
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(var(--accent-rgb), 0.2);
+}
+
+/* Filter buttons (used in Blog and Portfolio) */
+.filter-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--accent);
+    color: var(--text-on-accent);
+    border-color: var(--accent);
+}
+
+/* Alert error state */
+.alert-notification.alert-error .alert-msg {
+    color: #e74c3c;
+}
+
+/* btn-outline-white for dark CTA sections */
+.btn-outline-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+.btn-outline-white:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: #fff;
+    color: #fff;
+}
+
+/* Responsive adjustments for new sections */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        bottom: 80px;
+        right: 16px;
+        width: 50px;
+        height: 50px;
+    }
+    .lead-magnet-box {
+        padding: 28px 24px;
+        flex-direction: column;
+        text-align: center;
+    }
+    .lead-magnet-content h3 {
+        font-size: 20px;
+    }
+    .urgency-content {
+        font-size: 13px;
+    }
+    .blog-card {
+        padding: 24px;
+    }
+    .blog-card h3 {
+        font-size: 18px;
+    }
+    .cross-sell-card {
+        padding: 28px 24px;
+    }
+}
+
+/* ═══════════════════════════════════════════
+   SITE PROMO BAR — Global announcement strip
+   Purple-to-green gradient bg, gradient text
+   ═══════════════════════════════════════════ */
+.site-promo-bar {
+    position: relative;
+    z-index: 100;
+    background: linear-gradient(90deg, var(--sem-purple) 0%, var(--sem-green-dark) 100%);
+    color: #fff;
+    overflow: hidden;
+}
+
+.site-promo-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 12px 48px;
+    position: relative;
+}
+
+.site-promo-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.site-promo-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #fff;
+}
+
+.site-promo-highlight {
+    font-size: 15px;
+    font-weight: 800;
+    font-family: var(--font_brand);
+    background: linear-gradient(90deg, #fff 0%, var(--sem-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.site-promo-text {
+    font-size: 14px;
+    opacity: 0.9;
+    color: #fff;
+}
+
+.site-promo-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: var(--sem-green-light);
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+}
+.site-promo-cta:hover {
+    opacity: 0.85;
+    color: #fff;
+}
+
+.site-promo-nav {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.6;
+    color: #fff;
+    transition: opacity 0.2s ease;
+    padding: 0 2px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+.site-promo-nav:hover {
+    opacity: 1;
+}
+
+.site-promo-close {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+    line-height: 1;
+    padding: 0 4px;
+}
+.site-promo-close:hover {
+    opacity: 1;
+}
+
+.site-promo-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding-bottom: 6px;
+}
+.site-promo-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    background: rgba(255,255,255,0.35);
+    transition: all 0.2s ease;
+}
+.site-promo-dot.active {
+    background: var(--sem-green);
+    width: 18px;
+    border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+    .site-promo-inner {
+        padding: 10px 36px;
+    }
+    .site-promo-content {
+        font-size: 12px;
+        gap: 6px;
+    }
+    .site-promo-badge {
+        font-size: 10px;
+        padding: 2px 8px;
+    }
+    .site-promo-highlight {
+        font-size: 13px;
+    }
+    .site-promo-text {
+        font-size: 12px;
+    }
+    .site-promo-cta {
+        font-size: 12px;
+    }
+    .site-promo-close {
+        right: 8px;
+        font-size: 18px;
+    }
+    .site-promo-nav {
+        display: none;
+    }
+}
+
+/* ═══════════════════════════════════════════
+   CONTACT FORM — Enhanced UX States
+   Success, Error, Spinner, Privacy Note
+   ═══════════════════════════════════════════ */
+
+/* Success State */
+.form-success-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    min-height: 420px;
+    justify-content: center;
+}
+.form-success-icon {
+    margin-bottom: 24px;
+    animation: form-success-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes form-success-pop {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.form-success-title {
+    font-family: var(--font_brand);
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 12px;
+}
+.form-success-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 400px;
+    margin: 0 auto 28px;
+}
+.form-success-text strong {
+    color: var(--sem-green);
+}
+.form-success-next {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+.form-success-subtext {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+.form-success-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.form-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: var(--radius_md, 8px);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+.form-action-whatsapp {
+    background: #25D366;
+    color: #fff;
+}
+.form-action-whatsapp:hover {
+    background: #1da851;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+}
+.form-action-secondary {
+    background: var(--bg-surface, #1e1f21);
+    color: var(--text-heading);
+    border: 1px solid var(--border-default);
+}
+.form-action-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+.form-reset-link {
+    margin-top: 28px;
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s ease;
+}
+.form-reset-link:hover {
+    opacity: 0.7;
+}
+
+/* Error Banner */
+.form-error-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(231, 76, 60, 0.08);
+    border: 1px solid rgba(231, 76, 60, 0.25);
+    border-radius: var(--radius_md, 8px);
+    padding: 12px 16px;
+    margin: 16px 0 8px;
+    animation: form-error-slide 0.3s ease;
+}
+@keyframes form-error-slide {
+    0% { transform: translateY(-8px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+.form-error-banner span {
+    font-size: 14px;
+    color: #e74c3c;
+    flex: 1;
+    font-weight: 500;
+}
+.form-error-icon {
+    flex-shrink: 0;
+}
+.form-error-close {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+    padding: 0 4px;
+    line-height: 1;
+}
+.form-error-close:hover {
+    opacity: 1;
+}
+
+/* Submit Button Enhancements */
+.form-submit-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 32px;
+    transition: all 0.3s ease;
+}
+.form-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+.form-spinner-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+.form-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2.5px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: form-spin 0.6s linear infinite;
+}
+@keyframes form-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Required field asterisk */
+.form-required {
+    color: #e74c3c;
+    font-weight: 400;
+}
+
+/* Privacy note */
+.form-privacy-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 12px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .form-success-state {
+        padding: 28px 12px;
+        min-height: 360px;
+    }
+    .form-success-title {
+        font-size: 22px;
+    }
+    .form-success-text {
+        font-size: 14px;
+    }
+    .form-success-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .form-action-btn {
+        justify-content: center;
+    }
+    .form-submit-btn {
+        padding: 14px 24px;
+        font-size: 15px;
     }
 }
 

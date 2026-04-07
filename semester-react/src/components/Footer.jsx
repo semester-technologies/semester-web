@@ -3,19 +3,55 @@ import { Link } from 'react-router-dom'
 import footerLogo from '../assets/imgs/Group70e.png'
 import bgShape from '../assets/imgs/bg-shape-4.svg'
 
+// WEB3FORMS_KEY: Replace with your actual Web3Forms access key
+const WEB3FORMS_KEY = '5fb7c79b-607f-4f9f-91c9-d75fb3a87119'
+
 export default function Footer() {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+  const [submitting, setSubmitting] = useState(false)
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault()
     if (!email) {
       setMessage('Please enter your email.')
       return
     }
-    setMessage('Thank you for subscribing!')
-    setEmail('')
-    setTimeout(() => setMessage(''), 3000)
+
+    setSubmitting(true)
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: 'New Newsletter Subscriber — SemesterTech.ng',
+          from_name: 'SemesterTech Newsletter',
+          email,
+          message: 'Newsletter subscription request',
+          source: 'Footer Newsletter',
+        }),
+      })
+      const result = await response.json()
+      if (result.success) {
+        setMessage('Thank you for subscribing! Check your inbox.')
+        setEmail('')
+        // Track in GA4
+        if (typeof gtag === 'function') {
+          gtag('event', 'newsletter_signup', { event_category: 'Newsletter' })
+        }
+        if (typeof fbq === 'function') {
+          fbq('track', 'Subscribe')
+        }
+      } else {
+        setMessage('Something went wrong. Try again.')
+      }
+    } catch {
+      setMessage('Network error. Please try again.')
+    } finally {
+      setSubmitting(false)
+      setTimeout(() => setMessage(''), 4000)
+    }
   }
 
   return (
@@ -38,7 +74,9 @@ export default function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  <button type="submit" className="theme-btn mt-1">Get Started</button>
+                  <button type="submit" className="theme-btn mt-1" disabled={submitting}>
+                    {submitting ? 'Sending...' : 'Subscribe'}
+                  </button>
                 </div>
                 {message && (
                   <div className="input-group alert-notification mt-1">
@@ -47,25 +85,35 @@ export default function Footer() {
                 )}
               </form>
             </div>
-            <div className="col-6 col-sm-3 col-md-3">
+            <div className="col-6 col-sm-3 col-md-2">
               <div className="footer-links">
                 <h3>Company</h3>
                 <ul>
                   <li><Link to="/">Home</Link></li>
                   <li><Link to="/about">About Us</Link></li>
-                  <li><Link to="/services">Services (Clients)</Link></li>
-                  <li><Link to="/services">Academy (Students)</Link></li>
-                  <li><Link to="/contact">Partners</Link></li>
+                  <li><Link to="/services">Services</Link></li>
+                  <li><Link to="/portfolio">Portfolio</Link></li>
+                  <li><Link to="/blog">Blog</Link></li>
                 </ul>
               </div>
             </div>
-            <div className="col-6 col-sm-3 col-md-3">
+            <div className="col-6 col-sm-3 col-md-2">
+              <div className="footer-links">
+                <h3>Academy</h3>
+                <ul>
+                  <li><Link to="/academy">Courses</Link></li>
+                  <li><Link to="/register">Register</Link></li>
+                  <li><Link to="/login">Student Portal</Link></li>
+                  <li><Link to="/contact?service=free-consultation">Free Consultation</Link></li>
+                </ul>
+              </div>
+            </div>
+            <div className="col-6 col-sm-3 col-md-2">
               <div className="footer-links">
                 <h3>Legal</h3>
                 <ul>
                   <li><a href="#">Privacy Policy</a></li>
                   <li><a href="#">Terms of Service</a></li>
-                  <li><a href="#">Service Completion Policy</a></li>
                   <li><a href="#">Refund Policy</a></li>
                 </ul>
               </div>

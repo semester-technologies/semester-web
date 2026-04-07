@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ContactForm from '../components/ContactForm'
+import SEO, { faqSchema } from '../components/SEO'
 
 import bgShape1 from '../assets/imgs/bg-shape-1.svg'
 import heroOverviewAbout from '../assets/imgs/hero-overview-about.jpg'
@@ -142,6 +143,17 @@ export default function Services() {
 
   return (
     <>
+      <SEO
+        title="Services — 200+ Tech Solutions for Your Business"
+        description="From CAC registration (₦80k) to enterprise mobile apps (₦900k+), Semester Tech offers 200+ modular services. Software development, AI, cybersecurity, digital marketing, and more."
+        path="/services"
+        schema={faqSchema([
+          { q: 'Do I own the code/design once the project is finished?', a: 'Absolutely. Upon final payment and the signing of the Service Completion Agreement, all intellectual property is transferred to you.' },
+          { q: 'How long does a typical MVP build take?', a: 'Depending on complexity, most MVPs are deployed within 4 to 12 weeks.' },
+          { q: 'Can you help fix a website built by another developer?', a: 'Yes. We offer a System Audit & Refactoring service starting from 150k.' },
+          { q: 'What if I need a custom service not listed here?', a: 'With a workforce of 120+ experts, we can handle almost any technical request. Book a consultation.' },
+        ])}
+      />
       {/* NGO Banner */}
       <div className="ngo-banner">
         🌍 Representing an NGO? <Link to="/contact">Ask about our special impact rates.</Link>
@@ -601,7 +613,10 @@ export default function Services() {
         <div className="custom-container">
           <h1>Ready to build the future?</h1>
           <p className="mb-4">Whether you are a startup looking for your first MVP or an enterprise needing a system upgrade, we are ready to deploy.</p>
-          <Link to="/contact" className="theme-btn">Fill the Service Intake Form <i className="iconoir-arrow-up-right"></i></Link>
+          <div className="d-flex flex-wrap justify-content-center gap-3">
+            <Link to="/contact" className="theme-btn">Fill the Service Intake Form <i className="iconoir-arrow-up-right"></i></Link>
+            <Link to="/contact?service=free-consultation" className="btn-outline-white">Book Free Consultation <i className="iconoir-arrow-up-right"></i></Link>
+          </div>
         </div>
       </section>
 
