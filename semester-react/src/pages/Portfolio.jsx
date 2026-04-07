@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import ContactForm from '../components/ContactForm'
+import SEO from '../components/SEO'
 
 import project1 from '../assets/imgs/project-1.png'
 import project2 from '../assets/imgs/project-2.png'
@@ -86,6 +87,11 @@ export default function Portfolio() {
 
   return (
     <>
+      <SEO
+        title="Portfolio — 200+ Projects Delivered"
+        description="Explore Semester Tech's portfolio of 200+ projects: web apps, mobile apps, branding, e-commerce, and more. Case studies with real results from Nigerian and global clients."
+        path="/portfolio"
+      />
       {/* Hero */}
       <section className="hero-service-wrap hero-section-wrap hero-portfolio-wrap">
         <div className="hero-section-content-wrap">

@@ -1,9 +1,15 @@
 import ContactForm from '../components/ContactForm'
+import SEO from '../components/SEO'
 import bgShape7 from '../assets/imgs/bg-shape-7.svg'
 
 export default function Contact() {
   return (
     <>
+      <SEO
+        title="Contact Us — Get a Free Quote"
+        description="Contact Semester Tech for software development, tech training, or business services. Lagos & Abuja offices. Call +234 706 092 8686 or fill our intake form for a free quote."
+        path="/contact"
+      />
       {/* Hero */}
       <section className="hero-service-wrap hero-section-wrap hero-portfolio-wrap">
         <div className="hero-section-content-wrap">

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import ContactForm from '../components/ContactForm'
 import ClientMarquee from '../components/ClientMarquee'
+import SEO, { organizationSchema } from '../components/SEO'
 
 import heroCompanyAbout from '../assets/imgs/hero-company-about.jpg'
 import aboutService3 from '../assets/imgs/about-service-3.png'
@@ -64,6 +65,12 @@ const services = [
 export default function About() {
   return (
     <>
+      <SEO
+        title="About Us — Nigeria's Dual-Engine Tech Firm"
+        description="Semester Tech bridges the gap between tech education and industrial execution. 120+ trained experts, 200+ projects delivered, offices in Lagos & Abuja. Learn our story."
+        path="/about"
+        schema={organizationSchema}
+      />
       {/* Hero */}
       <section className="hero-service-wrap hero-section-wrap hero-about-wrap">
         <div className="hero-section-content-wrap">

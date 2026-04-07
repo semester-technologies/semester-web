@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -15,6 +16,8 @@ export default function Register() {
   }
 
   return (
+    <>
+    <SEO title="Register — Join the Academy" description="Register for Semester Tech Academy. 30+ courses in web development, data science, cybersecurity, and more. Starting from ₦50,000. Lagos & Abuja." path="/register" />
     <section className="contact-area bg-dark" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
       <div className="custom-container">
         <div className="custom-row">
@@ -76,5 +79,6 @@ export default function Register() {
         </div>
       </div>
     </section>
+    </>
   )
 }

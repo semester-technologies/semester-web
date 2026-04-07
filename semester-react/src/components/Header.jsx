@@ -25,11 +25,10 @@ export default function Header() {
   const navLinks = [
     { to: '/', label: 'Home' },
     { to: '/services', label: 'Services' },
+    { to: '/academy', label: 'Academy' },
     { to: '/portfolio', label: 'Portfolio' },
     { to: '/about', label: 'About Us' },
-    { to: '/career', label: 'Career' },
-    { to: '/register', label: 'Register' },
-    { to: '/login', label: 'Login' },
+    { to: '/blog', label: 'Blog' },
   ]
 
   return (
@@ -57,6 +56,9 @@ export default function Header() {
           </nav>
 
           <div className="sem-header-actions">
+            <Link to="/register" className="theme-btn sem-register-btn" style={{ marginRight: '8px', fontSize: '13px', padding: '8px 16px' }}>
+              Enroll Now
+            </Link>
             <Link to="/contact" className="theme-btn sem-contact-btn">Contact Us</Link>
             <button
               className="sem-hamburger"
@@ -86,10 +88,20 @@ export default function Header() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link to="/login" onClick={() => setMenuOpen(false)}>
+                Student Login
+              </Link>
+            </li>
           </ul>
-          <Link to="/contact" className="theme-btn sem-mobile-cta" onClick={() => setMenuOpen(false)}>
-            Contact Us <i className="iconoir-arrow-up-right"></i>
-          </Link>
+          <div className="d-flex flex-column gap-2">
+            <Link to="/register" className="theme-btn sem-mobile-cta" onClick={() => setMenuOpen(false)}>
+              Enroll Now <i className="iconoir-arrow-up-right"></i>
+            </Link>
+            <Link to="/contact" className="theme-btn2 sem-mobile-cta" onClick={() => setMenuOpen(false)}>
+              Contact Us <i className="iconoir-arrow-up-right"></i>
+            </Link>
+          </div>
         </nav>
       </div>
 
